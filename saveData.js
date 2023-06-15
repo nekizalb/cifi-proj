@@ -35,7 +35,7 @@ const blankPlayer =
             rank: {current: 0, progress: 0, goal: 1},
             freePoints: 0,
             crew: 0,
-            installs: 
+            installs:
             [
                 0, // Cells Gained *= (0.5 * [level] * [Missions Completed] * [Zeus Crew] + 1)
                 0, // AP Gained *= (0.1 * [level] * [Zeus Crew] + 1)
@@ -64,8 +64,8 @@ const blankPlayer =
         expansion: 0, // Mission Materials *= pow(1.01, [Expansion])
         exodus: 0, // Exodus Exchange Output *= pow(1.25, level)
         allExchange: 0, // All Exchanges Output *= pow(1.5, level)
-        looping: 0, // Mission Materials *= pow(0.0002 * [Looping] + 1, [Loops Filled]) 
-        productivity: 0, // Mission Speed *= pow(1.1, [Productivity]), Mission Materials *= pow(0.002 * [Productivity] + 1, [Player Level]) 
+        looping: 0, // Mission Materials *= pow(0.0002 * [Looping] + 1, [Loops Filled])
+        productivity: 0, // Mission Speed *= pow(1.1, [Productivity]), Mission Materials *= pow(0.002 * [Productivity] + 1, [Player Level])
     },
     shardMilestones:
     [
@@ -94,7 +94,10 @@ const blankPlayer =
         0, // (23) Layering
         0, // (24) Torn
         0, // (25) Duplicating
-        0 // (26) Wonderous
+        0, // (26) Wonderous
+        0, // (27) Sharp
+        0, // (28) Sly
+        0, // (29) Earthly
     ],
     research:
     {
@@ -224,7 +227,7 @@ const blankPlayer =
                 //
             dataCubes: 0
         },
-        projectLevels: 
+        projectLevels:
         [
             0, /* Cells Gained *= pow(4, level) */
             0, /* All Gen Output *= pow(2, level) */
@@ -271,7 +274,7 @@ const blankPlayer =
         special:
         {
             ap: 0,
-            materials: 0 
+            materials: 0
         },
         cards:
         {
@@ -374,7 +377,7 @@ function UpdatePlayerData()
 
 // This part is just saved for future reference from my console-based project
 
-// const shardMS = 
+// const shardMS =
 // {
 //     num(id) { return this[gameDB.milestones[id - 1].name]; }
 // };

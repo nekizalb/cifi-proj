@@ -81,7 +81,7 @@ function GetMaxMissionRate()
     missionSpeedBonus *= playerData.academy.badges.engineering + 1;
     missionSpeedBonus *= Math.pow(1.1, playerData.loopMods.productivity);
 
-    let personnel = 
+    let personnel =
     [
         {
             power: playerData.academy.personnel[3].power,
@@ -271,6 +271,8 @@ function CalculateFarmYields(giveTotal = false)
         Math.pow(1.043, Math.max(0, playerData.shardMilestones[25] - 20) * (playerData.shardMilestones[25] > 24)) :
         Math.pow(1.043, Math.max(0, playerData.shardMilestones[25] - 55) * (playerData.shardMilestones[25] > 59))
     );
+    staticMatBonus *= Math.pow(1.015, Math.max(0, playerData.shardMilestones[29] - 20) * (playerData.shardMilestones[29] > 24));
+    staticMatBonus *= Math.pow(1.025, Math.max(0, playerData.shardMilestones[29] - 45) * (playerData.shardMilestones[29] > 49));
     staticMatBonus *= Math.pow(1.5, Math.floor(playerData.research.mission[0] / 2));
     staticMatBonus *= Math.pow(1.75, Math.floor(playerData.research.mission[1] / 2));
     staticMatBonus *= 4 * (playerData.research.perfection[1] > 1) + 1;

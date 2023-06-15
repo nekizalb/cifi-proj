@@ -1,4 +1,4 @@
-/* 
+/*
 Effects to AP:
 Mod: Rule of Beyonders = pow(1.01, level)
 Mod: Rule of Destruction = pow(3, level)
@@ -103,7 +103,7 @@ SHARD MILESTONES AND RESEARCH
 1  Shard Milestone: (18) Studying = [AP = pow(1.35, max(0, level - 70) * (level > 74))]
 2  Shard Milestone: (21) Targeting = [AP = pow(1.02, level)]
 3  Shard Milestone: (23) Layering = [AP = pow(1.07, max(0, level - 45) * (level > 49))]
-4  Shard Milestone: (26) Wonderous = 
+4  Shard Milestone: (26) Wonderous =
     [
         AP = pow(1.063, max(0, level - 25) * (level > 29)) * pow(1.15, max(0, level - 115) * (level > 119)) || BUGGED = pow(1.063, max(0, level - 8) * (level > 9)) * [unknown],
         Materials = pow(1.043, max(0, level - 55) * (level > 59)) || BUGGED = pow(1.043, max(0, level - 20) * (level > 24))
@@ -144,7 +144,7 @@ let academyEffectorPortal =
             headers: [
                 {
                     text: 'Fleet Section',
-                    left: 1, top: 11, 
+                    left: 1, top: 11,
                     height: 3, width: 20
                 },
                 {
@@ -152,11 +152,11 @@ let academyEffectorPortal =
                     left: 1, top: 22,
                     height: 3, width: 23
                 },
-                {
-                    text: 'Accumulative Section',
-                    left: 31, top: 11,
-                    height: 3, width: 30
-                },
+                // {
+                //     text: 'Accumulative Section',
+                //     left: 31, top: 11,
+                //     height: 3, width: 30
+                // },
                 {
                     text: 'Ultimas',
                     left: 31, top: 19,
@@ -184,26 +184,26 @@ let academyEffectorPortal =
                     left: 19, top: 15,
                     height: 2, width: 3
                 },
-                {
-                    text: 'Zeus Crew Motivation',
-                    left: 2, top: 18,
-                    height: 2, width: 14
-                },
-                {
-                    text: '/ 10',
-                    left: 20, top: 18,
-                    height: 2, width: 3
-                },
-                {
-                    text: 'Combat Modifications',
-                    left: 2, top: 26,
-                    height: 2, width: 15
-                },
-                {
-                    text: '/ 200',
-                    left: 22, top: 26,
-                    height: 2, width: 4
-                },
+                // {
+                //     text: 'Zeus Crew Motivation',
+                //     left: 2, top: 18,
+                //     height: 2, width: 14
+                // },
+                // {
+                //     text: '/ 10',
+                //     left: 20, top: 18,
+                //     height: 2, width: 3
+                // },
+                // {
+                //     text: 'Combat Modifications',
+                //     left: 2, top: 26,
+                //     height: 2, width: 15
+                // },
+                // {
+                //     text: '/ 200',
+                //     left: 22, top: 26,
+                //     height: 2, width: 4
+                // },
                 {
                     text: 'Material Hauling',
                     left: 2, top: 29,
@@ -214,51 +214,51 @@ let academyEffectorPortal =
                     left: 19, top: 29,
                     height: 2, width: 4
                 },
-                {
-                    text: 'Exodus Enhancement',
-                    left: 2, top: 32,
-                    height: 2, width: 15
-                },
-                {
-                    text: '/ 50',
-                    left: 20, top: 32,
-                    height: 2, width: 4
-                },
-                {
-                    text: 'All Exchanges Enhancement',
-                    left: 2, top: 35,
-                    height: 2, width: 19
-                },
-                {
-                    text: '/ 50',
-                    left: 24, top: 35,
-                    height: 2, width: 4
-                },
-                {
-                    text: 'Helion',
-                    left: 32, top: 15,
-                    height: 2, width: 5
-                },
-                {
-                    text: '/ 10',
-                    left: 41, top: 15,
-                    height: 2, width: 3
-                },
+                // {
+                //     text: 'Exodus Enhancement',
+                //     left: 2, top: 32,
+                //     height: 2, width: 15
+                // },
+                // {
+                //     text: '/ 50',
+                //     left: 20, top: 32,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: 'All Exchanges Enhancement',
+                //     left: 2, top: 35,
+                //     height: 2, width: 19
+                // },
+                // {
+                //     text: '/ 50',
+                //     left: 24, top: 35,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: 'Helion',
+                //     left: 32, top: 15,
+                //     height: 2, width: 5
+                // },
+                // {
+                //     text: '/ 10',
+                //     left: 41, top: 15,
+                //     height: 2, width: 3
+                // },
                 {
                     text: 'Rule of the Beyonders',
                     left: 32, top: 23,
                     height: 2, width: 16
                 },
-                {
-                    text: 'Rule of Destruction',
-                    left: 32, top: 26,
-                    height: 2, width: 14
-                },
-                {
-                    text: '/ 10',
-                    left: 50, top: 26,
-                    height: 2, width: 3
-                },
+                // {
+                //     text: 'Rule of Destruction',
+                //     left: 32, top: 26,
+                //     height: 2, width: 14
+                // },
+                // {
+                //     text: '/ 10',
+                //     left: 50, top: 26,
+                //     height: 2, width: 3
+                // },
                 {
                     text: 'Rule of the Swarm',
                     left: 32, top: 29,
@@ -314,54 +314,54 @@ let academyEffectorPortal =
                     left: 16, top: 14.25,
                     height: 2, width: 3
                 },
-                {
-                    id: 'zeuscrewmotivation',
-                    type: 'number',
-                    left: 17, top: 17.25,
-                    height: 2, width: 3
-                },
-                {
-                    id: 'combatmod',
-                    type: 'number',
-                    left: 18, top: 25.25,
-                    height: 2, width: 4
-                },
+                // {
+                //     id: 'zeuscrewmotivation',
+                //     type: 'number',
+                //     left: 17, top: 17.25,
+                //     height: 2, width: 3
+                // },
+                // {
+                //     id: 'combatmod',
+                //     type: 'number',
+                //     left: 18, top: 25.25,
+                //     height: 2, width: 4
+                // },
                 {
                     id: 'mathauling',
                     type: 'number',
                     left: 15, top: 28.25,
                     height: 2, width: 4
                 },
-                {
-                    id: 'exodus',
-                    type: 'number',
-                    left: 18, top: 31.25,
-                    height: 2, width: 3
-                },
-                {
-                    id: 'allexchange',
-                    type: 'number',
-                    left: 22, top: 34.25,
-                    height: 2, width: 3
-                },
-                {
-                    id: 'helion',
-                    type: 'number',
-                    left: 38, top: 14.25,
-                    height: 2, width: 3
-                },
+                // {
+                //     id: 'exodus',
+                //     type: 'number',
+                //     left: 18, top: 31.25,
+                //     height: 2, width: 3
+                // },
+                // {
+                //     id: 'allexchange',
+                //     type: 'number',
+                //     left: 22, top: 34.25,
+                //     height: 2, width: 3
+                // },
+                // {
+                //     id: 'helion',
+                //     type: 'number',
+                //     left: 38, top: 14.25,
+                //     height: 2, width: 3
+                // },
                 {
                     id: 'beyonders',
                     type: 'number',
                     left: 49, top: 22.25,
                     height: 2, width: 6
                 },
-                {
-                    id: 'destruction',
-                    type: 'number',
-                    left: 47, top: 25.25,
-                    height: 2, width: 3
-                },
+                // {
+                //     id: 'destruction',
+                //     type: 'number',
+                //     left: 47, top: 25.25,
+                //     height: 2, width: 3
+                // },
                 {
                     id: 'swarm',
                     type: 'number',
@@ -392,7 +392,7 @@ let academyEffectorPortal =
             displays: [],
             buttons: [],
             toggles: [
-                
+
             ]
         },
         zeus: {
@@ -404,24 +404,24 @@ let academyEffectorPortal =
             headers: [
                 {
                     text: 'Zeus',
-                    left: 1, top: 7, 
+                    left: 1, top: 7,
                     height: 3, width: 6
                 },
                 {
                     text: 'Installs',
-                    left: 12, top: 7, 
+                    left: 12, top: 7,
                     height: 3, width: 9
                 },
                 {
                     text: 'Academy',
-                    left: 1, top: 25, 
+                    left: 1, top: 25,
                     height: 3, width: 10
                 },
-                {
-                    text: 'Gear',
-                    left: 32, top: 25, 
-                    height: 3, width: 6
-                }
+                // {
+                //     text: 'Gear',
+                //     left: 32, top: 25,
+                //     height: 3, width: 6
+                // }
             ],
             labels: [
                 {
@@ -444,16 +444,16 @@ let academyEffectorPortal =
                     left: 15, top: 17,
                     height: 2, width: 1
                 },
-                {
-                    text: 'Evo',
-                    left: 2, top: 20,
-                    height: 2, width: 4
-                },
-                {
-                    text: '(2) Perfect Student Blueprint',
-                    left: 13, top: 11,
-                    height: 2, width: 19
-                },
+                // {
+                //     text: 'Evo',
+                //     left: 2, top: 20,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: '(2) Perfect Student Blueprint',
+                //     left: 13, top: 11,
+                //     height: 2, width: 19
+                // },
                 {
                     text: '(3) Material Scavenger Vehicles',
                     left: 13, top: 14,
@@ -464,56 +464,56 @@ let academyEffectorPortal =
                     left: 39, top: 11,
                     height: 2, width: 19
                 },
-                {
-                    text: '(7) On-Site Auto Construction',
-                    left: 39, top: 14,
-                    height: 2, width: 19
-                },
-                {
-                    text: 'Exodus Exchange: Data Cubes',
-                    left: 2, top: 29,
-                    height: 2, width: 20
-                },
-                {
-                    text: 'Project: Warp-Drive Lab',
-                    left: 2, top: 32,
-                    height: 2, width: 16
-                },
-                {
-                    text: 'Construction Milestones: AP Bonus',
-                    left: 1, top: 35,
-                    height: 2, width: 24
-                },
+                // {
+                //     text: '(7) On-Site Auto Construction',
+                //     left: 39, top: 14,
+                //     height: 2, width: 19
+                // },
+                // {
+                //     text: 'Exodus Exchange: Data Cubes',
+                //     left: 2, top: 29,
+                //     height: 2, width: 20
+                // },
+                // {
+                //     text: 'Project: Warp-Drive Lab',
+                //     left: 2, top: 32,
+                //     height: 2, width: 16
+                // },
+                // {
+                //     text: 'Construction Milestones: AP Bonus',
+                //     left: 1, top: 35,
+                //     height: 2, width: 24
+                // },
                 {
                     text: 'Badge: Engineering',
                     left: 2, top: 38,
                     height: 2, width: 13
                 },
-                {
-                    text: 'Campaigns Complete',
-                    left: 1, top: 41,
-                    height: 2, width: 15
-                },
-                {
-                    text: 'Orange',
-                    left: 33, top: 29,
-                    height: 2, width: 6
-                },
-                {
-                    text: 'Red',
-                    left: 33, top: 32,
-                    height: 2, width: 4
-                },
-                {
-                    text: 'Green',
-                    left: 33, top: 35,
-                    height: 2, width: 5
-                },
-                {
-                    text: 'Blue',
-                    left: 33, top: 38,
-                    height: 2, width: 4
-                }
+                // {
+                //     text: 'Campaigns Complete',
+                //     left: 1, top: 41,
+                //     height: 2, width: 15
+                // },
+                // {
+                //     text: 'Orange',
+                //     left: 33, top: 29,
+                //     height: 2, width: 6
+                // },
+                // {
+                //     text: 'Red',
+                //     left: 33, top: 32,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: 'Green',
+                //     left: 33, top: 35,
+                //     height: 2, width: 5
+                // },
+                // {
+                //     text: 'Blue',
+                //     left: 33, top: 38,
+                //     height: 2, width: 4
+                // }
             ],
             inputs: [
                 {
@@ -534,18 +534,18 @@ let academyEffectorPortal =
                     left: 9, top: 16.25,
                     height: 2, width: 5
                 },
-                {
-                    id: 'evo',
-                    type: 'number',
-                    left: 7, top: 19.25,
-                    height: 2, width: 3
-                },
-                {
-                    id: 'install2',
-                    type: 'number',
-                    left: 33, top: 10.25,
-                    height: 2, width: 2
-                },
+                // {
+                //     id: 'evo',
+                //     type: 'number',
+                //     left: 7, top: 19.25,
+                //     height: 2, width: 3
+                // },
+                // {
+                //     id: 'install2',
+                //     type: 'number',
+                //     left: 33, top: 10.25,
+                //     height: 2, width: 2
+                // },
                 {
                     id: 'install3',
                     type: 'number',
@@ -558,60 +558,60 @@ let academyEffectorPortal =
                     left: 59, top: 10.25,
                     height: 2, width: 3
                 },
-                {
-                    id: 'install7',
-                    type: 'number',
-                    left: 59, top: 13.25,
-                    height: 2, width: 3
-                },
-                {
-                    id: 'datacubes',
-                    type: 'text',
-                    left: 23, top: 28.25,
-                    height: 2, width: 7
-                },
-                {
-                    id: 'warpdrive',
-                    type: 'number',
-                    left: 19, top: 31.25,
-                    height: 2, width: 4
-                },
-                {
-                    id: 'cm',
-                    type: 'number',
-                    left: 26, top: 34.25,
-                    height: 2, width: 5
-                },
-                {
-                    id: 'orange',
-                    type: 'number',
-                    left: 40, top: 28.25,
-                    height: 2, width: 2
-                },
-                {
-                    id: 'red',
-                    type: 'number',
-                    left: 38, top: 31.25,
-                    height: 2, width: 2
-                },
-                {
-                    id: 'green',
-                    type: 'number',
-                    left: 39, top: 34.25,
-                    height: 2, width: 2
-                },
-                {
-                    id: 'blue',
-                    type: 'number',
-                    left: 38, top: 37.25,
-                    height: 2, width: 2
-                },
-                {
-                    id: 'campaigns',
-                    type: 'number',
-                    left: 17, top: 40.25,
-                    height: 2, width: 3
-                }
+                // {
+                //     id: 'install7',
+                //     type: 'number',
+                //     left: 59, top: 13.25,
+                //     height: 2, width: 3
+                // },
+                // {
+                //     id: 'datacubes',
+                //     type: 'text',
+                //     left: 23, top: 28.25,
+                //     height: 2, width: 7
+                // },
+                // {
+                //     id: 'warpdrive',
+                //     type: 'number',
+                //     left: 19, top: 31.25,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     id: 'cm',
+                //     type: 'number',
+                //     left: 26, top: 34.25,
+                //     height: 2, width: 5
+                // },
+                // {
+                //     id: 'orange',
+                //     type: 'number',
+                //     left: 40, top: 28.25,
+                //     height: 2, width: 2
+                // },
+                // {
+                //     id: 'red',
+                //     type: 'number',
+                //     left: 38, top: 31.25,
+                //     height: 2, width: 2
+                // },
+                // {
+                //     id: 'green',
+                //     type: 'number',
+                //     left: 39, top: 34.25,
+                //     height: 2, width: 2
+                // },
+                // {
+                //     id: 'blue',
+                //     type: 'number',
+                //     left: 38, top: 37.25,
+                //     height: 2, width: 2
+                // },
+                // {
+                //     id: 'campaigns',
+                //     type: 'number',
+                //     left: 17, top: 40.25,
+                //     height: 2, width: 3
+                // }
             ],
             checkboxes: [
                 {
@@ -628,7 +628,7 @@ let academyEffectorPortal =
                 }
             ],
             buttons: [
-        
+
             ],
             toggles: [
 
@@ -643,38 +643,38 @@ let academyEffectorPortal =
             headers: [
                 {
                     text: 'Shard Milestones',
-                    left: 1, top: 7, 
+                    left: 1, top: 7,
                     height: 3, width: 24
                 },
                 {
                     text: 'Researches',
-                    left: 1, top: 19, 
+                    left: 1, top: 19,
                     height: 3, width: 16
                 },
                 {
                     text: 'Diamonds',
-                    left: 40, top: 7, 
+                    left: 40, top: 7,
                     height: 3, width: 12
                 }
             ],
             labels: [
-                {
-                    text: '(18) Studying',
-                    left: 2, top: 11,
-                    height: 2, width: 9
-                },
-                {
-                    text: '(21) Targeting',
-                    left: 2, top: 14,
-                    height: 2, width: 9
-                },
-                {
-                    text: '(23) Layering',
-                    left: 18, top: 11,
-                    height: 2, width: 9
-                },
+                // {
+                //     text: '(18) Studying',
+                //     left: 2, top: 11,
+                //     height: 2, width: 9
+                // },
+                // {
+                //     text: '(21) Targeting',
+                //     left: 2, top: 14,
+                //     height: 2, width: 9
+                // },
                 {
                     text: '(26) Wonderous',
+                    left: 18, top: 11,
+                    height: 2, width: 11
+                },
+                {
+                    text: '(29) Earthly',
                     left: 18, top: 14,
                     height: 2, width: 11
                 },
@@ -748,63 +748,63 @@ let academyEffectorPortal =
                     left: 9, top: 38,
                     height: 2, width: 3
                 },
-                {
-                    text: 'Special: AP',
-                    left: 41, top: 11,
-                    height: 2, width: 9
-                },
+                // {
+                //     text: 'Special: AP',
+                //     left: 41, top: 11,
+                //     height: 2, width: 9
+                // },
                 {
                     text: 'Special: Mats',
                     left: 41, top: 14,
                     height: 2, width: 9
                 },
-                {
-                    text: 'Nora Card',
-                    left: 41, top: 17,
-                    height: 2, width: 9
-                },
-                {
-                    text: 'Omega Card',
-                    left: 41, top: 20,
-                    height: 2, width: 9
-                },
-                {
-                    text: 'Rigel Card',
-                    left: 41, top: 23,
-                    height: 2, width: 9
-                },
-                {
-                    text: 'Utopia Card',
-                    left: 41, top: 26,
-                    height: 2, width: 9
-                },
-                {
-                    text: 'Zion Card',
-                    left: 41, top: 29,
-                    height: 2, width: 9
-                }
+                // {
+                //     text: 'Nora Card',
+                //     left: 41, top: 17,
+                //     height: 2, width: 9
+                // },
+                // {
+                //     text: 'Omega Card',
+                //     left: 41, top: 20,
+                //     height: 2, width: 9
+                // },
+                // {
+                //     text: 'Rigel Card',
+                //     left: 41, top: 23,
+                //     height: 2, width: 9
+                // },
+                // {
+                //     text: 'Utopia Card',
+                //     left: 41, top: 26,
+                //     height: 2, width: 9
+                // },
+                // {
+                //     text: 'Zion Card',
+                //     left: 41, top: 29,
+                //     height: 2, width: 9
+                // }
             ],
             inputs: [
-                {
-                    id: 'studying',
-                    type: 'number',
-                    left: 12, top: 10.25,
-                    height: 2, width: 4
-                },
-                {
-                    id: 'targeting',
-                    type: 'number',
-                    left: 12, top: 13.25,
-                    height: 2, width: 4
-                },
-                {
-                    id: 'layering',
-                    type: 'number',
-                    left: 28, top: 10.25,
-                    height: 2, width: 4
-                },
+                // {
+                //     id: 'studying',
+                //     type: 'number',
+                //     left: 12, top: 10.25,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     id: 'targeting',
+                //     type: 'number',
+                //     left: 12, top: 13.25,
+                //     height: 2, width: 4
+                // },
                 {
                     id: 'wonderous',
+                    type: 'number',
+                    left: 30, top: 10.25,
+                    height: 2, width: 4
+                },
+                {
+                    id: 'earthly',
                     type: 'number',
                     left: 30, top: 13.25,
                     height: 2, width: 4
@@ -875,12 +875,12 @@ let academyEffectorPortal =
                     left: 13, top: 37.25,
                     height: 2, width: 2
                 },
-                {
-                    id: 'specialap',
-                    type: 'number',
-                    left: 51, top: 10.25,
-                    height: 2, width: 3
-                },
+                // {
+                //     id: 'specialap',
+                //     type: 'number',
+                //     left: 51, top: 10.25,
+                //     height: 2, width: 3
+                // },
                 {
                     id: 'specialmats',
                     type: 'number',
@@ -889,40 +889,40 @@ let academyEffectorPortal =
                 },
             ],
             checkboxes: [
-                {
-                    id: 'nora',
-                    left: 51, top: 16.25,
-                    width: 2, height: 2
-                },
-                {
-                    id: 'omega',
-                    left: 51, top: 19.25,
-                    width: 2, height: 2
-                },
-                {
-                    id: 'rigel',
-                    left: 51, top: 22.25,
-                    width: 2, height: 2
-                },
-                {
-                    id: 'utopia',
-                    left: 51, top: 25.25,
-                    width: 2, height: 2
-                },
-                {
-                    id: 'zion',
-                    left: 51, top: 28.25,
-                    width: 2, height: 2
-                }
+                // {
+                //     id: 'nora',
+                //     left: 51, top: 16.25,
+                //     width: 2, height: 2
+                // },
+                // {
+                //     id: 'omega',
+                //     left: 51, top: 19.25,
+                //     width: 2, height: 2
+                // },
+                // {
+                //     id: 'rigel',
+                //     left: 51, top: 22.25,
+                //     width: 2, height: 2
+                // },
+                // {
+                //     id: 'utopia',
+                //     left: 51, top: 25.25,
+                //     width: 2, height: 2
+                // },
+                // {
+                //     id: 'zion',
+                //     left: 51, top: 28.25,
+                //     width: 2, height: 2
+                // }
             ],
             displays: [
-        
+
             ],
             buttons: [
-        
+
             ],
             toggles: [
-                
+
             ]
         }
     }
@@ -1008,6 +1008,7 @@ academyEffectorPortal.pages.sr.dataLinkage =
     set targeting(value) { playerData.shardMilestones[20] = value; },
     set layering(value) { playerData.shardMilestones[22] = value; },
     set wonderous(value) { playerData.shardMilestones[25] = value; },
+    set earthly(value) { playerData.shardMilestones[29] = value; },
     set mission1(value) { playerData.research.mission[0] = value; },
     set mission2(value) { playerData.research.mission[1] = value; },
     set mission3(value) { playerData.research.mission[2] = value; },
@@ -1031,6 +1032,7 @@ academyEffectorPortal.pages.sr.dataLinkage =
     get targeting() { return playerData.shardMilestones[20]; },
     get layering() { return playerData.shardMilestones[22]; },
     get wonderous() { return playerData.shardMilestones[25]; },
+    get earthly() { return playerData.shardMilestones[29]; },
     get mission1() { return playerData.research.mission[0]; },
     get mission2() { return playerData.research.mission[1]; },
     get mission3() { return playerData.research.mission[2]; },

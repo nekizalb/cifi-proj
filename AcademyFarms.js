@@ -164,11 +164,11 @@ let academyFarmPortal =
                     left: 76, top: 10,
                     height: 2, width: 4
                 },
-                {
-                    text: 'AP',
-                    left: 75, top: 13,
-                    height: 2, width: 7
-                },
+                // {
+                //     text: 'AP',
+                //     left: 75, top: 13,
+                //     height: 2, width: 7
+                // },
                 {
                     text: 'difar',
                     left: 78, top: 16,
@@ -265,12 +265,12 @@ let academyFarmPortal =
                     left: 84, top: 3.25,
                     width: 5, height: 2
                 },
-                {
-                    id: 'ap',
-                    type: 'text',
-                    left: 83, top: 12.25,
-                    width: 7, height: 2
-                },
+                // {
+                //     id: 'ap',
+                //     type: 'text',
+                //     left: 83, top: 12.25,
+                //     width: 7, height: 2
+                // },
                 {
                     id: 'difar',
                     type: 'text',
@@ -389,11 +389,11 @@ let academyFarmPortal =
                     left: 101, top: 9.75,
                     height: 2, width: 7
                 },
-                {
-                    id: 'apyield',
-                    left: 101, top: 12.75,
-                    height: 2, width: 7
-                },
+                // {
+                //     id: 'apyield',
+                //     left: 101, top: 12.75,
+                //     height: 2, width: 7
+                // },
                 {
                     id: 'difaryield',
                     left: 101, top: 15.75,
@@ -698,7 +698,7 @@ academyFarmPortal.pages.default.updateFunction = function(e)
         SavePlayerData();
 
         if (e.target.id === 'rankcurrent') { portalPanel['rankrequirement'].innerText = GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage[e.target.id]]; }
-        
+
         PopulateTiming();
         populateYield();
 
@@ -823,8 +823,8 @@ function populateYield()
         {
             yieldValue = yieldValue.toExponential(2)
         }
-        else 
-        { 
+        else
+        {
             yieldValue = yieldValue.toFixed(2);
         }
         return yieldValue;
@@ -832,7 +832,7 @@ function populateYield()
 
 
     portalPanel.missionrate.innerText = rateData.missionRate;
-    portalPanel.aprate.innerText = rateData.apRate;
+    // portalPanel.aprate.innerText = rateData.apRate;
     portalPanel.difarrate.innerText = rateData.matRate[0];
     portalPanel.kentorate.innerText = rateData.matRate[1];
     portalPanel.chromiumrate.innerText = rateData.matRate[2];
@@ -843,7 +843,7 @@ function populateYield()
     portalPanel.darkseidrate.innerText = rateData.matRate[7];
 
     portalPanel.missionyield.innerText = yieldData.missionYield;
-    portalPanel.apyield.innerText = yieldData.apYield;
+    // portalPanel.apyield.innerText = yieldData.apYield;
     portalPanel.difaryield.innerText = yieldData.matYield[0];
     portalPanel.kentoyield.innerText = yieldData.matYield[1];
     portalPanel.chromiumyield.innerText = yieldData.matYield[2];
