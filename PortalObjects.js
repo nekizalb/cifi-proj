@@ -46,8 +46,8 @@ function ConstructPortal(height, width, portalObj)
             newElem.innerText = portalObj.pages[page].text;
             newElem.classList.add(`pager${portalObj.pages[page].id}`);
 
-            if (portalObj.activePage === page) 
-            { 
+            if (portalObj.activePage === page)
+            {
                 newElem.classList.add('activepage');
                 portalPanel.dataLinkage = portalObj.pages[page].dataLinkage;
                 portalPanel.updateFunction = portalObj.pages[page].updateFunction;
@@ -62,8 +62,8 @@ function ConstructPortal(height, width, portalObj)
             newElem.addEventListener('click', navigatePage);
         });
     }
-    else 
-    { 
+    else
+    {
         portalPanel.dataLinkage = portalObj.pages.default.dataLinkage;
         portalPanel.updateFunction = portalObj.pages.default.updateFunction;
         if (portalObj.pages.default.initFunction) { portalPanel.initFunction = portalObj.pages.default.initFunction; }
@@ -197,18 +197,18 @@ function ConstructPortal(height, width, portalObj)
             newContainer.style.top = `${cellSize * lockbox.top}px`;
             newContainer.style.width = `${cellSize * lockbox.width}px`;
             newContainer.style.height = `${cellSize * lockbox.height}px`;
-    
+
             let newLockbox = document.createElement('input');
             newContainer.appendChild(newLockbox);
             newLockbox.type = 'checkbox';
             newLockbox.id = lockbox.id;
             newLockbox.style.width = `0px`;
             newLockbox.style.height = `0px`;
-    
+
             newLockbox.checked = portalPanel.dataLinkage[lockbox.id];
-    
+
             newLockbox.addEventListener('change', portalPanel.updateFunction);
-    
+
             let newLockmark = document.createElement('span');
             newContainer.appendChild(newLockmark);
             newLockmark.classList.add('lockmark');
@@ -217,7 +217,7 @@ function ConstructPortal(height, width, portalObj)
         })
     }
 
-    if (portalPanel.initFunction) { portalPanel.initFunction(); }
+    if (portalPanel.initFunction) { portalPanel.initFunction(portalPanel.elem); }
 
     // portalPanel['rankrequirement'].innerText = GameDB.fleet.zeus.rankRequirements[academyDataLinkage.rankcurrent];
     // PopulateTiming();
@@ -253,17 +253,17 @@ function setPanelCSS(portalObj)
                 'margin: 0px;\n',
                 'text-align: center;\n'
             ].join('');
-        
+
             newStyleSheet.insertRule(`${selector} { ${properties} }`);
-        
+
             selector = `.pager${thisPage.id}:hover`;
             properties =
             [
                 `box-shadow: 0px 0px ${Math.round(cellSize)}px ${thisPage.color}, inset 0px 0px ${Math.round(cellSize / 2)}px ${thisPage.color};\n`
             ].join('');
-        
+
             newStyleSheet.insertRule(`${selector} { ${properties} }`);
-        
+
             selector = `.pager${thisPage.id}:active`;
             properties =
             [
@@ -271,9 +271,9 @@ function setPanelCSS(portalObj)
                 `text-shadow: 0px 0px ${Math.round(cellSize * portalObj.pageText / 9)}px #000000;\n`,
                 `background-color: ${thisPage.color};\n`
             ].join('');
-        
+
             newStyleSheet.insertRule(`${selector} { ${properties} }`);
-        
+
             selector = `.pager${thisPage.id}.activepage`;
             properties =
             [
@@ -281,7 +281,7 @@ function setPanelCSS(portalObj)
                 `text-shadow: 0px 0px ${Math.round(cellSize * portalObj.pageText / 9)}px #000000;\n`,
                 `background-color: ${thisPage.color};\n`
             ].join('');
-        
+
             newStyleSheet.insertRule(`${selector} { ${properties} }`);
         });
 
@@ -587,7 +587,7 @@ function setPanelCSS(portalObj)
                 `text-shadow: 0px 0px ${Math.round(cellSize * portalObj.labelText / 9)}px ${thisToggle.settings[j].color};\n`,
                 `box-shadow: 0px 0px ${Math.round(cellSize / 5)}px ${thisToggle.settings[j].color}, inset 0px 0px ${Math.round(cellSize)}px ${thisToggle.settings[j].color};\n`
             ].join('');
-    
+
             newStyleSheet.insertRule(`${selector} { ${properties} }`);
         }
 

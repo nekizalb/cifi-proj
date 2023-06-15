@@ -7,13 +7,13 @@ function CalculateFarmTimes(getRawTime = false)
         {
             let power = 0;
             let population = 0;
-            power += playerData.academy.farms[planet][farm].pods * playerData.academy.personnel[0].power;
+            power += (playerData.academy.farms[planet][farm].pods || 0) * (playerData.academy.personnel[0].power || 0);
             population += playerData.academy.farms[planet][farm].pods;
-            power += playerData.academy.farms[planet][farm].fireteams * playerData.academy.personnel[1].power;
+            power += (playerData.academy.farms[planet][farm].fireteams || 0) * (playerData.academy.personnel[1].power || 0);
             population += playerData.academy.farms[planet][farm].fireteams;
-            power += playerData.academy.farms[planet][farm].titans * playerData.academy.personnel[2].power;
+            power += (playerData.academy.farms[planet][farm].titans || 0) * (playerData.academy.personnel[2].power || 0);
             population += playerData.academy.farms[planet][farm].titans;
-            power += playerData.academy.farms[planet][farm].corvettes * playerData.academy.personnel[3].power;
+            power += (playerData.academy.farms[planet][farm].corvettes || 0) * (playerData.academy.personnel[3].power || 0);
             population += playerData.academy.farms[planet][farm].corvettes;
 
             let missionSpeedBonus = (GameDB.bugs.swarm ? (0.03 * playerData.loopMods.swarm + 1) : Math.pow(1.0311, playerData.loopMods.swarm));
@@ -37,9 +37,9 @@ function CalculateFarmTimes(getRawTime = false)
             }
 
             let seconds = 60 * GameDB.academy.farms[planet * 3 + farm].baseTime / (power * missionSpeedBonus);
-            seconds = Math.max(seconds, 2);
+            // seconds = Math.max(seconds, 2);
 
-            if (getRawTime) { farmData.push({time: seconds, personnel: population}); continue; }
+            if (getRawTime) { farmData.push({time: Math.max(seconds, 2), personnel: population}); continue; }
 
             let hours = Math.floor(seconds / 3600);
             seconds -= hours * 3600;
@@ -50,16 +50,22 @@ function CalculateFarmTimes(getRawTime = false)
             if (hours > 0) { seconds = Math.round(seconds); }
 
             let time = Math.round(seconds * 100) / 100;
+            let isCapped = false
             if (minutes > 0 || hours > 0)
             {
-                time = minutes + ':' + (seconds < 10 ? '0' : '') + time;
+                time = minutes + ':' + (seconds < 10 ? '0' : '') + Math.round(time);
                 if (hours > 0)
                 {
                     time = hours + ':' + (minutes < 10 ? '0' : '') + time;
                 }
             }
+            else
+            {
+                isCapped = time <= 2
+                time = time + 's'
+            }
 
-            farmData.push({time, personnel: population});
+            farmData.push({time, isCapped, personnel: population});
         }
     }
 
@@ -202,6 +208,39 @@ function GetMaxMissionRate()
     SavePlayerData();
 }
 
+function GetStaticMatBonus() {
+    let staticMatBonus = Math.pow(1.01, playerData.loopMods.beyonders);
+    staticMatBonus *= Math.pow(1.5111, playerData.loopMods.swarm);
+    staticMatBonus *= Math.pow(1.01, playerData.loopMods.expansion);
+    staticMatBonus *= Math.pow(1.05, playerData.loopMods.materialHauling);
+    staticMatBonus *= (0.25 * playerData.fleet.zeus.installs[2] * playerData.fleet.zeus.crew + 1);
+    staticMatBonus *= (0.1 * playerData.fleet.zeus.installs[5] * playerData.fleet.zeus.crew + 1);
+    staticMatBonus *= Math.pow(1.043, Math.max(0, playerData.shardMilestones[25] - 55) * (playerData.shardMilestones[25] > 59));
+    staticMatBonus *= Math.pow(1.015, Math.max(0, playerData.shardMilestones[29] - 20) * (playerData.shardMilestones[29] > 24));
+    staticMatBonus *= Math.pow(1.025, Math.max(0, playerData.shardMilestones[29] - 45) * (playerData.shardMilestones[29] > 49));
+    staticMatBonus *= Math.pow(1.5, Math.floor(playerData.research.mission[0] / 2));
+    staticMatBonus *= Math.pow(1.75, Math.floor(playerData.research.mission[1] / 2));
+    staticMatBonus *= 4 * (playerData.research.perfection[1] > 1) + 1;
+    staticMatBonus *= ((playerData.research.mission[3] > 1 ? 2 : 1) * (playerData.research.mission[3] > 3 ? 3 : 1) * (playerData.research.mission[3] > 5 ? 4 : 1));
+    staticMatBonus *= 4 * (playerData.research.perfection[2] > 1) + 1;
+    staticMatBonus *= ((playerData.research.mission[4] > 1 ? 3 : 1) * (playerData.research.mission[4] > 3 ? 4 : 1) * (playerData.research.mission[4] > 5 ? 5 : 1));
+    staticMatBonus *= 8 * (playerData.research.perfection[2] > 1) + 1;
+    staticMatBonus *= Math.pow(1.05, playerData.diamonds.special.materials);
+    staticMatBonus *= Math.pow(2.5, playerData.academy.projectLevels[8]);
+    staticMatBonus *= Math.pow(0.0002 * playerData.loopMods.looping + 1, playerData.loopsFilled);
+    staticMatBonus *= Math.pow(0.002 * playerData.loopMods.productivity + 1, playerData.level);
+
+    return staticMatBonus
+}
+
+function GetDynamicMatBonus() {
+    return Math.pow(0.01 * playerData.loopMods.zeusRankBenefits + 1, playerData.fleet.zeus.rank.current)
+}
+
+function GetCurrentMatBonus() {
+    return GetStaticMatBonus() * GetDynamicMatBonus()
+}
+
 function CalculateFarmYields(giveTotal = false)
 {
     let durationSetting = playerData.academy.farmYieldSetting;
@@ -260,32 +299,8 @@ function CalculateFarmYields(giveTotal = false)
     staticAPbonus *= Math.pow(1.6, playerData.academy.projectLevels[6]);
     staticAPbonus *= Math.pow(1.9, playerData.academy.projectLevels[7]);
 
-    let staticMatBonus = Math.pow(1.01, playerData.loopMods.beyonders);
-    staticMatBonus *= (GameDB.bugs.swarm ? (1.25 * playerData.loopMods.swarm) + (playerData.loopMods.swarm === 0) : Math.pow(1.5111, playerData.loopMods.swarm));
-    staticMatBonus *= Math.pow(1.01, playerData.loopMods.expansion);
-    staticMatBonus *= Math.pow(1.05, playerData.loopMods.materialHauling);
-    staticMatBonus *= (0.25 * playerData.fleet.zeus.installs[2] * playerData.fleet.zeus.crew + 1);
-    staticMatBonus *= (0.1 * playerData.fleet.zeus.installs[5] * playerData.fleet.zeus.crew + 1);
-    staticMatBonus *= (
-        GameDB.bugs.wonderous ?
-        Math.pow(1.043, Math.max(0, playerData.shardMilestones[25] - 20) * (playerData.shardMilestones[25] > 24)) :
-        Math.pow(1.043, Math.max(0, playerData.shardMilestones[25] - 55) * (playerData.shardMilestones[25] > 59))
-    );
-    staticMatBonus *= Math.pow(1.015, Math.max(0, playerData.shardMilestones[29] - 20) * (playerData.shardMilestones[29] > 24));
-    staticMatBonus *= Math.pow(1.025, Math.max(0, playerData.shardMilestones[29] - 45) * (playerData.shardMilestones[29] > 49));
-    staticMatBonus *= Math.pow(1.5, Math.floor(playerData.research.mission[0] / 2));
-    staticMatBonus *= Math.pow(1.75, Math.floor(playerData.research.mission[1] / 2));
-    staticMatBonus *= 4 * (playerData.research.perfection[1] > 1) + 1;
-    staticMatBonus *= ((playerData.research.mission[3] > 1 ? 2 : 1) * (playerData.research.mission[3] > 3 ? 3 : 1) * (playerData.research.mission[3] > 5 ? 4 : 1));
-    staticMatBonus *= 4 * (playerData.research.perfection[2] > 1) + 1;
-    staticMatBonus *= ((playerData.research.mission[4] > 1 ? 3 : 1) * (playerData.research.mission[4] > 3 ? 4 : 1) * (playerData.research.mission[4] > 5 ? 5 : 1));
-    staticMatBonus *= 8 * (playerData.research.perfection[2] > 1) + 1;
-    staticMatBonus *= Math.pow(1.05, playerData.diamonds.special.materials);
-    staticMatBonus *= Math.pow(2.5, playerData.academy.projectLevels[8]);
-    staticMatBonus *= Math.pow(0.0002 * playerData.loopMods.looping + 1, playerData.loopsFilled);
-    staticMatBonus *= Math.pow(0.002 * playerData.loopMods.productivity + 1, playerData.level);
-
-    let dynamicMatBonus = Math.pow(0.01 * playerData.loopMods.zeusRankBenefits + 1, playerData.fleet.zeus.rank.current);
+    let staticMatBonus = GetStaticMatBonus()
+    let dynamicMatBonus = GetDynamicMatBonus();
 
     let farmTimes = CalculateFarmTimes(true);
 

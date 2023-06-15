@@ -12,128 +12,128 @@ let academyFarmPortal =
         list: ['default'],
         default: {
             headers: [
-                {
-                    text: 'PERSONNEL',
-                    top: 1, left: 1,
-                    height: 3, width: 12
-                },
-                {
-                    text: 'FARMS',
-                    top: 1, left: 27,
-                    height: 3, width: 6
-                }
+                // {
+                //     text: 'PERSONNEL',
+                //     top: 1, left: 1,
+                //     height: 3, width: 12
+                // },
+                // {
+                //     text: 'FARMS',
+                //     top: 1, left: 27,
+                //     height: 3, width: 6
+                // }
             ],
             labels: [
-                {
-                    text: 'power',
-                    left: 12, top: 5,
-                    height: 2, width: 5
-                },
-                {
-                    text: 'owned',
-                    left: 18, top: 5,
-                    height: 2, width: 6
-                },
-                {
-                    text: 'mining pods',
-                    left: 2, top: 8,
-                    height: 2, width: 8
-                },
-                {
-                    text: 'fireteams',
-                    left: 3, top: 11,
-                    height: 2, width: 7
-                },
-                {
-                    text: 'titans',
-                    left: 5, top: 14,
-                    height: 2, width: 5
-                },
-                {
-                    text: 'corvettes',
-                    left: 3, top: 17,
-                    height: 2, width: 7
-                },
-                {
-                    text: 'farm',
-                    left: 28, top: 5,
-                    height: 2, width: 4
-                },
-                {
-                    text: 'total',
-                    left: 33, top: 5,
-                    height: 2, width: 5
-                },
-                {
-                    text: 'pod',
-                    left: 42, top: 5,
-                    height: 2, width: 4
-                },
-                {
-                    text: 'fire',
-                    left: 47, top: 5,
-                    height: 2, width: 4
-                },
-                {
-                    text: 'titan',
-                    left: 52, top: 5,
-                    height: 2, width: 4
-                },
-                {
-                    text: 'corv',
-                    left: 57, top: 5,
-                    height: 2, width: 4
-                },
-                {
-                    text: 'run time',
-                    left: 62, top: 5,
-                    height: 2, width: 6
-                },
-                {
-                    text: '1-1',
-                    left: 28, top: 8,
-                    height: 2, width: 4
-                },
-                {
-                    text: '1-2',
-                    left: 28, top: 11,
-                    height: 2, width: 4
-                },
-                {
-                    text: '1-3',
-                    left: 28, top: 14,
-                    height: 2, width: 4
-                },
-                {
-                    text: '2-1',
-                    left: 28, top: 17,
-                    height: 2, width: 4
-                },
-                {
-                    text: '2-2',
-                    left: 28, top: 20,
-                    height: 2, width: 4
-                },
-                {
-                    text: '2-3',
-                    left: 28, top: 23,
-                    height: 2, width: 4
-                },
-                {
-                    text: '3-1',
-                    left: 28, top: 26,
-                    height: 2, width: 4
-                },
-                {
-                    text: '3-2',
-                    left: 28, top: 29,
-                    height: 2, width: 4
-                },
-                {
-                    text: '3-3',
-                    left: 28, top: 32,
-                    height: 2, width: 4
-                },
+                // {
+                //     text: 'power',
+                //     left: 12, top: 5,
+                //     height: 2, width: 5
+                // },
+                // {
+                //     text: 'owned',
+                //     left: 18, top: 5,
+                //     height: 2, width: 6
+                // },
+                // {
+                //     text: 'mining pods',
+                //     left: 2, top: 8,
+                //     height: 2, width: 8
+                // },
+                // {
+                //     text: 'fireteams',
+                //     left: 3, top: 11,
+                //     height: 2, width: 7
+                // },
+                // {
+                //     text: 'titans',
+                //     left: 5, top: 14,
+                //     height: 2, width: 5
+                // },
+                // {
+                //     text: 'corvettes',
+                //     left: 3, top: 17,
+                //     height: 2, width: 7
+                // },
+                // {
+                //     text: 'farm',
+                //     left: 28, top: 5,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: 'total',
+                //     left: 33, top: 5,
+                //     height: 2, width: 5
+                // },
+                // {
+                //     text: 'pod',
+                //     left: 42, top: 5,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: 'fire',
+                //     left: 47, top: 5,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: 'titan',
+                //     left: 52, top: 5,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: 'corv',
+                //     left: 57, top: 5,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: 'run time',
+                //     left: 62, top: 5,
+                //     height: 2, width: 6
+                // },
+                // {
+                //     text: '1-1',
+                //     left: 28, top: 8,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: '1-2',
+                //     left: 28, top: 11,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: '1-3',
+                //     left: 28, top: 14,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: '2-1',
+                //     left: 28, top: 17,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: '2-2',
+                //     left: 28, top: 20,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: '2-3',
+                //     left: 28, top: 23,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: '3-1',
+                //     left: 28, top: 26,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: '3-2',
+                //     left: 28, top: 29,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: '3-3',
+                //     left: 28, top: 32,
+                //     height: 2, width: 4
+                // },
                 {
                     text: 'average gains per',
                     left: 72, top: 1,
@@ -211,54 +211,54 @@ let academyFarmPortal =
                 }
             ],
             inputs: [
-                {
-                    id: 'podspower',
-                    type: 'number',
-                    left: 12, top: 7.25,
-                    width: 5, height: 2
-                },
-                {
-                    id: 'podsowned',
-                    type: 'number',
-                    left: 18, top: 7.25,
-                    width: 6, height: 2
-                },
-                {
-                    id: 'fireteamspower',
-                    type: 'number',
-                    left: 12, top: 10.25,
-                    width: 5, height: 2
-                },
-                {
-                    id: 'fireteamsowned',
-                    type: 'number',
-                    left: 18, top: 10.25,
-                    width: 6, height: 2
-                },
-                {
-                    id: 'titanspower',
-                    type: 'number',
-                    left: 12, top: 13.25,
-                    width: 5, height: 2
-                },
-                {
-                    id: 'titansowned',
-                    type: 'number',
-                    left: 18, top: 13.25,
-                    width: 6, height: 2
-                },
-                {
-                    id: 'corvettespower',
-                    type: 'number',
-                    left: 12, top: 16.25,
-                    width: 5, height: 2
-                },
-                {
-                    id: 'corvettesowned',
-                    type: 'number',
-                    left: 18, top: 16.25,
-                    width: 6, height: 2
-                },
+                // {
+                //     id: 'podspower',
+                //     type: 'number',
+                //     left: 12, top: 7.25,
+                //     width: 5, height: 2
+                // },
+                // {
+                //     id: 'podsowned',
+                //     type: 'number',
+                //     left: 18, top: 7.25,
+                //     width: 6, height: 2
+                // },
+                // {
+                //     id: 'fireteamspower',
+                //     type: 'number',
+                //     left: 12, top: 10.25,
+                //     width: 5, height: 2
+                // },
+                // {
+                //     id: 'fireteamsowned',
+                //     type: 'number',
+                //     left: 18, top: 10.25,
+                //     width: 6, height: 2
+                // },
+                // {
+                //     id: 'titanspower',
+                //     type: 'number',
+                //     left: 12, top: 13.25,
+                //     width: 5, height: 2
+                // },
+                // {
+                //     id: 'titansowned',
+                //     type: 'number',
+                //     left: 18, top: 13.25,
+                //     width: 6, height: 2
+                // },
+                // {
+                //     id: 'corvettespower',
+                //     type: 'number',
+                //     left: 12, top: 16.25,
+                //     width: 5, height: 2
+                // },
+                // {
+                //     id: 'corvettesowned',
+                //     type: 'number',
+                //     left: 18, top: 16.25,
+                //     width: 6, height: 2
+                // },
                 {
                     id: 'duration',
                     type: 'number',
@@ -436,18 +436,18 @@ let academyFarmPortal =
                 }
             ],
             buttons: [
-                {
-                    text: 'Maximize Mission Rate',
-                    left: 38, top: 35,
-                    width: 23, height: 3,
-                    function: maximizeMissionRate
-                },
-                {
-                    text: 'Clear Missions',
-                    left: 38, top: 42,
-                    width: 23, height: 2,
-                    function: clearMissions
-                }
+                // {
+                //     text: 'Maximize Mission Rate',
+                //     left: 38, top: 35,
+                //     width: 23, height: 3,
+                //     function: maximizeMissionRate
+                // },
+                // {
+                //     text: 'Clear Missions',
+                //     left: 38, top: 42,
+                //     width: 23, height: 2,
+                //     function: clearMissions
+                // }
             ],
             toggles: [
                 {
@@ -487,21 +487,21 @@ for (let farmNum = 0; farmNum < GameDB.academy.farms.length; farmNum++)
     let initTop = 7.25;
     let stepTop = 3;
 
-    let farmPopObj =
-    {
-        id: `farm${planet}${farm}total`,
-        left: 35, top: initTop + (farmNum * stepTop) + 0.5,
-        width: 5, height: 2
-    };
-    academyFarmPortal.pages.default.displays.push(farmPopObj);
+    // let farmPopObj =
+    // {
+    //     id: `farm${planet}${farm}total`,
+    //     left: 35, top: initTop + (farmNum * stepTop) + 0.5,
+    //     width: 5, height: 2
+    // };
+    // academyFarmPortal.pages.default.displays.push(farmPopObj);
 
-    let farmLockObj =
-    {
-        id: `farm${planet}${farm}lock`,
-        left: 40, top: initTop + (farmNum * stepTop),
-        width: 2, height: 2
-    };
-    academyFarmPortal.pages.default.lockboxes.push(farmLockObj);
+    // let farmLockObj =
+    // {
+    //     id: `farm${planet}${farm}lock`,
+    //     left: 40, top: initTop + (farmNum * stepTop),
+    //     width: 2, height: 2
+    // };
+    // academyFarmPortal.pages.default.lockboxes.push(farmLockObj);
 
     let farmTimeObj =
     {
@@ -511,18 +511,18 @@ for (let farmNum = 0; farmNum < GameDB.academy.farms.length; farmNum++)
     };
     academyFarmPortal.pages.default.displays.push(farmTimeObj);
 
-    for (let personnelNum = 0; personnelNum < personnel.length; personnelNum++)
-    {
-        let nextObj =
-        {
-            id: `farm${planet}${farm}${personnel[personnelNum]}`,
-            type: 'number',
-            left: initLeft + (personnelNum * stepLeft),
-            top: initTop + (farmNum * stepTop),
-            width: 4, height: 2
-        };
-        academyFarmPortal.pages.default.inputs.push(nextObj);
-    }
+    // for (let personnelNum = 0; personnelNum < personnel.length; personnelNum++)
+    // {
+    //     let nextObj =
+    //     {
+    //         id: `farm${planet}${farm}${personnel[personnelNum]}`,
+    //         type: 'number',
+    //         left: initLeft + (personnelNum * stepLeft),
+    //         top: initTop + (farmNum * stepTop),
+    //         width: 4, height: 2
+    //     };
+    //     academyFarmPortal.pages.default.inputs.push(nextObj);
+    // }
 }
 
 academyFarmPortal.pages.default.dataLinkage =
@@ -625,8 +625,148 @@ for (let planet = 0; planet < GameDB.academy.planets; planet++)
     }
 }
 
-academyFarmPortal.pages.default.initFunction = function()
+const createElement = (tag = 'div', className = '', attr = {}, innerText = '') => {
+    const ele = document.createElement(tag)
+    Object.assign(ele, { className, ...attr })
+    ele.innerText = innerText
+    return ele
+}
+
+academyFarmPortal.pages.default.initFunction = function(panel)
 {
+    const flex = createElement('div', 'section-2')
+    flex.className = 'section-2'
+
+    const createPersonel = () => {
+        const section = createElement()
+        const header = createElement('h3', null, null, 'Personnel')
+        section.appendChild(header)
+
+        const table = document.createElement('table')
+        table.className = 'table table-borderless'
+        table.innerHTML = '<thead><tr><th></th><th>Power</th><th>Owned</th></tr></thead>'
+
+        const tbody = document.createElement('tbody')
+        table.appendChild(tbody)
+
+        const personnels = [
+            { id: 'pods', label: 'mining pods', },
+            { id: 'fireteams', label: 'fireteams' },
+            { id: 'titans', label: 'titans' },
+            { id: 'corvettes', label: 'corvettes' },
+        ]
+
+        personnels.forEach((personnel) => {
+            const row = document.createElement('tr')
+            tbody.appendChild(row)
+
+            const c1 = createElement('td', 'text-end', null,  personnel.label)
+            row.appendChild(c1)
+
+            const c2 = createElement('td')
+            row.appendChild(c2)
+            const power = createElement('input', 'form-control', {
+                id: personnel.id + 'power',
+                type: 'number',
+                style: 'width: 80px',
+                value: portalPanel.dataLinkage[personnel.id + 'power']
+            })
+            power.addEventListener('change', portalPanel.updateFunction);
+            portalPanel[power.id] = power;
+            c2.appendChild(power)
+
+            const c3 = createElement('td')
+            row.appendChild(c3)
+            const owned = createElement('input', 'form-control', {
+                id: personnel.id + 'owned',
+                type: 'number',
+                style: 'width: 100px',
+                value: portalPanel.dataLinkage[personnel.id + 'owned']
+            })
+            owned.addEventListener('change', portalPanel.updateFunction);
+            portalPanel[owned.id] = owned;
+            c3.appendChild(owned)
+        })
+
+        section.appendChild(table)
+        return section
+    }
+
+    const createFarms = () => {
+        const section = createElement()
+        const header = createElement('h3', null, null, 'Farms')
+        section.appendChild(header)
+
+        const table = document.createElement('table')
+        table.className = 'table table-borderless'
+        table.innerHTML = '<thead><tr><th>Farm</th><th>Total</th><th class="text-center">Pod</th><th class="text-center">Fire</th><th class="text-center">Titan</th><th class="text-center">Corv</th><th>Run time</th></tr></thead>'
+
+        const tbody = document.createElement('tbody')
+        table.appendChild(tbody)
+
+        for (let plannet = 0; plannet < 3; plannet++) {
+            for (let farm = 0; farm < 3; farm ++) {
+                const row = createElement('tr')
+                row.appendChild(createElement('td', 'text-end', null, `${plannet+1}-${farm+1}`))
+                const total = createElement('td', 'text-end', {
+                    id: `farm${plannet}${farm}total`,
+                })
+                portalPanel[`farm${plannet}${farm}total`] = total
+                row.appendChild(total)
+
+                GameDB.academy.personnel.forEach((p) => {
+                    const cell = createElement('td')
+                    const e = createElement('input', 'form-control text-end', {
+                        id: `farm${plannet}${farm}${p}`,
+                        type: 'number',
+                        style: 'width: 80px',
+                        placeholder: '0',
+                        value: portalPanel.dataLinkage[`farm${plannet}${farm}${p}`]
+                    })
+                    e.addEventListener('change', portalPanel.updateFunction);
+
+                    cell.append(e)
+                    row.appendChild(cell)
+                })
+                const time = createElement('td', 'font-normal', {
+                    id: `farm${plannet}${farm}time`,
+                })
+                portalPanel[`farm${plannet}${farm}time`] = time
+                row.appendChild(time)
+
+                tbody.appendChild(row)
+
+                const row2 = createElement('tr')
+                row2.appendChild(createElement('td', '', { colSpan: 2 }))
+                const mat = createElement('td', 'data-material', {
+                    id: `farm${plannet}${farm}mat`,
+                    colSpan: 5,
+                })
+                portalPanel[`farm${plannet}${farm}mat`] = mat
+                row2.appendChild(mat)
+
+                tbody.appendChild(row2)
+            }
+        }
+
+        section.appendChild(table)
+        return section
+    }
+
+    const createOutput = () => {
+        const section = createElement()
+        const header = createElement('h3', null, null, 'Output')
+        section.appendChild(header)
+
+        return section
+    }
+
+    flex.appendChild(createPersonel())
+    flex.appendChild(createFarms())
+    flex.appendChild(createOutput())
+    panel.appendChild(flex)
+
+
     let setting = playerData.academy.farmYieldSetting.type;
     portalPanel.yieldtime.dataset.setting = setting;
     portalPanel.yieldtime.innerText = academyFarmPortal.pages.default.toggles[0].settings[setting].text;
@@ -716,6 +856,7 @@ academyFarmPortal.pages.default.updateFunction = function(e)
 function PopulateTiming()
 {
     let farmData = CalculateFarmTimes();
+    const matBonus = GetCurrentMatBonus()
 
     for (let planet = 0; planet < GameDB.academy.planets; planet++)
     {
@@ -724,6 +865,12 @@ function PopulateTiming()
             let datum = farmData[planet * 3 + farm];
             portalPanel[`farm${planet}${farm}total`].innerText = datum.personnel;
             portalPanel[`farm${planet}${farm}time`].innerText = datum.time;
+            portalPanel[`farm${planet}${farm}time`].classList.toggle('is-capped', datum.isCapped)
+            portalPanel[`farm${planet}${farm}mat`].innerText = GameDB.academy.farms[planet * 3 + farm].baseMats.map((a, i) => {
+                if (a === 0) return null
+                const mat = matBonus * a
+                return GameDB.academy.materials[i] + ': ' + (mat > 1000 ? mat.toExponential(3) : mat)
+            }).filter(Boolean).join(', ')
         }
     }
 }

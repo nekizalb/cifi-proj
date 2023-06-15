@@ -1,5 +1,4 @@
-:root
-{
+:root {
   --navWidth: 10px;
   --navHeight: 10px;
   --panelHeight: 10px;
@@ -7,15 +6,13 @@
   --lgFontSize: 20px;
 }
 
-body
-{
-  background-color:dimgray;
-  font-family: 'Syncopate';
+body {
+  background-color: dimgray;
+  font-family: "Syncopate" !important;
   font-size: var(--stdFontSize);
 }
 
-.navBar
-{
+.navBar {
   position: fixed;
   top: 0px;
   left: 0px;
@@ -34,24 +31,24 @@ body
   z-index: -1;
   border-radius: 20px;
   display: block;
-  box-shadow: 0 0 10px rgba(255,255,255,0.4);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
-.navButton
-{
+.navButton {
   position: absolute;
   background-color: transparent;
   color: white;
 }
 
-.panel
-{
-  position: fixed;
-  top: var(--navHeight);
+.panel {
+  /* position: fixed; */
+  /* top: var(--navHeight);
   left: 0px;
   width: var(--navWidth);
-  height: var(--panelHeight);
+  height: var(--panelHeight); */
+  position: relative;
   background-color: black;
+  margin-top: 120px;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -59,4 +56,31 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.section-2 {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+table.table {
+  width: auto;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.is-capped {
+  color: red !important;
+}
+
+.font-normal {
+  font-family: var(--bs-body-font-family) !important;
+}
+
+.data-material {
+  font-size: 9px;
 }
