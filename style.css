@@ -19,6 +19,7 @@ body {
   width: var(--navWidth);
   height: var(--navHeight);
   background-color: black;
+  z-index: 1;
 }
 
 .navHighlight {
@@ -47,7 +48,7 @@ body {
   width: var(--navWidth);
   height: var(--panelHeight); */
   position: relative;
-  background-color: black;
+  background-color: #111;
   margin-top: 120px;
 }
 
@@ -62,15 +63,20 @@ input::-webkit-inner-spin-button {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 24px;
+  justify-content: center;
 }
 
 table.table {
   width: auto;
   white-space: nowrap;
   vertical-align: middle;
+}
+
+table.table th {
+  font-size: 0.8em;
 }
 
 .is-capped {
@@ -82,5 +88,29 @@ table.table {
 }
 
 .data-material {
-  font-size: 9px;
+  color: #777 !important;
+  font-size: 0.5em;
+}
+
+.table-project th {
+  font-size: 0.7em;
+  padding: 0 !important;
+  text-align: center;
+}
+
+.table-project .field-projname {
+  font-size: 1em;
+}
+
+.table-project .field-projcost {
+  color: #777 !important;
+  font-size: 0.5em;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.table-project .field-projmat {
+  display: inline-block;
+  margin-inline-start: 10px;
+  margin-inline-end: 10px;
 }

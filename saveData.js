@@ -217,6 +217,7 @@ const blankPlayer =
             ]
         ],
         farmYieldSetting: { type: 0, duration: 60 },
+        farmYieldSelected: '1-h',
         ap: 0,
         stock: [ 0, 0, 0, 0, 0, 0, 0, 0 ],
         exchanges:
@@ -266,7 +267,7 @@ const blankPlayer =
             tinkering: false,
             loopers: false,
             efficiency: false,
-            engineering: false
+            engineering: 0,
         }
     },
     diamonds:

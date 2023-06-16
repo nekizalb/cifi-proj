@@ -27,7 +27,7 @@ let GameDB =
             'pods', 'fireteams', 'titans', 'corvettes'
         ],
         planets: 3,
-        materials: ['Difar', 'Kento', 'Chromium', 'Exon', 'Orga', 'Adamo', 'Moskom', 'Darkseid'],
+        materials: ['Difar', 'Kento', 'Chromium', 'Exon', 'Organium', 'Adamorphium', 'Moskom', 'Darkseid'],
         farms: // baseTimes are in minutes
         [
             {
@@ -130,7 +130,8 @@ let GameDB =
                     600, 200, 0, 0, 0, 0, 0, 0
                 ],
                 costScalar: 1.25,
-                costBump: 0.016
+                costBump: 0.016,
+                bpCount: 1,
             },
             {
                 name: 'Transfer Wires',
@@ -139,7 +140,8 @@ let GameDB =
                     2750, 1500, 500, 0, 0, 0, 0, 0
                 ],
                 costScalar: 1.4,
-                costBump: 0.05
+                costBump: 0.05,
+                bpCount: 1,
             },
             {
                 name: 'Bio-Mechanics Lab',
@@ -148,7 +150,8 @@ let GameDB =
                     0, 0, 2400, 1000, 500, 0, 0, 0
                 ],
                 costScalar: 1.7,
-                costBump: 0.09
+                costBump: 0.09,
+                bpCount: 1,
             },
             {
                 name: 'Exo-Energy',
@@ -157,7 +160,8 @@ let GameDB =
                     0, 7000, 5000, 1500, 1500, 0, 0, 0
                 ],
                 costScalar: 1.4,
-                costBump: 0.07
+                costBump: 0.07,
+                bpCount: 1,
             },
             {
                 name: 'Defensive Research',
@@ -166,7 +170,8 @@ let GameDB =
                     0, 0, 0, 0, 0, 1000, 200, 0
                 ],
                 costScalar: 1.6,
-                costBump: 0.08
+                costBump: 0.08,
+                bpCount: 1,
             },
             {
                 name: 'Warp-Drive Lab',
@@ -175,7 +180,8 @@ let GameDB =
                     0, 0, 0, 0, 260000, 120000, 28000, 28000
                 ],
                 costScalar: 2,
-                costBump: 0.11
+                costBump: 0.11,
+                bpCount: 1,
             },
             {
                 name: 'Fuel Compression',
@@ -184,7 +190,8 @@ let GameDB =
                     1e38, 0, 0, 4e37, 0, 0, 7e36, 0
                 ],
                 costScalar: 3,
-                costBump: 0.13
+                costBump: 0.13,
+                bpCount: 2,
             },
             {
                 name: 'Quantum Weaponry',
@@ -193,7 +200,8 @@ let GameDB =
                     0, 2e45, 0, 0, 5e44, 0, 0, 0
                 ],
                 costScalar: 3.2,
-                costBump: 0.16
+                costBump: 0.16,
+                bpCount: 2,
             },
             {
                 name: 'Robo-Douglett',
@@ -202,7 +210,8 @@ let GameDB =
                     0, 0, 3e53, 0, 0, 6e52, 0, 8e51
                 ],
                 costScalar: 12,
-                costBump: 0.19
+                costBump: 0.19,
+                bpCount: 3,
             }
         ],
         projectNextLevelCost(projectID, level, costDiv)

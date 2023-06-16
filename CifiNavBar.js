@@ -16,6 +16,11 @@ navHighlight.classList.add('navHighlight');
 navBar.addEventListener('mouseleave', deHighlight);
 navBar.appendChild(navHighlight);
 
+const appName = document.createElement('h4')
+appName.innerText = 'CIFISuper by @sirrebrl'
+appName.style = 'margin: 20px;'
+navBar.appendChild(appName)
+
 // Customizing buttons for CIFI Super Assistant
 
 const navButtons = [];
@@ -50,7 +55,7 @@ createNavButton('colors', "Color Profile", 'rgba(255, 255, 255, 1)');
 navButtons.forEach(navButton =>
     {
         if (navButton.children.length === 0)
-        { 
+        {
             navButton.navigable = true;
             navButton.elem.addEventListener('click', navigatePanel);
         }
@@ -101,7 +106,7 @@ function createNavButton(panel, text, color, parent = null)
         }
     }
     else // Non-children nav elements are always visible and so are immediately added in HTML
-    { 
+    {
         const newButtonElem = document.createElement('label');
         navBar.appendChild(newButtonElem);
         newButtonElem.classList.add('navButton');
@@ -143,7 +148,7 @@ function createNavButton(panel, text, color, parent = null)
             }
         };
 
-        navButtons.push(newButtonObj); 
+        navButtons.push(newButtonObj);
     }
 }
 
@@ -213,7 +218,7 @@ function reDim()
     ConstructPortal(window.innerHeight - navDim.height, navDim.width, activePortal);
 
     deHighlight();
-    
+
     if (onMobile) pauseResizing = true;
 }
 
@@ -272,7 +277,7 @@ function highlightNav()
     navButtons.forEach(navButton =>
         {
             if (!this.dataset.panel.includes(navButton.panel))
-            { 
+            {
                 navButton.highlighted = false;
             }
         });
@@ -287,7 +292,7 @@ function deHighlight()
     navButtons.forEach(navButton =>
         {
             if (!navButton.highlighted && navButton.active && navButton.children.length > 0)
-            { 
+            {
                 if (childrenDestroyed) { navButton.spawnChildren(); }
                 navButton.children.forEach(navChild =>
                     {
@@ -350,32 +355,32 @@ function navigatePanel(e)
         });
 
     if (targetPanel.includes('academy-effectors'))
-    { 
-        destroyPortal(); 
+    {
+        destroyPortal();
         activePortal = academyEffectorPortal;
         playerData.activePortal = 'academyEffector';
         SavePlayerData();
         ConstructPortal(window.innerHeight - navDim.height, navDim.width, activePortal);
     }
     else if (targetPanel.includes('academy-farms'))
-    { 
-        destroyPortal(); 
+    {
+        destroyPortal();
         activePortal = academyFarmPortal;
         playerData.activePortal = 'academyFarm';
         SavePlayerData();
         ConstructPortal(window.innerHeight - navDim.height, navDim.width, activePortal);
     }
     else if (targetPanel.includes('academy-projects'))
-    { 
-        destroyPortal(); 
+    {
+        destroyPortal();
         activePortal = academyProjectPortal;
         playerData.activePortal = 'academyProject';
         SavePlayerData();
         ConstructPortal(window.innerHeight - navDim.height, navDim.width, activePortal);
     }
     else if (targetPanel.includes('colors'))
-    { 
-        destroyPortal(); 
+    {
+        destroyPortal();
         activePortal = colorProfilePortal;
         playerData.activePortal = 'colorProfile';
         SavePlayerData();
@@ -385,7 +390,7 @@ function navigatePanel(e)
     {
         location.reload(true);
     }
-    
+
     pauseResizing = false;
     setTimeout(reDim, 50);
 }
@@ -415,7 +420,7 @@ function pushUpdate(newVersion = true)
 }
 
 // Check if the user is on a mobile browser
-function isMobileBrowser() 
+function isMobileBrowser()
 {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
@@ -435,5 +440,5 @@ if (isMobileBrowser()) {
 
 // Ensuring everything is properly sized to the window after allowing everything to load
 setTimeout(reDim, 100);
-if (online) setTimeout(checkUpdate, 300000);
-window.addEventListener('resize', reDim);
+// if (online) setTimeout(checkUpdate, 300000);
+// window.addEventListener('resize', reDim);

@@ -13,223 +13,236 @@ let academyProjectPortal =
         default: {
             headers: [],
             labels: [
-                {
-                    text: 'Run Time',
-                    left: 1, top: 1,
-                    height: 2, width: 6
-                },
-                {
-                    text: 'Level',
-                    left: 15, top: 5,
-                    height: 2, width: 5
-                },
-                {
-                    text: 'Goal',
-                    left: 22, top: 5,
-                    height: 2, width: 5
-                },
-                {
-                    text: 'Storage Facility',
-                    left: 4, top: 8,
-                    height: 2, width: 11
-                },
-                {
-                    text: 'Transfer Wires',
-                    left: 5, top: 12,
-                    height: 2, width: 10
-                },
-                {
-                    text: 'Bio-Mechanics Lab',
-                    left: 3, top: 16,
-                    height: 2, width: 12
-                },
-                {
-                    text: 'Exo-Energy',
-                    left: 7, top: 20,
-                    height: 2, width: 8
-                },
-                {
-                    text: 'Defensive Research',
-                    left: 1, top: 24,
-                    height: 2, width: 14
-                },
-                {
-                    text: 'Warp-Drive Lab',
-                    left: 5, top: 28,
-                    height: 2, width: 10
-                },
-                {
-                    text: 'Fuel Compression',
-                    left: 1, top: 32,
-                    height: 2, width: 14
-                },
-                {
-                    text: 'Quantum Weaponry',
-                    left: 1, top: 36,
-                    height: 2, width: 14
-                },
-                {
-                    text: 'Robo-Douglett',
-                    left: 1, top: 40,
-                    height: 2, width: 14
-                }
+                // {
+                //     text: 'Run Time',
+                //     left: 1, top: 1,
+                //     height: 2, width: 6
+                // },
+                // {
+                //     text: 'Level',
+                //     left: 15, top: 5,
+                //     height: 2, width: 5
+                // },
+                // {
+                //     text: 'Goal',
+                //     left: 22, top: 5,
+                //     height: 2, width: 5
+                // },
+                // {
+                //     text: 'Storage Facility',
+                //     left: 4, top: 8,
+                //     height: 2, width: 11
+                // },
+                // {
+                //     text: 'Transfer Wires',
+                //     left: 5, top: 12,
+                //     height: 2, width: 10
+                // },
+                // {
+                //     text: 'Bio-Mechanics Lab',
+                //     left: 3, top: 16,
+                //     height: 2, width: 12
+                // },
+                // {
+                //     text: 'Exo-Energy',
+                //     left: 7, top: 20,
+                //     height: 2, width: 8
+                // },
+                // {
+                //     text: 'Defensive Research',
+                //     left: 1, top: 24,
+                //     height: 2, width: 14
+                // },
+                // {
+                //     text: 'Warp-Drive Lab',
+                //     left: 5, top: 28,
+                //     height: 2, width: 10
+                // },
+                // {
+                //     text: 'Fuel Compression',
+                //     left: 1, top: 32,
+                //     height: 2, width: 14
+                // },
+                // {
+                //     text: 'Quantum Weaponry',
+                //     left: 1, top: 36,
+                //     height: 2, width: 14
+                // },
+                // {
+                //     text: 'Robo-Douglett',
+                //     left: 1, top: 40,
+                //     height: 2, width: 14
+                // }
             ],
             inputs: [
-                {
-                    id: 'storagelevel',
-                    type: 'number',
-                    left: 16, top: 7.25,
-                    width: 5, height: 2
-                },
-                {
-                    id: 'transferlevel',
-                    type: 'number',
-                    left: 16, top: 11.25,
-                    width: 5, height: 2
-                },
-                {
-                    id: 'biomechlevel',
-                    type: 'number',
-                    left: 16, top: 15.25,
-                    width: 5, height: 2
-                },
-                {
-                    id: 'exolevel',
-                    type: 'number',
-                    left: 16, top: 19.25,
-                    width: 5, height: 2
-                },
-                {
-                    id: 'defensivelevel',
-                    type: 'number',
-                    left: 16, top: 23.25,
-                    width: 5, height: 2
-                },
-                {
-                    id: 'warpdrivelevel',
-                    type: 'number',
-                    left: 16, top: 27.25,
-                    width: 5, height: 2
-                },
-                {
-                    id: 'fuelcompresslevel',
-                    type: 'number',
-                    left: 16, top: 31.25,
-                    width: 5, height: 2
-                },
-                {
-                    id: 'quantumlevel',
-                    type: 'number',
-                    left: 16, top: 35.25,
-                    width: 5, height: 2
-                },
-                {
-                    id: 'douglettlevel',
-                    type: 'number',
-                    left: 16, top: 39.25,
-                    width: 5, height: 2
-                },
-                {
-                    id: 'duration',
-                    type: 'number',
-                    left: 8, top: 0.25,
-                    width: 5, height: 2
-                }
+                // {
+                //     id: 'storagelevel',
+                //     type: 'number',
+                //     left: 16, top: 7.25,
+                //     width: 5, height: 2
+                // },
+                // {
+                //     id: 'transferlevel',
+                //     type: 'number',
+                //     left: 16, top: 11.25,
+                //     width: 5, height: 2
+                // },
+                // {
+                //     id: 'biomechlevel',
+                //     type: 'number',
+                //     left: 16, top: 15.25,
+                //     width: 5, height: 2
+                // },
+                // {
+                //     id: 'exolevel',
+                //     type: 'number',
+                //     left: 16, top: 19.25,
+                //     width: 5, height: 2
+                // },
+                // {
+                //     id: 'defensivelevel',
+                //     type: 'number',
+                //     left: 16, top: 23.25,
+                //     width: 5, height: 2
+                // },
+                // {
+                //     id: 'warpdrivelevel',
+                //     type: 'number',
+                //     left: 16, top: 27.25,
+                //     width: 5, height: 2
+                // },
+                // {
+                //     id: 'fuelcompresslevel',
+                //     type: 'number',
+                //     left: 16, top: 31.25,
+                //     width: 5, height: 2
+                // },
+                // {
+                //     id: 'quantumlevel',
+                //     type: 'number',
+                //     left: 16, top: 35.25,
+                //     width: 5, height: 2
+                // },
+                // {
+                //     id: 'douglettlevel',
+                //     type: 'number',
+                //     left: 16, top: 39.25,
+                //     width: 5, height: 2
+                // },
+                // {
+                //     id: 'duration',
+                //     type: 'number',
+                //     left: 8, top: 0.25,
+                //     width: 5, height: 2
+                // }
             ],
             checkboxes: [],
             displays: [
-                {
-                    id: 'storagegoal',
-                    left: 24, top: 7.75,
-                    height: 2, width: 6
-                },
-                {
-                    id: 'transfergoal',
-                    left: 24, top: 11.75,
-                    height: 2, width: 6
-                },
-                {
-                    id: 'biomechgoal',
-                    left: 24, top: 15.75,
-                    height: 2, width: 6
-                },
-                {
-                    id: 'exogoal',
-                    left: 24, top: 19.75,
-                    height: 2, width: 6
-                },
-                {
-                    id: 'defensivegoal',
-                    left: 24, top: 23.75,
-                    height: 2, width: 6
-                },
-                {
-                    id: 'warpdrivegoal',
-                    left: 24, top: 27.75,
-                    height: 2, width: 6
-                },
-                {
-                    id: 'fuelcompressgoal',
-                    left: 24, top: 31.75,
-                    height: 2, width: 6
-                },
-                {
-                    id: 'quantumgoal',
-                    left: 24, top: 35.75,
-                    height: 2, width: 6
-                },
-                {
-                    id: 'douglettgoal',
-                    left: 24, top: 39.75,
-                    height: 2, width: 6
-                },
-                {
-                    id: 'totalnew',
-                    left: 24, top: 43.75,
-                    height: 2, width: 6
-                }
+                // {
+                //     id: 'storagegoal',
+                //     left: 24, top: 7.75,
+                //     height: 2, width: 6
+                // },
+                // {
+                //     id: 'transfergoal',
+                //     left: 24, top: 11.75,
+                //     height: 2, width: 6
+                // },
+                // {
+                //     id: 'biomechgoal',
+                //     left: 24, top: 15.75,
+                //     height: 2, width: 6
+                // },
+                // {
+                //     id: 'exogoal',
+                //     left: 24, top: 19.75,
+                //     height: 2, width: 6
+                // },
+                // {
+                //     id: 'defensivegoal',
+                //     left: 24, top: 23.75,
+                //     height: 2, width: 6
+                // },
+                // {
+                //     id: 'warpdrivegoal',
+                //     left: 24, top: 27.75,
+                //     height: 2, width: 6
+                // },
+                // {
+                //     id: 'fuelcompressgoal',
+                //     left: 24, top: 31.75,
+                //     height: 2, width: 6
+                // },
+                // {
+                //     id: 'quantumgoal',
+                //     left: 24, top: 35.75,
+                //     height: 2, width: 6
+                // },
+                // {
+                //     id: 'douglettgoal',
+                //     left: 24, top: 39.75,
+                //     height: 2, width: 6
+                // },
+                // {
+                //     id: 'totalnew',
+                //     left: 24, top: 43.75,
+                //     height: 2, width: 6
+                // }
             ],
             buttons: [],
             toggles: [
-                {
-                    id: 'runtime',
-                    settings: [
-                        {
-                            text: 'minute',
-                            color: '#FF8888'
-                        },
-                        {
-                            text: 'hour',
-                            color: '#88FF88'
-                        },
-                        {
-                            text: 'day',
-                            color: '#8888FF'
-                        }
-                    ],
-                    left: 14, top: 0.5,
-                    width: 9, height: 2
-                }
+                // {
+                //     id: 'runtime',
+                //     settings: [
+                //         {
+                //             text: 'minute',
+                //             color: '#FF8888'
+                //         },
+                //         {
+                //             text: 'hour',
+                //             color: '#88FF88'
+                //         },
+                //         {
+                //             text: 'day',
+                //             color: '#8888FF'
+                //         }
+                //     ],
+                //     left: 14, top: 0.5,
+                //     width: 9, height: 2
+                // }
             ],
             setters: []
         }
     }
 };
 
+const maxProjects = 30
+const projData = [
+    ['Storage Facility', 'storagelevel', 'storagegoal'],
+    ['Transfer Wires', 'transferlevel', 'transfergoal'],
+    ['Bio-Mechanics Lab', 'biomechlevel', 'biomechgoal'],
+    ['Exo-Energy', 'exolevel', 'exogoal'],
+    ['Defensive Research', 'defensivelevel', 'defensivegoal'],
+    ['Warp-Drive Lab', 'warpdrivelevel', 'warpdrivegoal'],
+    ['Fuel Compression', 'fuelcompresslevel', 'fuelcompressgoal'],
+    ['Quantum Weaponry', 'quantumlevel', 'quantumgoal'],
+    ['Robo-Douglett', 'douglettlevel', 'douglettgoal'],
+]
+
 let projects = ['storage', 'transfer', 'biomech', 'exo', 'defensive', 'warpdrive', 'fuelcompress', 'quantum', 'douglett'];
 let [initLeft, initTop] = [29, 7.25];
 let [stepLeft, stepTop] = [2, 4];
 
-for (let level = 0; level < 30; level++)
-{
-    let numberObj =
-    {
-        text: level + 1,
-        left: initLeft + (stepLeft * level) - 0.75, top: 5,
-        width: 2, height: 2
-    };
-    academyProjectPortal.pages.default.labels.push(numberObj);
-}
+// for (let level = 0; level < 30; level++)
+// {
+//     let numberObj =
+//     {
+//         text: level + 1,
+//         left: initLeft + (stepLeft * level) - 0.75, top: 5,
+//         width: 2, height: 2
+//     };
+//     academyProjectPortal.pages.default.labels.push(numberObj);
+// }
 
 for (let project = 0; project < projects.length; project++)
 {
@@ -241,19 +254,23 @@ for (let project = 0; project < projects.length; project++)
             settings: [
                 {
                     text: '',
-                    color: '#444444'
+                    color: '#444444',
+                    cursor: 'not-allowed',
                 },
                 {
                     text: '',
-                    color: '#CCCC44'
+                    color: '#CCCC44',
+                    cursor: 'not-allowed',
                 },
                 {
                     text: '',
-                    color: '#44CC44'
+                    color: '#44CC44',
+                    cursor: 'pointer',
                 },
                 {
                     text: '',
-                    color: '#4444CC'
+                    color: '#4444CC',
+                    cursor: 'pointer',
                 }
             ],
             left: initLeft + (stepLeft * level), top: initTop + (stepTop * project),
@@ -265,8 +282,7 @@ for (let project = 0; project < projects.length; project++)
 
 academyProjectPortal.pages.default.dataLinkage =
 {
-    set duration(value) { playerData.academy.farmYieldSetting.duration = value; },
-    set runtime(value) { playerData.academy.farmYieldSetting.type = value; },
+    set duration(value) { playerData.academy.farmYieldSelected = value; },
     set storagelevel(value) { playerData.academy.projectLevels[0] = value; },
     set transferlevel(value) { playerData.academy.projectLevels[1] = value; },
     set biomechlevel(value) { playerData.academy.projectLevels[2] = value; },
@@ -277,8 +293,7 @@ academyProjectPortal.pages.default.dataLinkage =
     set quantumlevel(value) { playerData.academy.projectLevels[7] = value; },
     set douglettlevel(value) { playerData.academy.projectLevels[8] = value; },
 
-    get duration() { return playerData.academy.farmYieldSetting.duration; },
-    get runtime() { return playerData.academy.farmYieldSetting.type; },
+    get duration() { return playerData.academy.farmYieldSelected || '1-h'; },
     get storagelevel() { return playerData.academy.projectLevels[0]; },
     get transferlevel() { return playerData.academy.projectLevels[1]; },
     get biomechlevel() { return playerData.academy.projectLevels[2]; },
@@ -290,31 +305,123 @@ academyProjectPortal.pages.default.dataLinkage =
     get douglettlevel() { return playerData.academy.projectLevels[8]; }
 };
 
-academyProjectPortal.pages.default.initFunction = function()
+academyProjectPortal.pages.default.initFunction = function(panel)
 {
     let cellSize = portalPanel.height / academyProjectPortal.verticalCells;
     let colorProfile = playerData.colorProfile.academyProjects;
 
-    academyProjectPortal.pages.default.setters.forEach(setter => {
-        let newElem = document.createElement('label');
-        portalPanel.elem.appendChild(newElem);
-        newElem.classList.add(`setter`);
-        newElem.id = setter.id;
-        newElem.dataset.setting = 0;
-        newElem.dataset.wrap = setter.settings.length;
-        newElem.style.left = `${cellSize * setter.left}px`;
-        newElem.style.top = `${cellSize * setter.top}px`;
-        newElem.style.width = `${cellSize * setter.width}px`;
-        newElem.style.height = `${cellSize * setter.height}px`;
-        newElem.addEventListener('click', portalPanel.updateFunction);
-        portalPanel[setter.id] = newElem;
-    });
+    const wrapper = createElement('div', 'section-2')
+    const section = createElement('div')
+    const unit = createElement('div', 'row g-3')
+    unit.innerHTML = '<div class="col-auto"><label class="col-form-label">duration</label></div>'
+    const col = createElement('div', 'col-auto')
+    unit.appendChild(col)
+    const select = createElement('select', 'form-select', {
+        id: 'duration',
+    })
+    select.innerHTML = durationOptions.map(([v, l]) => `<option value="${v}">${l}</option>`).join('')
+    select.value = playerData.academy.farmYieldSelected || '1-h'
+    select.addEventListener('change', portalPanel.updateFunction);
+    portalPanel['duration'] = select;
+    col.appendChild(select);
+    section.appendChild(unit)
+
+    const table = createElement('table', 'table table-borderless table-project', { style: 'margin-top: 20px' })
+    table.innerHTML = '<thead><tr><th></th><th>Level</th><th></th>' + Array(maxProjects).fill(null).map((_, i) => `<th>${i+1}</th>`).join('') + '</tr></thead>'
+
+    const tbody = document.createElement('tbody')
+    table.appendChild(tbody)
+
+    projData.forEach(([name, input, display], projectIndex) => {
+        const row = createElement('tr')
+        row.appendChild(createElement('td', 'text-end field-projname', null, name))
+
+        const tdinput = createElement('td')
+        const i = createElement('input', 'form-control form-control-sm text-center', {
+            id: input,
+            type: 'number',
+            style: 'width: 65px',
+            value: portalPanel.dataLinkage[input],
+        })
+        i.addEventListener('change', portalPanel.updateFunction)
+        tdinput.appendChild(i)
+        row.appendChild(tdinput)
+
+        const d = createElement('td', 'text-end', {
+            id: display,
+        })
+        portalPanel[display] = d
+        row.appendChild(d)
+
+        for (let index = 1; index <= maxProjects; index++) {
+            const pc = createElement('td', '', { style: 'padding: 0' })
+            const pid = `setter${projects[projectIndex]}${index}`
+            let p = createElement('label', 'setter', {
+                id: pid,
+            });
+            p.dataset.setting = 0;
+            p.dataset.wrap = 4;
+            p.addEventListener('click', portalPanel.updateFunction);
+            portalPanel[pid] = p;
+            pc.appendChild(p)
+            row.appendChild(pc);
+        }
+
+        tbody.appendChild(row)
+
+        const costRow = createElement('tr')
+        costRow.appendChild(createElement('td', 'field-projcost'))
+        const costId = display.replace('goal', 'cost')
+        const costCell = createElement('td', 'field-projcost', {
+            id: costId,
+            colSpan: 32,
+        })
+        portalPanel[costId] = costCell;
+        costRow.appendChild(costCell)
+        tbody.appendChild(costRow)
+    })
+
+    const datarow = createElement('tr')
+    datarow.appendChild(createElement('td', '', { colSpan: 2 }))
+    const datacell = createElement('td', '', { colSpan: 32 })
+
+    const projectnumdata = createElement('label', 'd-inline-block', { id: 'totalnew', style: 'margin-right: 20px'})
+    portalPanel.totalnew = projectnumdata
+    datacell.appendChild(projectnumdata)
+    const bpnumdata = createElement('label', 'd-inline-block', { id: 'bpnew', style: 'margin-right: 20px'})
+    portalPanel.bpnew = bpnumdata
+    datacell.appendChild(bpnumdata)
+
+    datarow.appendChild(datacell)
+    tbody.appendChild(datarow)
+
+    section.appendChild(table)
+
+    wrapper.appendChild(section)
+    panel.appendChild(wrapper)
+
+    // academyProjectPortal.pages.default.setters.forEach(setter => {
+    //     let newElem = document.createElement('label');
+    //     portalPanel.elem.appendChild(newElem);
+    //     newElem.classList.add(`setter`);
+    //     newElem.id = setter.id;
+    //     newElem.dataset.setting = 0;
+    //     newElem.dataset.wrap = setter.settings.length;
+    //     newElem.style.left = `${cellSize * setter.left}px`;
+    //     newElem.style.top = `${cellSize * setter.top}px`;
+    //     newElem.style.width = `${cellSize * setter.width}px`;
+    //     newElem.style.height = `${cellSize * setter.height}px`;
+    //     newElem.addEventListener('click', portalPanel.updateFunction);
+    //     portalPanel[setter.id] = newElem;
+    // });
 
     let selector = `.setter`;
     let properties =
     [
-        'position: absolute;\n',
+        // 'position: absolute;\n',
         `font-size: ${Math.round(cellSize * academyProjectPortal.displayText)}px;\n`,
+        `width: 20px;`,
+        `height: 20px;`,
         'margin: 0px;\n',
         'text-align: center;\n'
     ].join('');
@@ -327,6 +434,7 @@ academyProjectPortal.pages.default.initFunction = function()
         selector = `.setter[data-setting="${j}"]`;
         properties =
         [
+            `cursor: ${initSetter.settings[j].cursor};`,
             `text-shadow: 0px 0px ${Math.round(cellSize * academyProjectPortal.labelText / 9)}px ${colorProfile[j]};\n`,
             `box-shadow: 0px 0px ${Math.round(cellSize / 5)}px ${colorProfile[j]}, inset 0px 0px ${Math.round(cellSize)}px ${colorProfile[j]};\n`
         ].join('');
@@ -334,17 +442,17 @@ academyProjectPortal.pages.default.initFunction = function()
         portalPanel.panelCSS.sheet.insertRule(`${selector} { ${properties} }`);
     }
 
-    let setting = playerData.academy.farmYieldSetting.type;
-    portalPanel.runtime.dataset.setting = setting;
-    portalPanel.runtime.innerText = academyFarmPortal.pages.default.toggles[0].settings[setting].text + (playerData.academy.farmYieldSetting.duration > 1 ? 's' : '');;
+    // let setting = playerData.academy.farmYieldSetting.type;
+    // portalPanel.runtime.dataset.setting = setting;
+    // portalPanel.runtime.innerText = academyFarmPortal.pages.default.toggles[0].settings[setting].text + (playerData.academy.farmYieldSetting.duration > 1 ? 's' : '');;
 
-    for (let project = 0; project < projects.length; project++)
-    {
-        for (let level = 0; level < 30; level++)
-        {
-            portalPanel[`setter${projects[project]}${level+1}`].dataset.setting = 0;
-        }
-    }
+    // for (let project = 0; project < projects.length; project++)
+    // {
+    //     for (let level = 0; level < 30; level++)
+    //     {
+    //         portalPanel[`setter${projects[project]}${level+1}`].dataset.setting = 0;
+    //     }
+    // }
 
     generateRunYield();
 }
@@ -353,11 +461,11 @@ academyProjectPortal.pages.default.updateFunction = function(e)
 {
     if (e.target.id.includes('duration'))
     {
-        portalPanel.dataLinkage[e.target.id] = parseFloat(e.target.value);
+        portalPanel.dataLinkage[e.target.id] = e.target.value;
         SavePlayerData();
 
-        let currentSetting = playerData.academy.farmYieldSetting.type;
-        portalPanel.runtime.innerText = academyProjectPortal.pages.default.toggles[0].settings[currentSetting].text + (playerData.academy.farmYieldSetting.duration > 1 ? 's' : '');
+        // let currentSetting = playerData.academy.farmYieldSetting.type;
+        // portalPanel.runtime.innerText = academyProjectPortal.pages.default.toggles[0].settings[currentSetting].text + (playerData.academy.farmYieldSetting.duration > 1 ? 's' : '');
 
         generateRunYield();
 
@@ -409,9 +517,9 @@ academyProjectPortal.pages.default.updateFunction = function(e)
         {
             let level = parseInt(id.substr(-1));
             let project = id.substring(6, id.length - 1);
-            if (parseInt(id.substr(-2))) 
-            { 
-                level = parseInt(id.substr(-2)); 
+            if (parseInt(id.substr(-2)))
+            {
+                level = parseInt(id.substr(-2));
                 project = id.substring(6, id.length - 2);
             }
             switch (project)
@@ -446,7 +554,8 @@ function generateRunYield()
     portalPanel.theoreticals = [];
     for (let projectID = 0; projectID < projects.length; projectID++)
     {
-        portalPanel.projectConfigs.push(new ProjectConfig(projectID, playerData.academy.projectLevels[projectID]));
+        const config = new ProjectConfig(projectID, playerData.academy.projectLevels[projectID])
+        portalPanel.projectConfigs.push(config);
         let maxLevel = portalPanel.projectConfigs[projectID].MaxLevel(portalPanel.storehouse).newLevels;
         portalPanel.theoreticals.push(Math.min(maxLevel, 30));
         for (let level = 1; level <= 30; level++)
@@ -454,9 +563,14 @@ function generateRunYield()
             portalPanel[`setter${projects[projectID]}${level}`].dataset.setting = (level <= maxLevel ? 2 : 0);
         }
         portalPanel[`${projects[projectID]}goal`].innerText = portalPanel.projectConfigs[projectID].currentLevel;
+        portalPanel[`${projects[projectID]}cost`].innerHTML = 'Current Cost: ' + config.getStartCost().map((v, i) => {
+            if (!v) return ''
+            return `<div class="field-projmat">${GameDB.academy.materials[i]}: ${v > 1000 ? v.toExponential(2) : v}</div>`
+        }).join('')
     }
 
-    portalPanel.totalnew.innerText = '+ 0';
+    portalPanel.totalnew.innerText = '+ 0 proj';
+    portalPanel.bpnew.innerText = '+ 0 bp';
 
     resumeLevels();
 }
@@ -464,10 +578,11 @@ function generateRunYield()
 function setProjectLevel(project, level, setting)
 {
     portalPanel.projectConfigs[project].currentLevel = portalPanel.projectConfigs[project].startLevel + level - (setting === "3");
-    playerData.academy.projectGoals[project] = level;
+    playerData.academy.projectGoals[project] = level - (setting === "3");
     SavePlayerData();
 
     let totalNew = 0;
+    let newBp = 0;
 
     for (let i = 0; i < portalPanel.storehouse.mats.length; i++)
     {
@@ -485,9 +600,11 @@ function setProjectLevel(project, level, setting)
         }
 
         totalNew += (portalPanel.projectConfigs[i].currentLevel - portalPanel.projectConfigs[i].startLevel)
+        newBp += portalPanel.projectConfigs[i].gainedBp
     }
 
-    portalPanel.totalnew.innerText = `+ ${totalNew}`;
+    portalPanel.totalnew.innerText = `+ ${totalNew} proj`;
+    portalPanel.bpnew.innerText = `+ ${newBp} bp`;
 
     for (let projectID = 0; projectID < projects.length; projectID++)
     {
@@ -500,7 +617,7 @@ function setProjectLevel(project, level, setting)
             if (setLevel <= currentLevel) setting = 3;
             else if (setLevel <= maxLevel) setting = 2;
             else if (setLevel <= theoretical) setting = 1;
-            
+
             portalPanel[`setter${projects[projectID]}${setLevel}`].dataset.setting = setting;
         }
         portalPanel[`${projects[projectID]}goal`].innerText = portalPanel.projectConfigs[projectID].currentLevel;
@@ -513,6 +630,7 @@ function resumeLevels()
 
     let overspent = false;
     let totalNew = 0;
+    let newBp = 0;
 
     for (let i = 0; i < projects.length; i++)
     {
@@ -532,6 +650,7 @@ function resumeLevels()
         if (overspent) break;
 
         totalNew += (portalPanel.projectConfigs[i].currentLevel - portalPanel.projectConfigs[i].startLevel)
+        newBp += portalPanel.projectConfigs[i].gainedBp
     }
 
     if (overspent)
@@ -559,11 +678,12 @@ function resumeLevels()
             if (setLevel <= currentLevel) setting = 3;
             else if (setLevel <= maxLevel) setting = 2;
             else if (setLevel <= theoretical) setting = 1;
-            
+
             portalPanel[`setter${projects[projectID]}${setLevel}`].dataset.setting = setting;
         }
         portalPanel[`${projects[projectID]}goal`].innerText = portalPanel.projectConfigs[projectID].currentLevel;
     }
 
-    portalPanel.totalnew.innerText = `+ ${totalNew}`;
+    portalPanel.totalnew.innerText = `+ ${totalNew} proj`;
+    portalPanel.bpnew.innerText = `+ ${newBp} bp`;
 }

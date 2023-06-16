@@ -30,8 +30,8 @@ function ConstructPortal(height, width, portalObj)
     const panelElem = document.createElement('div');
     document.body.append(panelElem);
     panelElem.classList.add('panel');
-    panelElem.style.width = `${width}px`;
-    panelElem.style.height = `${height}px`;
+    // panelElem.style.width = `${width}px`;
+    // panelElem.style.height = `${height}px`;
     portalPanel.elem = panelElem;
 
     setPanelCSS(portalObj)
@@ -478,7 +478,9 @@ function setPanelCSS(portalObj)
     selector = '.lockcontainer';
     properties =
     [
-        'position: absolute;\n',
+        // 'position: absolute;\n',
+        'width: 20px;',
+        'height: 20px;',
         'padding: 0px;\n'
     ].join('');
 
@@ -487,11 +489,12 @@ function setPanelCSS(portalObj)
     selector = '.lockcontainer input';
     properties =
     [
-        'position: absolute;\n',
-        'padding: 0px;\n',
-        'opacity: 0;\n',
-        'height: 0px;\n',
-        'width: 0px;\n'
+        // 'position: absolute;\n',
+        // 'padding: 0px;\n',
+        // 'opacity: 0;\n',
+        // 'height: 0px;\n',
+        // 'width: 0px;\n',
+        'display: none',
     ].join('');
 
     newStyleSheet.insertRule(`${selector} { ${properties} }`);
@@ -499,9 +502,9 @@ function setPanelCSS(portalObj)
     selector = '.lockmark';
     properties =
     [
-        'position: absolute;\n',
-        'top: 0px;\n',
-        'left: 0px;\n',
+        // 'position: absolute;\n',
+        // 'top: 0px;\n',
+        // 'left: 0px;\n',
         'text-align: center;\n',
         `line-height: ${Math.round(cellSize * 2)}px;\n`,
         `box-shadow: 0px 0px ${Math.round(cellSize / 5)}px #444444, inset 0px 0px ${Math.round(cellSize / 10)}px #444444;\n`,

@@ -132,58 +132,61 @@ let academyEffectorPortal =
     displayText: 1.4,
     buttonText: 1.7,
     inputText: 1,
-    activePage: 'mods',
+    // activePage: 'mods',
+    activePage: 'default',
     pages: {
-        list: ['mods', 'zeus', 'sr'],
-        mods: {
+        // list: ['mods', 'zeus', 'sr'],
+        list: ['default'],
+        // mods: {
+        default: {
             id: 'mods',
             text: 'Loop Mods',
             color: '#ff0054',
             pagerSize: { width: 15, height: 2 },
             pagerLeft: 1,
             headers: [
-                {
-                    text: 'Fleet Section',
-                    left: 1, top: 11,
-                    height: 3, width: 20
-                },
-                {
-                    text: 'Academy Section',
-                    left: 1, top: 22,
-                    height: 3, width: 23
-                },
+                // {
+                //     text: 'Fleet Section',
+                //     left: 1, top: 11,
+                //     height: 3, width: 20
+                // },
+                // {
+                //     text: 'Academy Section',
+                //     left: 1, top: 22,
+                //     height: 3, width: 23
+                // },
                 // {
                 //     text: 'Accumulative Section',
                 //     left: 31, top: 11,
                 //     height: 3, width: 30
                 // },
-                {
-                    text: 'Ultimas',
-                    left: 31, top: 19,
-                    height: 3, width: 9
-                }
+                // {
+                //     text: 'Ultimas',
+                //     left: 31, top: 19,
+                //     height: 3, width: 9
+                // }
             ],
             labels: [
-                {
-                    text: 'Player Level',
-                    left: 1, top: 7,
-                    height: 2, width: 9
-                },
-                {
-                    text: 'Loops Filled',
-                    left: 18, top: 7,
-                    height: 2, width: 9
-                },
-                {
-                    text: 'Zeus Rank Benefits',
-                    left: 2, top: 15,
-                    height: 2, width: 13
-                },
-                {
-                    text: '/ 10',
-                    left: 19, top: 15,
-                    height: 2, width: 3
-                },
+                // {
+                //     text: 'Player Level',
+                //     left: 1, top: 7,
+                //     height: 2, width: 9
+                // },
+                // {
+                //     text: 'Loops Filled',
+                //     left: 18, top: 7,
+                //     height: 2, width: 9
+                // },
+                // {
+                //     text: 'Zeus Rank Benefits',
+                //     left: 2, top: 15,
+                //     height: 2, width: 13
+                // },
+                // {
+                //     text: '/ 10',
+                //     left: 19, top: 15,
+                //     height: 2, width: 3
+                // },
                 // {
                 //     text: 'Zeus Crew Motivation',
                 //     left: 2, top: 18,
@@ -204,16 +207,16 @@ let academyEffectorPortal =
                 //     left: 22, top: 26,
                 //     height: 2, width: 4
                 // },
-                {
-                    text: 'Material Hauling',
-                    left: 2, top: 29,
-                    height: 2, width: 12
-                },
-                {
-                    text: '/ 999',
-                    left: 19, top: 29,
-                    height: 2, width: 4
-                },
+                // {
+                //     text: 'Material Hauling',
+                //     left: 2, top: 29,
+                //     height: 2, width: 12
+                // },
+                // {
+                //     text: '/ 999',
+                //     left: 19, top: 29,
+                //     height: 2, width: 4
+                // },
                 // {
                 //     text: 'Exodus Enhancement',
                 //     left: 2, top: 32,
@@ -244,11 +247,11 @@ let academyEffectorPortal =
                 //     left: 41, top: 15,
                 //     height: 2, width: 3
                 // },
-                {
-                    text: 'Rule of the Beyonders',
-                    left: 32, top: 23,
-                    height: 2, width: 16
-                },
+                // {
+                //     text: 'Rule of the Beyonders',
+                //     left: 32, top: 23,
+                //     height: 2, width: 16
+                // },
                 // {
                 //     text: 'Rule of Destruction',
                 //     left: 32, top: 26,
@@ -259,61 +262,61 @@ let academyEffectorPortal =
                 //     left: 50, top: 26,
                 //     height: 2, width: 3
                 // },
-                {
-                    text: 'Rule of the Swarm',
-                    left: 32, top: 29,
-                    height: 2, width: 14
-                },
-                {
-                    text: '/ 30',
-                    left: 49, top: 29,
-                    height: 2, width: 4
-                },
-                {
-                    text: 'Rule of Expansion',
-                    left: 32, top: 32,
-                    height: 2, width: 13
-                },
-                {
-                    text: 'Rule of Productivity',
-                    left: 32, top: 35,
-                    height: 2, width: 15
-                },
-                {
-                    text: '/ 10',
-                    left: 50, top: 35,
-                    height: 2, width: 4
-                },
-                {
-                    text: 'Rule of Looping',
-                    left: 32, top: 38,
-                    height: 2, width: 12
-                },
-                {
-                    text: '/ 10',
-                    left: 47, top: 38,
-                    height: 2, width: 4
-                }
+                // {
+                //     text: 'Rule of the Swarm',
+                //     left: 32, top: 29,
+                //     height: 2, width: 14
+                // },
+                // {
+                //     text: '/ 30',
+                //     left: 49, top: 29,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: 'Rule of Expansion',
+                //     left: 32, top: 32,
+                //     height: 2, width: 13
+                // },
+                // {
+                //     text: 'Rule of Productivity',
+                //     left: 32, top: 35,
+                //     height: 2, width: 15
+                // },
+                // {
+                //     text: '/ 10',
+                //     left: 50, top: 35,
+                //     height: 2, width: 4
+                // },
+                // {
+                //     text: 'Rule of Looping',
+                //     left: 32, top: 38,
+                //     height: 2, width: 12
+                // },
+                // {
+                //     text: '/ 10',
+                //     left: 47, top: 38,
+                //     height: 2, width: 4
+                // }
             ],
             inputs: [
-                {
-                    id: 'playerlevel',
-                    type: 'number',
-                    left: 11, top: 6.25,
-                    height: 2, width: 5
-                },
-                {
-                    id: 'loopsfilled',
-                    type: 'number',
-                    left: 28, top: 6.25,
-                    height: 2, width: 5
-                },
-                {
-                    id: 'zeusrankbenefits',
-                    type: 'number',
-                    left: 16, top: 14.25,
-                    height: 2, width: 3
-                },
+                // {
+                //     id: 'playerlevel',
+                //     type: 'number',
+                //     left: 11, top: 6.25,
+                //     height: 2, width: 5
+                // },
+                // {
+                //     id: 'loopsfilled',
+                //     type: 'number',
+                //     left: 28, top: 6.25,
+                //     height: 2, width: 5
+                // },
+                // {
+                //     id: 'zeusrankbenefits',
+                //     type: 'number',
+                //     left: 16, top: 14.25,
+                //     height: 2, width: 3
+                // },
                 // {
                 //     id: 'zeuscrewmotivation',
                 //     type: 'number',
@@ -326,12 +329,12 @@ let academyEffectorPortal =
                 //     left: 18, top: 25.25,
                 //     height: 2, width: 4
                 // },
-                {
-                    id: 'mathauling',
-                    type: 'number',
-                    left: 15, top: 28.25,
-                    height: 2, width: 4
-                },
+                // {
+                //     id: 'mathauling',
+                //     type: 'number',
+                //     left: 15, top: 28.25,
+                //     height: 2, width: 4
+                // },
                 // {
                 //     id: 'exodus',
                 //     type: 'number',
@@ -350,42 +353,42 @@ let academyEffectorPortal =
                 //     left: 38, top: 14.25,
                 //     height: 2, width: 3
                 // },
-                {
-                    id: 'beyonders',
-                    type: 'number',
-                    left: 49, top: 22.25,
-                    height: 2, width: 6
-                },
+                // {
+                //     id: 'beyonders',
+                //     type: 'number',
+                //     left: 49, top: 22.25,
+                //     height: 2, width: 6
+                // },
                 // {
                 //     id: 'destruction',
                 //     type: 'number',
                 //     left: 47, top: 25.25,
                 //     height: 2, width: 3
                 // },
-                {
-                    id: 'swarm',
-                    type: 'number',
-                    left: 47, top: 28.25,
-                    height: 2, width: 3
-                },
-                {
-                    id: 'expansion',
-                    type: 'number',
-                    left: 46, top: 31.25,
-                    height: 2, width: 6
-                },
-                {
-                    id: 'productivity',
-                    type: 'number',
-                    left: 48, top: 34.25,
-                    height: 2, width: 3
-                },
-                {
-                    id: 'looping',
-                    type: 'number',
-                    left: 45, top: 37.25,
-                    height: 2, width: 3
-                }
+                // {
+                //     id: 'swarm',
+                //     type: 'number',
+                //     left: 47, top: 28.25,
+                //     height: 2, width: 3
+                // },
+                // {
+                //     id: 'expansion',
+                //     type: 'number',
+                //     left: 46, top: 31.25,
+                //     height: 2, width: 6
+                // },
+                // {
+                //     id: 'productivity',
+                //     type: 'number',
+                //     left: 48, top: 34.25,
+                //     height: 2, width: 3
+                // },
+                // {
+                //     id: 'looping',
+                //     type: 'number',
+                //     left: 45, top: 37.25,
+                //     height: 2, width: 3
+                // }
             ],
             checkboxes: [
             ],
@@ -928,7 +931,121 @@ let academyEffectorPortal =
     }
 }
 
-academyEffectorPortal.pages.mods.dataLinkage =
+const sections = [
+    {
+        name: 'General',
+        children: [
+            { id: 'playerlevel', type: 'number', label: 'Player Level' },
+            { id: 'loopsfilled', type: 'number', label: 'Loops Filled', style: { width: 80 } },
+            { id: 'engineering', type: 'select', label: 'Engi Badge', options: [{ value: 0, label: 'No' }, { value: 1, label: 'Yes' }] },
+        ]
+    },
+    {
+        name: 'Mod',
+        children: [
+            { id: 'zeusrankbenefits', type: 'number', label: 'Zeus Rank Benefits', max: 10, text: '/ 10' },
+            { id: 'mathauling', type: 'number', label: 'Material Hauling', text: '/ 999' },
+            { id: 'beyonders', type: 'number', label: 'Rule of the Beyonders', style: { width: 80 } },
+            { id: 'swarm', type: 'number', label: 'Rule of the Swarm', max: 30, text: '/ 30' },
+            { id: 'expansion', type: 'number', label: 'Rule of Expansion', style: { width: 80 } },
+            { id: 'productivity', type: 'number', label: 'Rule of Productivity', max: 10, text: '/ 10' },
+            { id: 'looping', type: 'number', label: 'Rule of Looping', max: 10, text: '/ 10' },
+        ],
+    },
+    {
+        name: 'Zeus',
+        children: [
+            { id: 'rank', type: 'number', label: 'Rank' },
+            { id: 'crew', type: 'number', label: 'Crew' },
+            { id: 'progress', type: 'number', label: 'To Next', text: ' ', textId: 'rankrequirement', style: { width: 100 } },
+            { id: 'install3', type: 'number', label: '(3) Material Scavenger Vehicles', max: 5 },
+            { id: 'install6', type: 'number', label: '(6) Academy Auto-Scrappers', max: 75 },
+        ],
+    },
+    {
+        name: 'Shard Milestone',
+        children: [
+            { id: 'wonderous', type: 'number', label: '(26) Wonderous' },
+            { id: 'earthly', type: 'number', label: '(29) Earthly' },
+        ],
+    },
+    {
+        name: 'Diamond Shop',
+        children: [
+            { id: 'specialmats', type: 'number', label: 'Special: Mats', max: 25, text: '/ 25' },
+        ],
+    },
+    {
+        name: 'Research',
+        children: [
+            {
+                id: 'mission1',
+                type: 'select',
+                label: 'Mission Analysis 1',
+                maxLevel: 6,
+                text: 'mission material:  lv2 x1.5, lv4 x1.5, lv6 x1.5',
+            },
+            {
+                id: 'mission2',
+                type: 'select',
+                label: 'Mission Analysis 2',
+                maxLevel: 6,
+                text: 'mission material:  lv2 x1.75, lv4 x1.75, lv6 x1.75',
+            },
+            {
+                id: 'mission3',
+                type: 'select',
+                label: 'Mission Analysis 3',
+                maxLevel: 6,
+                text: 'mission speed: lv1 x1.05, lv3: x1.05, lv5: x1.05',
+            },
+            {
+                id: 'mission4',
+                type: 'select',
+                label: 'Mission Analysis 4',
+                maxLevel: 6,
+                text: 'mission material:  lv2 x2, lv4 x3, lv6 x4',
+            },
+            {
+                id: 'mission5',
+                type: 'select',
+                label: 'Mission Analysis 5',
+                maxLevel: 6,
+                text: 'mission material:  lv2 x3, lv4 x4, lv6 x5',
+            },
+            {
+                id: 'perfection2',
+                type: 'select',
+                label: 'Perfection Analysis 2',
+                maxLevel: 6,
+                text: 'mission material:  lv2 x5',
+            },
+            {
+                id: 'perfection3',
+                type: 'select',
+                label: 'Perfection Analysis 3',
+                maxLevel: 6,
+                text: 'lv2: mission material x5; lv5: mission speed *2',
+            },
+            {
+                id: 'construction1',
+                type: 'select',
+                label: 'Construction Analysis 1',
+                maxLevel: 6,
+                text: 'proj cost: lv2 /1.5, lv4 /2, lv6 /2.5',
+            },
+            {
+                id: 'construction2',
+                type: 'select',
+                label: 'Construction Analysis 2',
+                maxLevel: 6,
+                text: 'proj cost: lv2 /2, lv3 /3, lv4 /3, lv5 /4, lv5 /4',
+            },
+        ],
+    },
+]
+
+academyEffectorPortal.pages.default.dataLinkage =
 {
     set playerlevel(value) { playerData.level = value; },
     set loopsfilled(value) { playerData.loopsFilled = value; },
@@ -960,11 +1077,8 @@ academyEffectorPortal.pages.mods.dataLinkage =
     get swarm() { return playerData.loopMods.swarm; },
     get expansion() { return playerData.loopMods.expansion; },
     get productivity() { return playerData.loopMods.productivity; },
-    get looping() { return playerData.loopMods.looping; }
-};
+    get looping() { return playerData.loopMods.looping; },
 
-academyEffectorPortal.pages.zeus.dataLinkage =
-{
     set crew(value) { playerData.fleet.zeus.crew = value; },
     set rank(value) { playerData.fleet.zeus.rank.current = value; },
     set evo(value) { playerData.fleet.zeus.evo = value; },
@@ -999,11 +1113,8 @@ academyEffectorPortal.pages.zeus.dataLinkage =
     get green() { return playerData.academy.gearSets[3]; },
     get blue() { return playerData.academy.gearSets[4]; },
     get engineering() { return playerData.academy.badges.engineering; },
-    get campaigns() { return playerData.academy.campaignsComplete; }
-};
+    get campaigns() { return playerData.academy.campaignsComplete; },
 
-academyEffectorPortal.pages.sr.dataLinkage =
-{
     set studying(value) { playerData.shardMilestones[17] = value; },
     set targeting(value) { playerData.shardMilestones[20] = value; },
     set layering(value) { playerData.shardMilestones[22] = value; },
@@ -1053,16 +1164,137 @@ academyEffectorPortal.pages.sr.dataLinkage =
     get zion() { return playerData.diamonds.cards.zion; }
 };
 
-academyEffectorPortal.pages.mods.updateFunction = function(e) {
-    portalPanel.dataLinkage[e.target.id] = parseInt(e.target.value);
-    SavePlayerData();
+// academyEffectorPortal.pages.mods.updateFunction = function(e) {
+//     portalPanel.dataLinkage[e.target.id] = parseInt(e.target.value);
+//     SavePlayerData();
+// };
+
+// academyEffectorPortal.pages.zeus.initFunction = function() {
+//     portalPanel['rankrequirement'].innerText = GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage.rank];
+// };
+
+// academyEffectorPortal.pages.zeus.updateFunction = function(e) {
+//     if (e.target.type === 'checkbox')
+//     {
+//         portalPanel.dataLinkage[e.target.id] = e.target.checked;
+//         SavePlayerData();
+//         return;
+//     }
+
+//     if (e.target.id === 'cm')
+//     {
+//         portalPanel.dataLinkage[e.target.id] = parseFloat(e.target.value);
+//         SavePlayerData();
+
+//         return;
+//     }
+
+//     if (e.target.type === 'number')
+//     {
+//         portalPanel.dataLinkage[e.target.id] = parseInt(e.target.value);
+//         SavePlayerData();
+
+//         if (e.target.id === 'rank') { portalPanel['rankrequirement'].innerText = GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage[e.target.id]]; }
+
+//         return;
+//     }
+
+//     let value = parseBigNum(e.target.value);
+//     if (isNaN(value)) {e.target.value = 0}
+//     else {portalPanel.dataLinkage[e.target.id] = value}
+//     SavePlayerData();
+// };
+
+// // academyEffectorPortal.pages.sr
+
+// academyEffectorPortal.pages.sr.updateFunction = function(e) {
+//     if (e.target.type === 'checkbox')
+//     {
+//         portalPanel.dataLinkage[e.target.id] = e.target.checked;
+//         SavePlayerData();
+//         return;
+//     }
+
+//     portalPanel.dataLinkage[e.target.id] = parseInt(e.target.value);
+//     SavePlayerData();
+// };
+
+academyEffectorPortal.pages.default.initFunction = function(panel) {
+    const wrapper = createElement('div', 'section-2', { style : 'gap: 40px' })
+
+    sections.forEach(({ name, children }) => {
+        const section = createElement()
+        const header = createElement('h3', '', null, name)
+        section.appendChild(header)
+
+        children.map(({ id, label, type, text, style = {}, ...props }) => {
+            if (type === 'number' || type === 'select') {
+                const group = createElement('div', 'row align-items-center g-3 mb-2')
+                group.innerHTML = `<div class="col-auto"><label class="col-form-label col-form-label-sm">${label}</label></div>`
+                const inputWrapper = createElement('div', 'col-auto')
+                group.appendChild(inputWrapper)
+
+                if (type === 'number') {
+                    const input = createElement('input', 'form-control form-control-sm text-center', {
+                        id: id,
+                        type: 'number',
+                        min: 0,
+                        style: `width: ${style.width || 50}px;`,
+                        value: portalPanel.dataLinkage[id],
+                    })
+                    if (props.max) input.max = props.max
+                    input.addEventListener('change', portalPanel.updateFunction);
+                    inputWrapper.appendChild(input)
+                }
+
+                if (type === 'select') {
+                    const select = createElement('select', 'form-select form-select-sm', {
+                        id: id,
+                    })
+                    if (props.maxLevel) {
+                        select.innerHTML = '<option value="0">-</option>'
+                            + Array(props.maxLevel).fill(null).map((_, i) => `<option value="${i+1}">Lv ${i+1}</option>`).join('')
+                    } else {
+                        select.innerHTML = props.options.map((p) => `<option value="${p.value}">${p.label}</option>`).join('')
+                    }
+                    select.value = portalPanel.dataLinkage[id] * 1
+                    select.addEventListener('change', portalPanel.updateFunction)
+                    inputWrapper.appendChild(select)
+                }
+
+                if (text) {
+                    const textCol = createElement('div', 'col-auto')
+                    const textEl = createElement('span', 'form-text', '', text)
+                    if (props.textId) {
+                        textEl.id = props.textId
+                        portalPanel[props.textId] = textEl
+                    }
+                    textCol.appendChild(textEl)
+                    group.appendChild(textCol)
+                }
+
+                return group
+            }
+
+            return null
+        }).filter(Boolean).forEach((el) => section.appendChild(el))
+
+        wrapper.appendChild(section)
+    })
+
+    panel.appendChild(wrapper)
+
+    portalPanel['rankrequirement'].innerText = '/ ' + GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage.rank];
 };
 
-academyEffectorPortal.pages.zeus.initFunction = function() {
-    portalPanel['rankrequirement'].innerText = GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage.rank];
-};
+academyEffectorPortal.pages.default.updateFunction = function(e) {
+    if (/^select$/i.test(e.target.tagName))
+    {
+        portalPanel.dataLinkage[e.target.id] = parseInt(e.target.value, 10);
+        SavePlayerData();
+        return;
+    }
 
-academyEffectorPortal.pages.zeus.updateFunction = function(e) {
     if (e.target.type === 'checkbox')
     {
         portalPanel.dataLinkage[e.target.id] = e.target.checked;
@@ -1083,7 +1315,7 @@ academyEffectorPortal.pages.zeus.updateFunction = function(e) {
         portalPanel.dataLinkage[e.target.id] = parseInt(e.target.value);
         SavePlayerData();
 
-        if (e.target.id === 'rank') { portalPanel['rankrequirement'].innerText = GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage[e.target.id]]; }
+        if (e.target.id === 'rank') { portalPanel['rankrequirement'].innerText = '/ ' + GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage[e.target.id]]; }
 
         return;
     }
@@ -1091,19 +1323,5 @@ academyEffectorPortal.pages.zeus.updateFunction = function(e) {
     let value = parseBigNum(e.target.value);
     if (isNaN(value)) {e.target.value = 0}
     else {portalPanel.dataLinkage[e.target.id] = value}
-    SavePlayerData();
-};
-
-// academyEffectorPortal.pages.sr
-
-academyEffectorPortal.pages.sr.updateFunction = function(e) {
-    if (e.target.type === 'checkbox')
-    {
-        portalPanel.dataLinkage[e.target.id] = e.target.checked;
-        SavePlayerData();
-        return;
-    }
-
-    portalPanel.dataLinkage[e.target.id] = parseInt(e.target.value);
     SavePlayerData();
 };

@@ -8,13 +8,13 @@ function CalculateFarmTimes(getRawTime = false)
             let power = 0;
             let population = 0;
             power += (playerData.academy.farms[planet][farm].pods || 0) * (playerData.academy.personnel[0].power || 0);
-            population += playerData.academy.farms[planet][farm].pods;
+            population += playerData.academy.farms[planet][farm].pods || 0;
             power += (playerData.academy.farms[planet][farm].fireteams || 0) * (playerData.academy.personnel[1].power || 0);
-            population += playerData.academy.farms[planet][farm].fireteams;
+            population += playerData.academy.farms[planet][farm].fireteams || 0;
             power += (playerData.academy.farms[planet][farm].titans || 0) * (playerData.academy.personnel[2].power || 0);
-            population += playerData.academy.farms[planet][farm].titans;
+            population += playerData.academy.farms[planet][farm].titans || 0;
             power += (playerData.academy.farms[planet][farm].corvettes || 0) * (playerData.academy.personnel[3].power || 0);
-            population += playerData.academy.farms[planet][farm].corvettes;
+            population += playerData.academy.farms[planet][farm].corvettes || 0;
 
             let missionSpeedBonus = (GameDB.bugs.swarm ? (0.03 * playerData.loopMods.swarm + 1) : Math.pow(1.0311, playerData.loopMods.swarm));
             missionSpeedBonus *= (
@@ -23,7 +23,7 @@ function CalculateFarmTimes(getRawTime = false)
                 Math.pow(1.05, Math.floor((playerData.research.mission[2] + 1) / 2))
             );
             missionSpeedBonus *= (playerData.research.perfection[2] > 4) + 1;
-            missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1;
+            // missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1;
             missionSpeedBonus *= playerData.academy.badges.engineering + 1;
             missionSpeedBonus *= Math.pow(1.1, playerData.loopMods.productivity);
 
@@ -83,7 +83,7 @@ function GetMaxMissionRate()
         Math.pow(1.05, Math.floor((playerData.research.mission[2] + 1) / 2))
     );
     missionSpeedBonus *= (playerData.research.perfection[2] > 4) + 1;
-    missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1;
+    // missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1;
     missionSpeedBonus *= playerData.academy.badges.engineering + 1;
     missionSpeedBonus *= Math.pow(1.1, playerData.loopMods.productivity);
 
@@ -201,7 +201,7 @@ function GetMaxMissionRate()
                 playerData.academy.farms[planet - 1][farmNum - 1][GameDB.academy.personnel[3-personnelNum]]--;
             }
 
-            if (farmDetails[i].availSpace === 0) break;
+            if (farmDetails[i].availSpace <= 0) break;
         }
     }
 
@@ -224,7 +224,6 @@ function GetStaticMatBonus() {
     staticMatBonus *= ((playerData.research.mission[3] > 1 ? 2 : 1) * (playerData.research.mission[3] > 3 ? 3 : 1) * (playerData.research.mission[3] > 5 ? 4 : 1));
     staticMatBonus *= 4 * (playerData.research.perfection[2] > 1) + 1;
     staticMatBonus *= ((playerData.research.mission[4] > 1 ? 3 : 1) * (playerData.research.mission[4] > 3 ? 4 : 1) * (playerData.research.mission[4] > 5 ? 5 : 1));
-    staticMatBonus *= 8 * (playerData.research.perfection[2] > 1) + 1;
     staticMatBonus *= Math.pow(1.05, playerData.diamonds.special.materials);
     staticMatBonus *= Math.pow(2.5, playerData.academy.projectLevels[8]);
     staticMatBonus *= Math.pow(0.0002 * playerData.loopMods.looping + 1, playerData.loopsFilled);
@@ -243,16 +242,19 @@ function GetCurrentMatBonus() {
 
 function CalculateFarmYields(giveTotal = false)
 {
-    let durationSetting = playerData.academy.farmYieldSetting;
-    let duration = durationSetting.duration * 60;
-    if (durationSetting.type > 0)
-    {
-        duration *= 60;
+    const getDuration = () => {
+        let durationSetting = playerData.academy.farmYieldSelected || '1-h';
+        const [d, u] = durationSetting.split('-')
+        let duration = parseInt(d, 10) * 60 * 60;
+        if (u === 'd')
+        {
+            duration *= 24;
+        }
+
+        return duration
     }
-    if (durationSetting.type > 1)
-    {
-        duration *= 24
-    }
+
+    let duration = getDuration() || 60 * 60
 
     let staticAPbonus = Math.pow(1.01, playerData.loopMods.beyonders);
     staticAPbonus *= (GameDB.bugs.destruction ? (3 * playerData.loopMods.destruction + (playerData.loopMods.destruction === 0)) : Math.pow(3, playerData.loopMods.destruction));
@@ -280,7 +282,7 @@ function CalculateFarmYields(giveTotal = false)
     staticAPbonus *= ((playerData.research.mission[2] > 2 ? 2 : 1) * (playerData.research.mission[2] > 4 ? 3 : 1));
     staticAPbonus *= (playerData.research.perfection[2] > 3 ? 50 : 1);
     staticAPbonus *= ((playerData.research.mission[4] > 2 ? 3 : 1) * (playerData.research.mission[4] > 4 ? 4 : 1));
-    staticAPbonus *= (playerData.research.perfection[3] > 3 ? 99 : 1);
+    // staticAPbonus *= (playerData.research.perfection[3] > 3 ? 99 : 1);
     staticAPbonus *= playerData.academy.cmAP;
     staticAPbonus *= (0.5 * (playerData.academy.gearSets[1] === 4) + 1);
     staticAPbonus *= (0.5 * (playerData.academy.gearSets[2] === 5) + 1);
@@ -397,6 +399,10 @@ class ProjectConfig
     return this.currentLevel - this.startLevel;
   }
 
+  get gainedBp() {
+    return this.gainedLevels * GameDB.academy.projects[this.projectID].bpCount
+  }
+
   constructor(_projectID, _currentLevel)
   {
     this.projectID = _projectID
@@ -446,7 +452,7 @@ class ProjectConfig
       }
       this.testLevel++;
 
-      console.count(`Project: ${this.projectID}`);
+    //   console.count(`Project: ${this.projectID}`);
     }
 
     let result =
@@ -455,12 +461,12 @@ class ProjectConfig
       costs: accumCosts
     }
 
-    console.log(result);
+    // console.log(result);
 
     return result;
   }
 
-  get currentCost()
+  getCostDiv()
   {
     let costDiv = 1;
     if (GameDB.bugs.construction)
@@ -474,6 +480,13 @@ class ProjectConfig
         costDiv *= (playerData.research.construction[1] > 1 ? 2 : 1) * (playerData.research.construction[1] > 2 ? 3 : 1) * (playerData.research.construction[1] > 3 ? 3 : 1) * (playerData.research.construction[1] > 4 ? 4 : 1) * (playerData.research.construction[1] > 5 ? 4 : 1);
     }
 
+    return costDiv
+  }
+
+  get currentCost()
+  {
+    let costDiv = this.getCostDiv()
+
     let accumCosts = [0, 0, 0, 0, 0, 0, 0, 0];
 
     for (let spanLevel = this.startLevel; spanLevel < this.currentLevel; spanLevel++)
@@ -486,5 +499,10 @@ class ProjectConfig
     }
 
     return accumCosts;
+  }
+
+  getStartCost() {
+    const costDiv = this.getCostDiv()
+    return GameDB.academy.projectNextLevelCost(this.projectID, this.startLevel, costDiv)
   }
 }
