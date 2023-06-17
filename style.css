@@ -13,13 +13,13 @@ body {
 }
 
 .navBar {
-  position: fixed;
+  /* position: fixed; */
+  position: relative;
   top: 0px;
   left: 0px;
   width: var(--navWidth);
   height: var(--navHeight);
   background-color: black;
-  z-index: 1;
 }
 
 .navHighlight {
@@ -29,7 +29,7 @@ body {
   top: 0px;
   background: blueviolet;
   left: 0;
-  z-index: -1;
+  /* z-index: -1; */
   border-radius: 20px;
   display: block;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
@@ -49,7 +49,6 @@ body {
   height: var(--panelHeight); */
   position: relative;
   background-color: #111;
-  margin-top: 120px;
 }
 
 /* Chrome, Safari, Edge, Opera */

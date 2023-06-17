@@ -972,7 +972,7 @@ const sections = [
     {
         name: 'Diamond Shop',
         children: [
-            { id: 'specialmats', type: 'number', label: 'Special: Mats', max: 25, text: '/ 25' },
+            { id: 'specialmats', type: 'number', label: 'Special: Mats', max: 30, text: '/ 30' },
         ],
     },
     {
@@ -1220,10 +1220,10 @@ academyEffectorPortal.pages.default.dataLinkage =
 // };
 
 academyEffectorPortal.pages.default.initFunction = function(panel) {
-    const wrapper = createElement('div', 'section-2', { style : 'gap: 40px' })
+    const wrapper = createElement('div', 'section-2', { style : 'gap: 20px' })
 
     sections.forEach(({ name, children }) => {
-        const section = createElement()
+        const section = createElement('div', '', { style: 'padding: 20px; background-color: #222;'})
         const header = createElement('h3', '', null, name)
         section.appendChild(header)
 

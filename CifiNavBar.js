@@ -18,7 +18,7 @@ navBar.appendChild(navHighlight);
 
 const appName = document.createElement('h4')
 appName.innerText = 'CIFISuper by @sirrebrl'
-appName.style = 'margin: 20px;'
+appName.style = 'padding: 20px;'
 navBar.appendChild(appName)
 
 // Customizing buttons for CIFI Super Assistant
