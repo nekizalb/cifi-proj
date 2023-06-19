@@ -93,7 +93,7 @@ const blankPlayer =
         0, // (22) Quadratic
         0, // (23) Layering
         0, // (24) Torn
-        0, // (25) Duplicating
+        0, // (25) Fabricating
         0, // (26) Wonderous
         0, // (27) Sharp
         0, // (28) Sly
