@@ -4,13 +4,14 @@ let durationOptions = [
     ['4-h', '4 Hours'],
     ['6-h', '6 Hours'],
     ['12-h', '12 Hours'],
+    ['18-h', '18 Hours'],
     ['1-d', '1 Day'],
     ['2-d', '2 Days'],
     ['3-d', '3 Days'],
     ['4-d', '4 Days'],
     ['5-d', '5 Days'],
     ['7-d', '7 Days'],
-    ['14-d', '14 Days'],
+    ['10-d', '10 Days'],
 ]
 
 let academyFarmPortal =
@@ -1030,24 +1031,24 @@ function clearMissions()
 function populateYield()
 {
     let yieldData = CalculateFarmYields();
-    const duration = parseInt((playerData.academy.farmYieldSelected || '1-h').split('-')[0], 10)
-    let rateData =
-    {
-        // missionRate: yieldData.missionYield / duration,
-        // apRate: yieldData.apYield / duration,
-        // matRate: yieldData.matYield.map(yieldValue => {
-        //     let rateValue = yieldValue / duration;
-        //     if (rateValue >= 1000)
-        //     {
-        //         rateValue = rateValue.toExponential(2);
-        //     }
-        //     else
-        //     {
-        //         rateValue = rateValue.toFixed(2);
-        //     }
-        //     return rateValue;
-        // })
-    };
+    // const duration = parseInt((playerData.academy.farmYieldSelected || '1-h').split('-')[0], 10)
+    // let rateData =
+    // {
+    //     missionRate: yieldData.missionYield / duration,
+    //     apRate: yieldData.apYield / duration,
+    //     matRate: yieldData.matYield.map(yieldValue => {
+    //         let rateValue = yieldValue / duration;
+    //         if (rateValue >= 1000)
+    //         {
+    //             rateValue = rateValue.toExponential(2);
+    //         }
+    //         else
+    //         {
+    //             rateValue = rateValue.toFixed(2);
+    //         }
+    //         return rateValue;
+    //     })
+    // };
     // if (rateData.missionRate >= 1000)
     // {
     //     rateData.missionRate = rateData.missionRate.toExponential(2);
@@ -1060,14 +1061,14 @@ function populateYield()
     {
         yieldData.missionYield = yieldData.missionYield.toExponential(2);
     }
-    if (yieldData.apYield >= 1000)
-    {
-        yieldData.apYield = yieldData.apYield.toExponential(2);
-    }
-    else
-    {
-        yieldData.apYield = yieldData.apYield.toFixed(2);
-    }
+    // if (yieldData.apYield >= 1000)
+    // {
+    //     yieldData.apYield = yieldData.apYield.toExponential(2);
+    // }
+    // else
+    // {
+    //     yieldData.apYield = yieldData.apYield.toFixed(2);
+    // }
     // if (rateData.apRate >= 1000)
     // {
     //     rateData.apRate = rateData.apRate.toExponential(2);
@@ -1083,7 +1084,7 @@ function populateYield()
         }
         else
         {
-            yieldValue = yieldValue.toFixed(2);
+            yieldValue = yieldValue;
         }
         return yieldValue;
     });

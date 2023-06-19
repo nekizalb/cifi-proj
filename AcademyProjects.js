@@ -216,7 +216,7 @@ let academyProjectPortal =
     }
 };
 
-const maxProjects = 30
+const maxProjects = 25
 const projData = [
     ['Storage Facility', 'storagelevel', 'storagegoal'],
     ['Transfer Wires', 'transferlevel', 'transfergoal'],
@@ -382,7 +382,9 @@ academyProjectPortal.pages.default.initFunction = function(panel)
     })
 
     const datarow = createElement('tr')
-    datarow.appendChild(createElement('td', '', { colSpan: 2 }))
+    const bpcell = createElement('td', 'text-end', { colSpan: 1 })
+    portalPanel.bpRequirement = bpcell
+
     const datacell = createElement('td', '', { colSpan: 32 })
 
     const projectnumdata = createElement('label', 'd-inline-block', { id: 'totalnew', style: 'margin-right: 20px'})
@@ -392,6 +394,8 @@ academyProjectPortal.pages.default.initFunction = function(panel)
     portalPanel.bpnew = bpnumdata
     datacell.appendChild(bpnumdata)
 
+    datarow.appendChild(bpcell)
+    datarow.appendChild(createElement('td'))
     datarow.appendChild(datacell)
     tbody.appendChild(datarow)
 
@@ -560,7 +564,9 @@ function generateRunYield()
         portalPanel.theoreticals.push(Math.min(maxLevel, 30));
         for (let level = 1; level <= 30; level++)
         {
-            portalPanel[`setter${projects[projectID]}${level}`].dataset.setting = (level <= maxLevel ? 2 : 0);
+            if (portalPanel[`setter${projects[projectID]}${level}`]) {
+                portalPanel[`setter${projects[projectID]}${level}`].dataset.setting = (level <= maxLevel ? 2 : 0);
+            }
         }
         portalPanel[`${projects[projectID]}goal`].innerText = portalPanel.projectConfigs[projectID].currentLevel;
         portalPanel[`${projects[projectID]}cost`].innerHTML = 'Current Cost: ' + config.getStartCost().map((v, i) => {
@@ -594,9 +600,9 @@ function setProjectLevel(project, level, setting)
         console.log(`Project: ${projects[i]}`);
         for (let mat = 0; mat < 8; mat++)
         {
-            console.log(portalPanel.storehouse.spent[mat].toExponential(2) + ' + ' + projectCosts[mat].toExponential(2));
+            // console.log(portalPanel.storehouse.spent[mat].toExponential(2) + ' + ' + projectCosts[mat].toExponential(2));
             portalPanel.storehouse.spent[mat] += projectCosts[mat];
-            console.log('= ' + portalPanel.storehouse.spent[mat].toExponential(2));
+            // console.log('= ' + portalPanel.storehouse.spent[mat].toExponential(2));
         }
 
         totalNew += (portalPanel.projectConfigs[i].currentLevel - portalPanel.projectConfigs[i].startLevel)
@@ -618,10 +624,13 @@ function setProjectLevel(project, level, setting)
             else if (setLevel <= maxLevel) setting = 2;
             else if (setLevel <= theoretical) setting = 1;
 
-            portalPanel[`setter${projects[projectID]}${setLevel}`].dataset.setting = setting;
+            if (portalPanel[`setter${projects[projectID]}${setLevel}`]) {
+                portalPanel[`setter${projects[projectID]}${setLevel}`].dataset.setting = setting;
+            }
         }
         portalPanel[`${projects[projectID]}goal`].innerText = portalPanel.projectConfigs[projectID].currentLevel;
     }
+    UpdateBP()
 }
 
 function resumeLevels()
@@ -679,11 +688,33 @@ function resumeLevels()
             else if (setLevel <= maxLevel) setting = 2;
             else if (setLevel <= theoretical) setting = 1;
 
-            portalPanel[`setter${projects[projectID]}${setLevel}`].dataset.setting = setting;
+            if (portalPanel[`setter${projects[projectID]}${setLevel}`]) {
+                portalPanel[`setter${projects[projectID]}${setLevel}`].dataset.setting = setting;
+            }
         }
         portalPanel[`${projects[projectID]}goal`].innerText = portalPanel.projectConfigs[projectID].currentLevel;
     }
 
     portalPanel.totalnew.innerText = `+ ${totalNew} proj`;
     portalPanel.bpnew.innerText = `+ ${newBp} bp`;
+    UpdateBP()
+}
+
+function UpdateBP() {
+    const totalBp = portalPanel.projectConfigs.map(({ startLevel }, projectId) => (startLevel || 0) * GameDB.academy.projects[projectId].bpCount)
+        .reduce((a, v) => a + v, 0)
+
+    let currentBp = totalBp
+    let neededBp = 0
+
+    for (let i = 0; i < GameDB.academy.bpRequirements.length; i++) {
+        neededBp = GameDB.academy.bpRequirements[i]
+        if (currentBp >= neededBp) {
+            currentBp -= neededBp
+        } else {
+            break
+        }
+    }
+
+    portalPanel.bpRequirement.innerText = `Current BP: ${currentBp} / ${neededBp}`
 }

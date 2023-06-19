@@ -38,7 +38,7 @@ createNavButton('academy', "Academy", 'rgba(255, 255, 255, 1)'); // 8
     createNavButton('academy-effectors', "Effectors", 'rgba(255, 255, 255, 1)', 'academy'); // 9
     createNavButton('academy-farms', "Farms", 'rgba(255, 255, 255, 1)', 'academy'); // 9
     createNavButton('academy-projects', "Projects", 'rgba(255, 255, 255, 1)', 'academy'); // 9
-createNavButton('colors', "Color Profile", 'rgba(255, 255, 255, 1)');
+createNavButton('colors', "Settings", 'rgba(255, 255, 255, 1)');
 //     createNavButton('academy-projects', "Projects", 'rgba(255, 255, 255, 1)', 'academy'); // 10
 //     createNavButton('academy-gear', "Gear", 'rgba(255, 255, 255, 1)', 'academy'); // 11
 //     createNavButton('academy-badges', "CMs & Badges", 'rgba(255, 255, 255, 1)', 'academy'); // 12

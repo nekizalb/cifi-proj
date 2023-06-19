@@ -95,7 +95,68 @@ colorProfilePortal.pages.default.dataLinkage =
     get academyproj3() { return playerData.colorProfile.academyProjects[3]; }
 }
 
-function initColorProfile()
+const createButton = (label) => {
+    return createElement('button', 'btn btn-secondary', { type: 'button', style: 'display: block; margin: 20px auto; min-width: 340px' }, label)
+}
+
+const pad = (number, length = 2) => {
+    return `${number}`.padStart(length, '0')
+}
+
+const saveSettings = () => {
+    const link = document.createElement('a');
+    const file = new Blob([JSON.stringify(playerData)], { type: 'text/plain' });
+    link.href = URL.createObjectURL(file);
+    const date = new Date()
+    link.download = `cifisuper-${date.getFullYear()}${pad(date.getMonth()+1)}${pad(date.getDate())}${pad(date.getHours())}${pad(date.getMinutes())}${pad(date.getSeconds())}.txt`;
+    link.click();
+    URL.revokeObjectURL(link.href);
+}
+
+const loadSettings = (e) => {
+    const fileList = e.target.files[0]
+
+    const loadFile = (file) => {
+        return new Promise((resolve, reject) => {
+            console.log(file.type)
+            if (file.type && !file.type.startsWith('text/')) {
+                reject()
+                return
+            }
+
+            const reader = new FileReader();
+            reader.addEventListener('load', (event) => {
+                try {
+                    const rawData = event.target.result
+                    const data = JSON.parse(rawData)
+                    if (!data.version) {
+                        reject()
+                        return
+                    }
+
+                    delete data.activePortal
+                    SavePlayerData(data)
+                    resolve()
+                } catch (e) {
+                    console.log(e)
+                    reject()
+                }
+            });
+            reader.readAsText(file);
+        })
+    }
+
+    loadFile(e.target.files[0])
+        .then(() => location.reload())
+        .catch(() => alert('Load failed!'))
+}
+
+const resetSettings = () => {
+    localStorage.clear()
+    location.reload()
+}
+
+function initColorProfile(panel)
 {
     let cellSize = portalPanel.height / colorProfilePortal.verticalCells;
     let cssSheet = portalPanel.panelCSS.sheet;
@@ -132,6 +193,37 @@ function initColorProfile()
     ].join('');
 
     cssSheet.insertRule(`${selector} { ${properties} }`);
+
+    const wrapper = createElement('div', 'section-2', { style: 'gap: 20px' })
+    panel.appendChild(wrapper)
+
+    const section = createElement('div', '', { style: 'padding: 20px' })
+    wrapper.appendChild(section)
+
+    const header = createElement('h3')
+    header.innerHTML = 'Data <small class="text-body-secondary">(experimental)</small>'
+    section.appendChild(header)
+
+    const fileinput = createElement('input', '', {
+        id: 'fileinput',
+        type: 'file',
+        style: 'display: none',
+        accept: '.txt,.json',
+    })
+    section.appendChild(fileinput)
+    // const load = createElement('label', 'form-label', null, 'Load Data and Reload app')
+    const load = createButton('Load Data and Reload app')
+    const save = createButton('Save Data')
+    const reset = createButton('Reset Data and Reload app')
+
+    load.addEventListener('click', () => fileinput.click())
+    fileinput.addEventListener('change', loadSettings)
+    save.addEventListener('click', saveSettings)
+    reset.addEventListener('click', resetSettings)
+
+    section.appendChild(load)
+    section.appendChild(save)
+    section.appendChild(reset)
 }
 
 function updateColorProfile()

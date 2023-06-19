@@ -287,9 +287,9 @@ const blankPlayer =
 // Initializes to blank save in absence of preexisting save
 let playerData = JSON.parse(localStorage.getItem('CifiSuperSave')) || blankPlayer;
 
-function SavePlayerData()
+function SavePlayerData(data)
 {
-    localStorage.setItem('CifiSuperSave', JSON.stringify(playerData));
+    localStorage.setItem('CifiSuperSave', JSON.stringify(data || playerData));
 }
 
 function LoadPlayerData()

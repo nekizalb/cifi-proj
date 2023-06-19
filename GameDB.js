@@ -214,6 +214,18 @@ let GameDB =
                 bpCount: 3,
             }
         ],
+        bpRequirements: [
+            10, 10, 10, // cm1
+            20, 20, 20, // cm4
+            30, 30, 30, // cm7
+            40, 40, 40, // cm10
+            50, 50, 50, // cm13
+            60, 60, 60, // cm16
+            80, 80, 80, // cm19
+            100, 100, 100, // cm22
+            120, 120, 120, // cm25
+            150, 150, 150, // cm28
+        ],
         projectNextLevelCost(projectID, level, costDiv)
         {
             let project = this.projects[projectID];
