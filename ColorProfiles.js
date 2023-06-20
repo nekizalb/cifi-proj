@@ -108,7 +108,7 @@ const saveSettings = () => {
     const file = new Blob([JSON.stringify(playerData)], { type: 'text/plain' });
     link.href = URL.createObjectURL(file);
     const date = new Date()
-    link.download = `cifisuper-${date.getFullYear()}${pad(date.getMonth()+1)}${pad(date.getDate())}${pad(date.getHours())}${pad(date.getMinutes())}${pad(date.getSeconds())}.txt`;
+    link.download = `cifiprojplanner-${date.getFullYear()}${pad(date.getMonth()+1)}${pad(date.getDate())}${pad(date.getHours())}${pad(date.getMinutes())}${pad(date.getSeconds())}.txt`;
     link.click();
     URL.revokeObjectURL(link.href);
 }
@@ -152,7 +152,7 @@ const loadSettings = (e) => {
 }
 
 const resetSettings = () => {
-    localStorage.clear()
+    ResetPlayerData()
     location.reload()
 }
 

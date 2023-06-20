@@ -17,7 +17,7 @@ navBar.addEventListener('mouseleave', deHighlight);
 navBar.appendChild(navHighlight);
 
 const appName = document.createElement('h6')
-appName.innerText = 'CIFISuper by @sirrebrl'
+appName.innerText = 'Project Planner by @sirrebrl'
 appName.style = 'padding: 20px;'
 navBar.appendChild(appName)
 

@@ -284,17 +284,24 @@ const blankPlayer =
     }
 };
 
+const LSKey = 'CifiProjSave'
+
 // Initializes to blank save in absence of preexisting save
-let playerData = JSON.parse(localStorage.getItem('CifiSuperSave')) || blankPlayer;
+let playerData = JSON.parse(localStorage.getItem(LSKey)) || blankPlayer;
 
 function SavePlayerData(data)
 {
-    localStorage.setItem('CifiSuperSave', JSON.stringify(data || playerData));
+    localStorage.setItem(LSKey, JSON.stringify(data || playerData));
 }
 
 function LoadPlayerData()
 {
-    playerData = JSON.parse(localStorage.getItem('CifiSuperSave'))
+    playerData = JSON.parse(localStorage.getItem(LSKey))
+}
+
+function ResetPlayerData()
+{
+    localStorage.removeItem(LSKey)
 }
 
 // Add new properties to player data object upon opening newer version of Super Assistant
