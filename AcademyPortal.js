@@ -1,3 +1,11 @@
+function formatInteger(i) {
+    try {
+        return Intl.NumberFormat().format(i)
+    } catch (e) {
+        return `${i}`
+    }
+}
+
 function CalculateFarmTimes(getRawTime = false)
 {
     let farmData = [];
@@ -254,52 +262,8 @@ function CalculateFarmYields(giveTotal = false)
         return duration
     }
 
-    let duration = getDuration() || 60 * 60
-
-    let staticAPbonus = Math.pow(1.01, playerData.loopMods.beyonders);
-    staticAPbonus *= (GameDB.bugs.destruction ? (3 * playerData.loopMods.destruction + (playerData.loopMods.destruction === 0)) : Math.pow(3, playerData.loopMods.destruction));
-    staticAPbonus *= Math.pow(1.1, playerData.loopMods.combatMod);
-    staticAPbonus *= Math.pow(0.005 * playerData.loopMods.zeusCrewMotivation + 1, playerData.fleet.zeus.crew);
-    staticAPbonus *= (0.1 * playerData.fleet.zeus.installs[1] * playerData.fleet.zeus.crew + 1);
-    staticAPbonus *= (0.01 * playerData.fleet.zeus.installs[6] * playerData.fleet.zeus.crew + 1);
-    staticAPbonus *= Math.pow(1.35, Math.max(0, playerData.shardMilestones[17] - 70) * (playerData.shardMilestones[17] > 74));
-    staticAPbonus *= Math.pow(1.02, playerData.shardMilestones[20]);
-    staticAPbonus *= Math.pow(1.07, Math.max(0, playerData.shardMilestones[22] - 45) * (playerData.shardMilestones[22] > 49));
-    staticAPbonus *= (
-        GameDB.bugs.wonderous ?
-        Math.pow(1.063, Math.max(0, playerData.shardMilestones[25] - 8) * (playerData.shardMilestones[25] > 9)) :
-        Math.pow(1.063, Math.max(0, playerData.shardMilestones[25] - 25) * (playerData.shardMilestones[25] > 29))
-    );
-    staticAPbonus *= (
-        GameDB.bugs.wonderous ?
-        Math.pow(1.15, Math.max(0, playerData.shardMilestones[25] - 70) * (playerData.shardMilestones[25] > 74)) :
-        Math.pow(1.063, Math.max(0, playerData.shardMilestones[25] - 115) * (playerData.shardMilestones[25] > 119))
-    );
-    staticAPbonus *= ((playerData.research.mission[0] > 2 ? 1.3 : 1) * (playerData.research.mission[0] > 4 ? 1.3 : 1));
-    staticAPbonus *= (playerData.research.perfection[0] > 3 ? 10 : 1);
-    staticAPbonus *= ((playerData.research.mission[1] > 2 ? 1.5 : 1) * (playerData.research.mission[1] > 4 ? 1.5 : 1));
-    staticAPbonus *= (playerData.research.perfection[1] > 3 ? 10 : 1);
-    staticAPbonus *= ((playerData.research.mission[2] > 2 ? 2 : 1) * (playerData.research.mission[2] > 4 ? 3 : 1));
-    staticAPbonus *= (playerData.research.perfection[2] > 3 ? 50 : 1);
-    staticAPbonus *= ((playerData.research.mission[4] > 2 ? 3 : 1) * (playerData.research.mission[4] > 4 ? 4 : 1));
-    // staticAPbonus *= (playerData.research.perfection[3] > 3 ? 99 : 1);
-    staticAPbonus *= playerData.academy.cmAP;
-    staticAPbonus *= (0.5 * (playerData.academy.gearSets[1] === 4) + 1);
-    staticAPbonus *= (0.5 * (playerData.academy.gearSets[2] === 5) + 1);
-    staticAPbonus *= (0.5 * (playerData.academy.gearSets[3] === 5) + 1);
-    staticAPbonus *= (0.5 * (playerData.academy.gearSets[4] === 5) + 1);
-    staticAPbonus *= Math.pow(1.25, playerData.academy.projectLevels[5]);
-    staticAPbonus *= playerData.academy.exchanges.dataCubes * 0.005 * Math.pow(1.25, playerData.loopMods.exodus) * Math.pow(1.5, playerData.loopMods.allExchange) * Math.pow(1.1, Math.floor(playerData.academy.exchanges.dataCubes / 100));
-    staticAPbonus *= Math.pow(1.05, playerData.diamonds.special.ap);
-    staticAPbonus *= 0.18 * playerData.diamonds.cards.nora + 1;
-    staticAPbonus *= 0.4 * playerData.diamonds.cards.omega + 1;
-    staticAPbonus *= 0.15 * playerData.diamonds.cards.rigel + 1;
-    staticAPbonus *= 0.2 * playerData.diamonds.cards.utopia + 1;
-    staticAPbonus *= 0.1 * playerData.diamonds.cards.zion + 1;
-    staticAPbonus *= GameDB.academy.getCampaignAP(playerData.academy.campaignsComplete);
-    staticAPbonus *= GameDB.fleet.zeus.evoPowers[playerData.fleet.zeus.evo];
-    staticAPbonus *= Math.pow(1.6, playerData.academy.projectLevels[6]);
-    staticAPbonus *= Math.pow(1.9, playerData.academy.projectLevels[7]);
+    let totalDuration = getDuration() || 60 * 60
+    let duration = totalDuration
 
     let staticMatBonus = GetStaticMatBonus()
     let dynamicMatBonus = GetDynamicMatBonus();
@@ -315,7 +279,6 @@ function CalculateFarmYields(giveTotal = false)
             let newFarm =
             {
                 id: GameDB.academy.farms[i].id,
-                staticAP: GameDB.academy.farms[i].baseAP * staticAPbonus,
                 staticMats: GameDB.academy.farms[i].baseMats.map(mat => mat * staticMatBonus),
                 runTime: farmTimes[i].time,
                 activeTime: farmTimes[i].time
@@ -325,23 +288,18 @@ function CalculateFarmYields(giveTotal = false)
     }
 
     let missionYield = 0;
-    let apYield = 0;
     let matYield = [0, 0, 0, 0, 0, 0, 0, 0];
-    if (giveTotal)
-    {
-        apYield = playerData.academy.ap;
+    if (giveTotal) {
         matYield = [...playerData.academy.stock];
     }
     let rankProgress = playerData.fleet.zeus.rank.progress;
     let yieldRank = playerData.fleet.zeus.rank.current;
 
-    if (farms.length === 0)
-    {
-        return {missionYield, apYield, matYield};
+    if (farms.length === 0) {
+        return { missionYield, matYield };
     }
 
-    while (duration > 0)
-    {
+    while (duration > 0) {
         farms.sort((a,b) => { return a.activeTime - b.activeTime; });
         let subTime = farms[0].activeTime;
 
@@ -355,7 +313,6 @@ function CalculateFarmYields(giveTotal = false)
             {
                 farms[i].activeTime = farms[i].runTime;
                 missionYield++;
-                apYield += farms[i].staticAP;
                 for (let mat = 0; mat < farms[i].staticMats.length; mat++)
                 {
                     matYield[mat] += farms[i].staticMats[mat] * dynamicMatBonus;
@@ -375,7 +332,7 @@ function CalculateFarmYields(giveTotal = false)
         duration -= subTime;
     }
 
-    return {missionYield, apYield, matYield};
+    return { missionYield, matYield, duration: totalDuration };
 }
 
 class StoreHouse

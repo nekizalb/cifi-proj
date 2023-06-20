@@ -27,519 +27,17 @@ let academyFarmPortal =
     pages: {
         list: ['default'],
         default: {
-            headers: [
-                // {
-                //     text: 'PERSONNEL',
-                //     top: 1, left: 1,
-                //     height: 3, width: 12
-                // },
-                // {
-                //     text: 'FARMS',
-                //     top: 1, left: 27,
-                //     height: 3, width: 6
-                // }
-            ],
-            labels: [
-                // {
-                //     text: 'power',
-                //     left: 12, top: 5,
-                //     height: 2, width: 5
-                // },
-                // {
-                //     text: 'owned',
-                //     left: 18, top: 5,
-                //     height: 2, width: 6
-                // },
-                // {
-                //     text: 'mining pods',
-                //     left: 2, top: 8,
-                //     height: 2, width: 8
-                // },
-                // {
-                //     text: 'fireteams',
-                //     left: 3, top: 11,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     text: 'titans',
-                //     left: 5, top: 14,
-                //     height: 2, width: 5
-                // },
-                // {
-                //     text: 'corvettes',
-                //     left: 3, top: 17,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     text: 'farm',
-                //     left: 28, top: 5,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: 'total',
-                //     left: 33, top: 5,
-                //     height: 2, width: 5
-                // },
-                // {
-                //     text: 'pod',
-                //     left: 42, top: 5,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: 'fire',
-                //     left: 47, top: 5,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: 'titan',
-                //     left: 52, top: 5,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: 'corv',
-                //     left: 57, top: 5,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: 'run time',
-                //     left: 62, top: 5,
-                //     height: 2, width: 6
-                // },
-                // {
-                //     text: '1-1',
-                //     left: 28, top: 8,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: '1-2',
-                //     left: 28, top: 11,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: '1-3',
-                //     left: 28, top: 14,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: '2-1',
-                //     left: 28, top: 17,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: '2-2',
-                //     left: 28, top: 20,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: '2-3',
-                //     left: 28, top: 23,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: '3-1',
-                //     left: 28, top: 26,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: '3-2',
-                //     left: 28, top: 29,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: '3-3',
-                //     left: 28, top: 32,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: 'average gains per',
-                //     left: 72, top: 1,
-                //     height: 2, width: 12
-                // },
-                // {
-                //     text: 'averaged over',
-                //     left: 72, top: 4,
-                //     height: 2, width: 11
-                // },
-                // {
-                //     text: 'stock',
-                //     left: 82, top: 7,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     text: 'gain rate',
-                //     left: 91, top: 7,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     text: 'yield',
-                //     left: 98, top: 7,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     text: 'missions',
-                //     left: 76, top: 10,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: 'AP',
-                //     left: 75, top: 13,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     text: 'difar',
-                //     left: 78, top: 16,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: 'kento',
-                //     left: 77, top: 19,
-                //     height: 2, width: 5
-                // },
-                // {
-                //     text: 'chromium',
-                //     left: 75, top: 22,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     text: 'exon',
-                //     left: 78, top: 25,
-                //     height: 2, width: 4
-                // },
-                // {
-                //     text: 'organium',
-                //     left: 75, top: 28,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     text: 'adamorphium',
-                //     left: 72, top: 31,
-                //     height: 2, width: 10
-                // },
-                // {
-                //     text: 'moskom',
-                //     left: 76, top: 34,
-                //     height: 2, width: 6
-                // },
-                // {
-                //     text: 'darkseid',
-                //     left: 76, top: 37,
-                //     height: 2, width: 6
-                // }
-            ],
-            inputs: [
-                // {
-                //     id: 'podspower',
-                //     type: 'number',
-                //     left: 12, top: 7.25,
-                //     width: 5, height: 2
-                // },
-                // {
-                //     id: 'podsowned',
-                //     type: 'number',
-                //     left: 18, top: 7.25,
-                //     width: 6, height: 2
-                // },
-                // {
-                //     id: 'fireteamspower',
-                //     type: 'number',
-                //     left: 12, top: 10.25,
-                //     width: 5, height: 2
-                // },
-                // {
-                //     id: 'fireteamsowned',
-                //     type: 'number',
-                //     left: 18, top: 10.25,
-                //     width: 6, height: 2
-                // },
-                // {
-                //     id: 'titanspower',
-                //     type: 'number',
-                //     left: 12, top: 13.25,
-                //     width: 5, height: 2
-                // },
-                // {
-                //     id: 'titansowned',
-                //     type: 'number',
-                //     left: 18, top: 13.25,
-                //     width: 6, height: 2
-                // },
-                // {
-                //     id: 'corvettespower',
-                //     type: 'number',
-                //     left: 12, top: 16.25,
-                //     width: 5, height: 2
-                // },
-                // {
-                //     id: 'corvettesowned',
-                //     type: 'number',
-                //     left: 18, top: 16.25,
-                //     width: 6, height: 2
-                // },
-                // {
-                //     id: 'duration',
-                //     type: 'number',
-                //     left: 84, top: 3.25,
-                //     width: 5, height: 2
-                // },
-                // {
-                //     id: 'ap',
-                //     type: 'text',
-                //     left: 83, top: 12.25,
-                //     width: 7, height: 2
-                // },
-                // {
-                //     id: 'difar',
-                //     type: 'text',
-                //     left: 83, top: 15.25,
-                //     width: 7, height: 2
-                // },
-                // {
-                //     id: 'kento',
-                //     type: 'text',
-                //     left: 83, top: 18.25,
-                //     width: 7, height: 2
-                // },
-                // {
-                //     id: 'chromium',
-                //     type: 'text',
-                //     left: 83, top: 21.25,
-                //     width: 7, height: 2
-                // },
-                // {
-                //     id: 'exon',
-                //     type: 'text',
-                //     left: 83, top: 24.25,
-                //     width: 7, height: 2
-                // },
-                // {
-                //     id: 'organium',
-                //     type: 'text',
-                //     left: 83, top: 27.25,
-                //     width: 7, height: 2
-                // },
-                // {
-                //     id: 'adamorphium',
-                //     type: 'text',
-                //     left: 83, top: 30.25,
-                //     width: 7, height: 2
-                // },
-                // {
-                //     id: 'moskom',
-                //     type: 'text',
-                //     left: 83, top: 33.25,
-                //     width: 7, height: 2
-                // },
-                // {
-                //     id: 'darkseid',
-                //     type: 'text',
-                //     left: 83, top: 36.25,
-                //     width: 7, height: 2
-                // }
-            ],
-            checkboxes: [
-
-            ],
-            displays: [
-                // {
-                //     id: 'rankrequirement',
-                //     left: 16, top: 6.75,
-                //     width: 7, height: 2
-                // },
-                // {
-                //     id: 'yieldtimeco',
-                //     left: 90, top: 3.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'missionrate',
-                //     left: 92, top: 9.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'aprate',
-                //     left: 92, top: 12.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'difarrate',
-                //     left: 92, top: 15.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'kentorate',
-                //     left: 92, top: 18.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'chromiumrate',
-                //     left: 92, top: 21.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'exonrate',
-                //     left: 92, top: 24.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'organiumrate',
-                //     left: 92, top: 27.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'adamorphiumrate',
-                //     left: 92, top: 30.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'moskomrate',
-                //     left: 92, top: 33.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'darkseidrate',
-                //     left: 92, top: 36.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'missionyield',
-                //     left: 101, top: 9.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'apyield',
-                //     left: 101, top: 12.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'difaryield',
-                //     left: 101, top: 15.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'kentoyield',
-                //     left: 101, top: 18.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'chromiumyield',
-                //     left: 101, top: 21.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'exonyield',
-                //     left: 101, top: 24.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'organiumyield',
-                //     left: 101, top: 27.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'adamorphiumyield',
-                //     left: 101, top: 30.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'moskomyield',
-                //     left: 101, top: 33.75,
-                //     height: 2, width: 7
-                // },
-                // {
-                //     id: 'darkseidyield',
-                //     left: 101, top: 36.75,
-                //     height: 2, width: 7
-                // }
-            ],
-            buttons: [
-                // {
-                //     text: 'Maximize Mission Rate',
-                //     left: 38, top: 35,
-                //     width: 23, height: 3,
-                //     function: maximizeMissionRate
-                // },
-                // {
-                //     text: 'Clear Missions',
-                //     left: 38, top: 42,
-                //     width: 23, height: 2,
-                //     function: clearMissions
-                // }
-            ],
-            toggles: [
-                // {
-                //     id: 'yieldtime',
-                //     settings: [
-                //         {
-                //             text: 'minute',
-                //             color: '#FF8888'
-                //         },
-                //         {
-                //             text: 'hour',
-                //             color: '#88FF88'
-                //         },
-                //         {
-                //             text: 'day',
-                //             color: '#8888FF'
-                //         }
-                //     ],
-                //     left: 85, top: 0.5,
-                //     width: 8, height: 2
-                // }
-            ],
-            lockboxes: []
+            headers: [],
+            labels: [],
+            inputs: [],
+            checkboxes: [],
+            displays: [],
+            buttons: [],
+            toggles: [],
+            lockboxes: [],
         }
     }
 };
-
-// Add farm personnel inputs, and total personnel & run time displays
-// for (let farmNum = 0; farmNum < GameDB.academy.farms.length; farmNum++)
-// {
-    // let planet = Math.floor(farmNum / 3);
-    // let farm = farmNum - (planet * 3);
-    // let personnel = GameDB.academy.personnel;
-
-    // let initLeft = 43;
-    // let stepLeft = 5;
-    // let initTop = 7.25;
-    // let stepTop = 3;
-
-    // let farmPopObj =
-    // {
-    //     id: `farm${planet}${farm}total`,
-    //     left: 35, top: initTop + (farmNum * stepTop) + 0.5,
-    //     width: 5, height: 2
-    // };
-    // academyFarmPortal.pages.default.displays.push(farmPopObj);
-
-    // let farmLockObj =
-    // {
-    //     id: `farm${planet}${farm}lock`,
-    //     left: 40, top: initTop + (farmNum * stepTop),
-    //     width: 2, height: 2
-    // };
-    // academyFarmPortal.pages.default.lockboxes.push(farmLockObj);
-
-    // let farmTimeObj =
-    // {
-    //     id: `farm${planet}${farm}time`,
-    //     left: 64, top: initTop + (farmNum * stepTop) + 0.5,
-    //     width: 8, height: 2
-    // };
-    // academyFarmPortal.pages.default.displays.push(farmTimeObj);
-
-    // for (let personnelNum = 0; personnelNum < personnel.length; personnelNum++)
-    // {
-    //     let nextObj =
-    //     {
-    //         id: `farm${planet}${farm}${personnel[personnelNum]}`,
-    //         type: 'number',
-    //         left: initLeft + (personnelNum * stepLeft),
-    //         top: initTop + (farmNum * stepTop),
-    //         width: 4, height: 2
-    //     };
-    //     academyFarmPortal.pages.default.inputs.push(nextObj);
-    // }
-// }
 
 academyFarmPortal.pages.default.dataLinkage =
 {
@@ -649,6 +147,7 @@ const createElement = (tag = 'div', className = '', attr = {}, innerText = '') =
 academyFarmPortal.pages.default.initFunction = function(panel)
 {
     const flex = createElement('div', 'section-2')
+    const flex2 = createElement('div', 'section-2')
 
     const createPersonel = () => {
         const section = createElement()
@@ -790,10 +289,9 @@ academyFarmPortal.pages.default.initFunction = function(panel)
         return section
     }
 
-    const createOutput = () => {
+    const createResult = () => {
         const section = createElement()
-        const header = createElement('h3', null, null, 'Output')
-        section.appendChild(header)
+        section.appendChild(createElement('h3', null, null, 'Result'))
 
         const unit = createElement('div', 'row g-3')
         unit.innerHTML = '<div class="col-auto"><label class="col-form-label">duration</label></div>'
@@ -818,7 +316,7 @@ academyFarmPortal.pages.default.initFunction = function(panel)
         table.appendChild(tbody)
 
         const rowData = [
-            ['Mission', null, 'missionyield'],
+            ['Missions', null, 'missionyield'],
             ['Difar', 'difar', 'difaryield'],
             ['Kento', 'kento', 'kentoyield'],
             ['Chromium', 'chromium', 'chromiumyield'],
@@ -861,16 +359,34 @@ academyFarmPortal.pages.default.initFunction = function(panel)
         return section
     }
 
+    const createZeusRank = () => {
+        const section = createElement()
+        section.appendChild(createElement('h3', null, null, 'Zeus'))
+
+        const rankt = createElement('table', 'table table-borderless', { style: 'margin-top: 20px' })
+        rankt.innerHTML = `
+            <thead><tr>
+                <th>Rank</th>
+                <th class="text-center">Req</th>
+                <th class="text-center">Time</th>
+                <th class="text-center">Total</th>
+            </tr></thead>`
+        const rankBody = createElement('tbody')
+        portalPanel.rankTable = rankBody
+        rankt.appendChild(rankBody)
+
+        section.appendChild(rankt)
+
+        return section
+    }
+
     flex.appendChild(createPersonel())
     flex.appendChild(createFarms())
-    flex.appendChild(createOutput())
+    flex2.appendChild(createResult())
+    flex2.appendChild(createZeusRank())
     panel.appendChild(flex)
+    panel.appendChild(flex2)
 
-
-    // let setting = playerData.academy.farmYieldSetting.type;
-    // portalPanel.yieldtime.dataset.setting = setting;
-    // portalPanel.yieldtime.innerText = academyFarmPortal.pages.default.toggles[0].settings[setting].text;
-    // portalPanel.yieldtimeco.innerText = academyFarmPortal.pages.default.toggles[0].settings[setting].text + 's';
     PopulateTiming();
     populateYield();
 }
@@ -1031,52 +547,8 @@ function clearMissions()
 function populateYield()
 {
     let yieldData = CalculateFarmYields();
-    // const duration = parseInt((playerData.academy.farmYieldSelected || '1-h').split('-')[0], 10)
-    // let rateData =
-    // {
-    //     missionRate: yieldData.missionYield / duration,
-    //     apRate: yieldData.apYield / duration,
-    //     matRate: yieldData.matYield.map(yieldValue => {
-    //         let rateValue = yieldValue / duration;
-    //         if (rateValue >= 1000)
-    //         {
-    //             rateValue = rateValue.toExponential(2);
-    //         }
-    //         else
-    //         {
-    //             rateValue = rateValue.toFixed(2);
-    //         }
-    //         return rateValue;
-    //     })
-    // };
-    // if (rateData.missionRate >= 1000)
-    // {
-    //     rateData.missionRate = rateData.missionRate.toExponential(2);
-    // }
-    // else
-    // {
-    //     rateData.missionRate = rateData.missionRate.toFixed(2);
-    // }
-    if (yieldData.missionYield >= 1000)
-    {
-        yieldData.missionYield = yieldData.missionYield.toExponential(2);
-    }
-    // if (yieldData.apYield >= 1000)
-    // {
-    //     yieldData.apYield = yieldData.apYield.toExponential(2);
-    // }
-    // else
-    // {
-    //     yieldData.apYield = yieldData.apYield.toFixed(2);
-    // }
-    // if (rateData.apRate >= 1000)
-    // {
-    //     rateData.apRate = rateData.apRate.toExponential(2);
-    // }
-    // else
-    // {
-    //     rateData.apRate = rateData.apRate.toFixed(2);
-    // }
+    let duration = yieldData.duration
+
     yieldData.matYield = yieldData.matYield.map(yieldValue => {
         if (yieldValue > 1000)
         {
@@ -1089,20 +561,7 @@ function populateYield()
         return yieldValue;
     });
 
-
-    // portalPanel.missionrate.innerText = rateData.missionRate;
-    // portalPanel.aprate.innerText = rateData.apRate;
-    // portalPanel.difarrate.innerText = rateData.matRate[0];
-    // portalPanel.kentorate.innerText = rateData.matRate[1];
-    // portalPanel.chromiumrate.innerText = rateData.matRate[2];
-    // portalPanel.exonrate.innerText = rateData.matRate[3];
-    // portalPanel.organiumrate.innerText = rateData.matRate[4];
-    // portalPanel.adamorphiumrate.innerText = rateData.matRate[5];
-    // portalPanel.moskomrate.innerText = rateData.matRate[6];
-    // portalPanel.darkseidrate.innerText = rateData.matRate[7];
-
-    portalPanel.missionyield.innerText = yieldData.missionYield;
-    // portalPanel.apyield.innerText = yieldData.apYield;
+    portalPanel.missionyield.innerText = formatInteger(yieldData.missionYield);
     portalPanel.difaryield.innerText = yieldData.matYield[0];
     portalPanel.kentoyield.innerText = yieldData.matYield[1];
     portalPanel.chromiumyield.innerText = yieldData.matYield[2];
@@ -1111,4 +570,66 @@ function populateYield()
     portalPanel.adamorphiumyield.innerText = yieldData.matYield[5];
     portalPanel.moskomyield.innerText = yieldData.matYield[6];
     portalPanel.darkseidyield.innerText = yieldData.matYield[7];
+
+    genZeusRank(yieldData.missionYield, duration)
+}
+
+function formatTime(time) {
+    if (time > 3600 * 24) {
+        return `${(time / 3600 / 24).toFixed(2)} days`
+    }
+
+    if (time > 3600) {
+        const hour = Math.floor(time / 3600)
+        const min = Math.floor((time % 3600) / 60)
+        return `${hour} hour${hour > 1 ? 's' : ''} ${min} min${min > 1 ? 's' : ''}`
+    }
+
+    if (time > 60) {
+        const min = Math.floor(time / 60)
+        const sec = Math.floor((time % 60))
+        return `${min} min${min > 1 ? 's' : ''} ${sec} sec${sec > 1 ? 's' : ''}`
+    }
+
+    const sec = Math.floor(time)
+
+    return `${sec} sec${sec > 1 ? 's' : ''}`
+}
+
+function genZeusRank(missionCount, duration) {
+    const container = portalPanel.rankTable
+    container.innerHTML = ''
+
+    let missionLeft = missionCount
+    let rankProgress = playerData.fleet.zeus.rank.progress;
+    let yieldRank = playerData.fleet.zeus.rank.current;
+
+    let breaker = 20
+
+    let totalTime = 0
+
+    while ((rankProgress + missionLeft) > 0 && breaker-- > 0) {
+        if ((rankProgress + missionLeft) >= GameDB.fleet.zeus.rankRequirements[yieldRank]) {
+            let requirement = GameDB.fleet.zeus.rankRequirements[yieldRank];
+            if (rankProgress > 0) {
+                requirement -= rankProgress
+                rankProgress = 0
+            }
+
+            missionLeft -= requirement
+            yieldRank++;
+            console.log('missionLeft', missionLeft)
+            console.log('requirement', requirement)
+
+            const row = createElement('tr')
+            row.appendChild(createElement('td', '', null, yieldRank))
+            const time = requirement / missionCount * duration
+            row.appendChild(createElement('td', 'text-end', null, formatInteger(requirement)))
+            row.appendChild(createElement('td', 'text-end', null, formatTime(time)))
+            totalTime += time
+            row.appendChild(createElement('td', 'text-end', null, formatTime(totalTime)))
+
+            container.appendChild(row)
+        }
+    }
 }
