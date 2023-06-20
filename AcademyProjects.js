@@ -459,6 +459,7 @@ academyProjectPortal.pages.default.initFunction = function(panel)
     // }
 
     generateRunYield();
+    UpdateBP();
 }
 
 academyProjectPortal.pages.default.updateFunction = function(e)
@@ -470,42 +471,6 @@ academyProjectPortal.pages.default.updateFunction = function(e)
 
         // let currentSetting = playerData.academy.farmYieldSetting.type;
         // portalPanel.runtime.innerText = academyProjectPortal.pages.default.toggles[0].settings[currentSetting].text + (playerData.academy.farmYieldSetting.duration > 1 ? 's' : '');
-
-        generateRunYield();
-
-        return;
-    }
-
-    if (e.target.id.includes('runtime'))
-    {
-        let currentSetting = parseInt(e.target.dataset.setting);
-        let wrap = parseInt(e.target.dataset.wrap);
-        currentSetting++;
-        currentSetting = currentSetting % wrap;
-        e.target.dataset.setting = currentSetting;
-
-        portalPanel.dataLinkage[e.target.id] = currentSetting;
-
-        let duration = playerData.academy.farmYieldSetting.duration;
-        if (currentSetting === 0)
-        {
-            duration *= (60 * 24);
-        }
-        else if (currentSetting === 1)
-        {
-            duration /= 60;
-        }
-        else
-        {
-            duration /= 24;
-        }
-        duration = Math.round(duration * 1000) / 1000;
-
-        playerData.academy.farmYieldSetting.duration = duration;
-        portalPanel.duration.value = duration;
-        portalPanel.runtime.innerText = academyFarmPortal.pages.default.toggles[0].settings[currentSetting].text + (playerData.academy.farmYieldSetting.duration > 1 ? 's' : '');
-
-        SavePlayerData();
 
         generateRunYield();
 
@@ -549,6 +514,7 @@ academyProjectPortal.pages.default.updateFunction = function(e)
     SavePlayerData();
 
     generateRunYield();
+    UpdateBP();
 }
 
 function generateRunYield()
@@ -630,7 +596,6 @@ function setProjectLevel(project, level, setting)
         }
         portalPanel[`${projects[projectID]}goal`].innerText = portalPanel.projectConfigs[projectID].currentLevel;
     }
-    UpdateBP()
 }
 
 function resumeLevels()
@@ -697,7 +662,6 @@ function resumeLevels()
 
     portalPanel.totalnew.innerText = `+ ${totalNew} proj`;
     portalPanel.bpnew.innerText = `+ ${newBp} bp`;
-    UpdateBP()
 }
 
 function UpdateBP() {
