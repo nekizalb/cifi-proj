@@ -288,7 +288,9 @@ function CalculateFarmYields(giveTotal = false)
     }
 
     let missionYield = 0;
+    let missionContrib = {}
     let matYield = [0, 0, 0, 0, 0, 0, 0, 0];
+    let matContrib = [{}, {}, {}, {}, {}, {}, {}, {}]
     if (giveTotal) {
         matYield = [...playerData.academy.stock];
     }
@@ -296,7 +298,7 @@ function CalculateFarmYields(giveTotal = false)
     let yieldRank = playerData.fleet.zeus.rank.current;
 
     if (farms.length === 0) {
-        return { missionYield, matYield };
+        return { missionYield, missionContrib, matYield, matContrib };
     }
 
     while (duration > 0) {
@@ -313,9 +315,20 @@ function CalculateFarmYields(giveTotal = false)
             {
                 farms[i].activeTime = farms[i].runTime;
                 missionYield++;
+                if (missionContrib[farms[i].id]) {
+                    missionContrib[farms[i].id]++
+                } else {
+                    missionContrib[farms[i].id] = 1
+                }
                 for (let mat = 0; mat < farms[i].staticMats.length; mat++)
                 {
-                    matYield[mat] += farms[i].staticMats[mat] * dynamicMatBonus;
+                    const product = farms[i].staticMats[mat] * dynamicMatBonus
+                    matYield[mat] += product;
+                    if (matContrib[mat][farms[i].id]) {
+                        matContrib[mat][farms[i].id] += product
+                    } else {
+                        matContrib[mat][farms[i].id] = product
+                    }
                 }
 
                 rankProgress++;
@@ -332,7 +345,7 @@ function CalculateFarmYields(giveTotal = false)
         duration -= subTime;
     }
 
-    return { missionYield, matYield, duration: totalDuration };
+    return { missionYield, missionContrib, matYield, matContrib, duration: totalDuration };
 }
 
 class StoreHouse

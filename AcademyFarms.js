@@ -345,7 +345,7 @@ academyFarmPortal.pages.default.initFunction = function(panel)
                 row.appendChild(createElement('td'))
             }
 
-            const d = createElement('td', 'text-end', {
+            const d = createElement('td', 'text-end font-normal', {
                 id: display,
             })
             portalPanel[display] = d;
@@ -380,10 +380,51 @@ academyFarmPortal.pages.default.initFunction = function(panel)
         return section
     }
 
+    const createProduction = () => {
+        const section = createElement()
+        section.appendChild(createElement('h3', null, null, 'Production'))
+        const flexWrapper = createElement('div', null, { style: 'display: flex; flex-direction: row; flex-wrap: wrap; gap: 20px; max-width: 700px; justify-content: space-around;'})
+        section.appendChild(flexWrapper)
+
+        const list = [
+            { id: 'missionProd', title: 'Mission Count' },
+            { id: 'difarProd', title: 'Difar' },
+            { id: 'kentoProd', title: 'Kento' },
+            { id: 'chromiumProd', title: 'Chromium' },
+            { id: 'exonProd', title: 'Exon' },
+            { id: 'organiumProd', title: 'Organium' },
+            { id: 'adamorphiumProd', title: 'Adamorphium' },
+            { id: 'moskomProd', title: 'Moskom' },
+            { id: 'darkseidProd', title: 'Darkseid' },
+        ]
+
+        list.forEach(({ id, title }) => {
+            const wrapper = createElement('div')
+            wrapper.appendChild(createElement('h5', null, null, title))
+            const table = createElement('table', 'table table-borderless', { style: 'margin-top: 20px' })
+            table.innerHTML = `
+                <thead><tr>
+                    <th class="text-center">Farm</th>
+                    <th class="text-end">Contri.</th>
+                    <th class="text-end">%</th>
+                </tr></thead>`
+            const body = createElement('tbody')
+            portalPanel[id] = body
+            table.appendChild(body)
+
+            wrapper.appendChild(table)
+
+            flexWrapper.appendChild(wrapper)
+        })
+
+        return section
+    }
+
     flex.appendChild(createPersonel())
     flex.appendChild(createFarms())
     flex2.appendChild(createResult())
     flex2.appendChild(createZeusRank())
+    flex2.appendChild(createProduction())
     panel.appendChild(flex)
     panel.appendChild(flex2)
 
@@ -547,6 +588,7 @@ function clearMissions()
 function populateYield()
 {
     let yieldData = CalculateFarmYields();
+    console.log(yieldData)
     let duration = yieldData.duration
 
     yieldData.matYield = yieldData.matYield.map(yieldValue => {
@@ -571,7 +613,20 @@ function populateYield()
     portalPanel.moskomyield.innerText = yieldData.matYield[6];
     portalPanel.darkseidyield.innerText = yieldData.matYield[7];
 
-    genZeusRank(yieldData.missionYield, duration)
+    try {
+        genZeusRank(yieldData.missionYield, duration)
+        genProduction(portalPanel.missionProd, yieldData.missionContrib)
+        genProduction(portalPanel.difarProd, yieldData.matContrib[0])
+        genProduction(portalPanel.kentoProd, yieldData.matContrib[1])
+        genProduction(portalPanel.chromiumProd, yieldData.matContrib[2])
+        genProduction(portalPanel.exonProd, yieldData.matContrib[3])
+        genProduction(portalPanel.organiumProd, yieldData.matContrib[4])
+        genProduction(portalPanel.adamorphiumProd, yieldData.matContrib[5])
+        genProduction(portalPanel.moskomProd, yieldData.matContrib[6])
+        genProduction(portalPanel.darkseidProd, yieldData.matContrib[7])
+    } catch (e) {
+        console.error(e)
+    }
 }
 
 function formatTime(time) {
@@ -618,18 +673,52 @@ function genZeusRank(missionCount, duration) {
 
             missionLeft -= requirement
             yieldRank++;
-            console.log('missionLeft', missionLeft)
-            console.log('requirement', requirement)
+            // console.log('missionLeft', missionLeft)
+            // console.log('requirement', requirement)
 
             const row = createElement('tr')
             row.appendChild(createElement('td', '', null, yieldRank))
             const time = requirement / missionCount * duration
-            row.appendChild(createElement('td', 'text-end', null, formatInteger(requirement)))
-            row.appendChild(createElement('td', 'text-end', null, formatTime(time)))
+            row.appendChild(createElement('td', 'text-end font-normal', null, formatInteger(requirement)))
+            row.appendChild(createElement('td', 'text-end font-normal', null, formatTime(time)))
             totalTime += time
-            row.appendChild(createElement('td', 'text-end', null, formatTime(totalTime)))
+            row.appendChild(createElement('td', 'text-end font-normal', null, formatTime(totalTime)))
 
             container.appendChild(row)
         }
+    }
+}
+
+function genProduction(table, contrib) {
+    try {
+        const farms = Object.keys(contrib).sort((a, b) => a < b ? -1 : 1)
+        const total = Object.values(contrib).reduce((a, v) => a + v, 0)
+
+        table.innerHTML = ''
+
+        if (farms.length === 0) {
+            table.innerHTML = '' // TODO
+            return
+        }
+
+        farms.forEach((farm) => {
+            const c = contrib[farm]
+
+            if (c === 0) return
+
+            const row = createElement('tr')
+            const farmname = createElement('td', 'text-center', null, farm.split('').join('-'))
+            const value = createElement('td', 'text-end font-normal', null, c > 1000000 ? c.toExponential(2) : c)
+            const percent = createElement('td', 'text-end font-normal', null, (c / total * 100).toFixed(2) + '%')
+            // const eff = createElement('td', 'text-end')
+
+            row.appendChild(farmname)
+            row.appendChild(value)
+            row.appendChild(percent)
+            // row.appendChild(eff)
+            table.appendChild(row)
+        })
+    } catch (e)  {
+        console.error(e)
     }
 }
