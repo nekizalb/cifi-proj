@@ -582,7 +582,7 @@ function formatTime(time) {
     if (time > 3600) {
         const hour = Math.floor(time / 3600)
         const min = Math.floor((time % 3600) / 60)
-        return `${hour} hour${hour > 1 ? 's' : ''} ${min} min${min > 1 ? 's' : ''}`
+        return `${hour} hr${hour > 1 ? 's' : ''} ${min} min${min > 1 ? 's' : ''}`
     }
 
     if (time > 60) {

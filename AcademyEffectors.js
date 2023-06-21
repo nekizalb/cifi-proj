@@ -958,8 +958,8 @@ const sections = [
             { id: 'rank', type: 'number', label: 'Rank' },
             { id: 'crew', type: 'number', label: 'Crew' },
             { id: 'progress', type: 'number', label: 'To Next', text: ' ', textId: 'rankrequirement', style: { width: 100 } },
-            { id: 'install3', type: 'number', label: '(3) Material Scavenger Vehicles', max: 5 },
-            { id: 'install6', type: 'number', label: '(6) Academy Auto-Scrappers', max: 75 },
+            { id: 'install3', type: 'number', label: '(3) Material Scavenger Vehicles', max: 5, textHtml: '/ 5<span style="vertical-align:super;">*</c>' },
+            { id: 'install6', type: 'number', label: '(6) Academy Auto-Scrappers', max: 75, textHtml: '/ 75<span style="vertical-align:super;">*</c>' },
         ],
     },
     {
@@ -983,63 +983,72 @@ const sections = [
                 type: 'select',
                 label: 'Mission Analysis 1',
                 maxLevel: 6,
-                text: 'mission material:  lv2 x1.5, lv4 x1.5, lv6 x1.5',
+                text: 'Mission Material:  Lv2 x1.5, Lv4 x1.5, Lv6 x1.5',
+                textClassName: 'font-normal',
             },
             {
                 id: 'mission2',
                 type: 'select',
                 label: 'Mission Analysis 2',
                 maxLevel: 6,
-                text: 'mission material:  lv2 x1.75, lv4 x1.75, lv6 x1.75',
+                text: 'Mission Material:  Lv2 x1.75, Lv4 x1.75, Lv6 x1.75',
+                textClassName: 'font-normal',
             },
             {
                 id: 'mission3',
                 type: 'select',
                 label: 'Mission Analysis 3',
                 maxLevel: 6,
-                text: 'mission speed: lv1 x1.05, lv3: x1.05, lv5: x1.05',
+                text: 'Mission Speed: Lv1 x1.05, Lv3: x1.05, Lv5: x1.05',
+                textClassName: 'font-normal',
             },
             {
                 id: 'mission4',
                 type: 'select',
                 label: 'Mission Analysis 4',
                 maxLevel: 6,
-                text: 'mission material:  lv2 x2, lv4 x3, lv6 x4',
+                text: 'Mission Material:  Lv2 x2, Lv4 x3, Lv6 x4',
+                textClassName: 'font-normal',
             },
             {
                 id: 'mission5',
                 type: 'select',
                 label: 'Mission Analysis 5',
                 maxLevel: 6,
-                text: 'mission material:  lv2 x3, lv4 x4, lv6 x5',
+                text: 'Mission Material:  Lv2 x3, Lv4 x4, Lv6 x5',
+                textClassName: 'font-normal',
             },
             {
                 id: 'perfection2',
                 type: 'select',
                 label: 'Perfection Analysis 2',
                 maxLevel: 6,
-                text: 'mission material:  lv2 x5',
+                text: 'Mission Material:  Lv2 x5',
+                textClassName: 'font-normal',
             },
             {
                 id: 'perfection3',
                 type: 'select',
                 label: 'Perfection Analysis 3',
                 maxLevel: 6,
-                text: 'lv2: mission material x5; lv5: mission speed *2',
+                text: 'Lv2: Mission Material x5; Lv5: Mission Speed *2',
+                textClassName: 'font-normal',
             },
             {
                 id: 'construction1',
                 type: 'select',
                 label: 'Construction Analysis 1',
                 maxLevel: 6,
-                text: 'proj cost: lv2 /1.5, lv4 /2, lv6 /2.5',
+                text: 'Proj Cost: Lv2 /1.5, Lv4 /2, Lv6 /2.5',
+                textClassName: 'font-normal',
             },
             {
                 id: 'construction2',
                 type: 'select',
                 label: 'Construction Analysis 2',
                 maxLevel: 6,
-                text: 'proj cost: lv2 /2, lv3 /3, lv4 /3, lv5 /4, lv5 /4',
+                text: 'Proj Cost: Lv2 /2, Lv3 /3, Lv4 /3, Lv5 /4, Lv5 /4',
+                textClassName: 'font-normal',
             },
         ],
     },
@@ -1262,13 +1271,15 @@ academyEffectorPortal.pages.default.initFunction = function(panel) {
                     inputWrapper.appendChild(select)
                 }
 
-                if (text) {
+                if (text || props.textHtml) {
                     const textCol = createElement('div', 'col-auto')
-                    const textEl = createElement('span', 'form-text', '', text)
+                    const textEl = createElement('span', 'form-text', '', text || '')
+                    if (props.textHtml) textEl.innerHTML = props.textHtml
                     if (props.textId) {
                         textEl.id = props.textId
                         portalPanel[props.textId] = textEl
                     }
+                    if (props.textClassName) textEl.classList.add(props.textClassName)
                     textCol.appendChild(textEl)
                     group.appendChild(textCol)
                 }
