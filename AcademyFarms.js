@@ -388,6 +388,7 @@ academyFarmPortal.pages.default.initFunction = function(panel)
 
         const list = [
             { id: 'missionProd', title: 'Mission Count' },
+            { id: 'apProd', title: 'AP' },
             { id: 'difarProd', title: 'Difar' },
             { id: 'kentoProd', title: 'Kento' },
             { id: 'chromiumProd', title: 'Chromium' },
@@ -401,12 +402,12 @@ academyFarmPortal.pages.default.initFunction = function(panel)
         list.forEach(({ id, title }) => {
             const wrapper = createElement('div')
             wrapper.appendChild(createElement('h5', null, null, title))
-            const table = createElement('table', 'table table-borderless', { style: 'margin-top: 20px' })
+            const table = createElement('table', 'table table-borderless', { id: `${id}Table`, style: 'margin-top: 20px' })
             table.innerHTML = `
                 <thead><tr>
-                    <th class="text-center">Farm</th>
-                    <th class="text-end">Contri.</th>
-                    <th class="text-end">%</th>
+                    <th class="text-center col-farmname">Farm</th>
+                    <th class="text-end col-contrib">Contri.</th>
+                    <th class="text-end col-percent">%</th>
                 </tr></thead>`
             const body = createElement('tbody')
             portalPanel[id] = body
@@ -614,8 +615,14 @@ function populateYield()
     portalPanel.darkseidyield.innerText = yieldData.matYield[7];
 
     try {
+        const apContrib = Object.entries(yieldData.missionContrib).reduce((o, [f, c]) => {
+            o[f] = c * (GameDB.academy.farms.find((ff) => ff.id.toString() === f)?.baseAP || 0)
+            return o
+        }, {})
+
         genZeusRank(yieldData.missionYield, duration)
         genProduction(portalPanel.missionProd, yieldData.missionContrib)
+        genProduction(portalPanel.apProd, apContrib)
         genProduction(portalPanel.difarProd, yieldData.matContrib[0])
         genProduction(portalPanel.kentoProd, yieldData.matContrib[1])
         genProduction(portalPanel.chromiumProd, yieldData.matContrib[2])
@@ -707,9 +714,9 @@ function genProduction(table, contrib) {
             if (c === 0) return
 
             const row = createElement('tr')
-            const farmname = createElement('td', 'text-center', null, farm.split('').join('-'))
-            const value = createElement('td', 'text-end font-normal', null, c > 1000000 ? c.toExponential(2) : c)
-            const percent = createElement('td', 'text-end font-normal', null, (c / total * 100).toFixed(2) + '%')
+            const farmname = createElement('td', 'text-center col-farmname', null, farm.split('').join('-'))
+            const value = createElement('td', 'text-end col-contrib font-normal', null, c > 1000000 ? c.toExponential(2) : c)
+            const percent = createElement('td', 'text-end col-percent font-normal', null, (c / total * 100).toFixed(2) + '%')
             // const eff = createElement('td', 'text-end')
 
             row.appendChild(farmname)
