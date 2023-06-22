@@ -380,9 +380,46 @@ academyFarmPortal.pages.default.initFunction = function(panel)
         return section
     }
 
-    const createProduction = () => {
-        const section = createElement()
-        section.appendChild(createElement('h3', null, null, 'Production'))
+    const createContribution = () => {
+        const section = createElement('div', '', { id: 'section-contrib'})
+        section.appendChild(createElement('h3', null, null, 'Contribution'))
+
+        try {
+            const options = [
+                { value: '-', label: 'None' },
+                { value: '11', label: '1-1' },
+                { value: '12', label: '1-2' },
+                { value: '13', label: '1-3' },
+                { value: '21', label: '2-1' },
+                { value: '22', label: '2-2' },
+                { value: '23', label: '2-3' },
+                { value: '31', label: '3-1' },
+                { value: '32', label: '3-2' },
+                { value: '33', label: '3-3' },
+            ]
+
+            const filter = $('<div class="btn-group" role="group" style="margin-bottom: 10px;">').append(options.map(({ value, label }) => {
+                return $(
+                    `<input type="radio" class="btn-check" name="contrib-farm" value=${value} id="contrib-farm${value}" ${value === '-' ? 'checked' : ''}>
+                    <label class="btn btn-outline-secondary" for="contrib-farm${value}">${label}</label>`)
+            }))
+
+            $('<form id="contrib-filter">')
+                .append(filter)
+                .appendTo(section)
+                .on('change', function() {
+                    const className = 'table-secondary'
+                    const farmfilter = $("input[name = 'contrib-farm']:checked").val()
+                    $('#section-contrib')
+                        .find('tr.contrib-row').removeClass(className).end()
+                        .find(`tr.contrib-row-${farmfilter}`).addClass(className).end()
+
+                })
+
+        } catch (e) {
+            console.error(e)
+        }
+
         const flexWrapper = createElement('div', null, { style: 'display: flex; flex-direction: row; flex-wrap: wrap; gap: 20px; max-width: 700px; justify-content: space-around;'})
         section.appendChild(flexWrapper)
 
@@ -425,7 +462,7 @@ academyFarmPortal.pages.default.initFunction = function(panel)
     flex.appendChild(createFarms())
     flex2.appendChild(createResult())
     flex2.appendChild(createZeusRank())
-    flex2.appendChild(createProduction())
+    flex2.appendChild(createContribution())
     panel.appendChild(flex)
     panel.appendChild(flex2)
 
@@ -713,7 +750,7 @@ function genProduction(table, contrib) {
 
             if (c === 0) return
 
-            const row = createElement('tr')
+            const row = createElement('tr', `contrib-row contrib-row-${farm}`)
             const farmname = createElement('td', 'text-center col-farmname', null, farm.split('').join('-'))
             const value = createElement('td', 'text-end col-contrib font-normal', null, c > 1000000 ? c.toExponential(2) : c)
             const percent = createElement('td', 'text-end col-percent font-normal', null, (c / total * 100).toFixed(2) + '%')
