@@ -372,7 +372,7 @@ academyProjectPortal.pages.default.initFunction = function(panel)
         const costRow = createElement('tr')
         costRow.appendChild(createElement('td', 'field-projcost'))
         const costId = display.replace('goal', 'cost')
-        const costCell = createElement('td', 'field-projcost', {
+        const costCell = createElement('td', 'field-projcost font-normal', {
             id: costId,
             colSpan: 32,
         })
@@ -537,7 +537,7 @@ function generateRunYield()
         portalPanel[`${projects[projectID]}goal`].innerText = portalPanel.projectConfigs[projectID].currentLevel;
         portalPanel[`${projects[projectID]}cost`].innerHTML = 'Current Cost: ' + config.getStartCost().map((v, i) => {
             if (!v) return ''
-            return `<div class="field-projmat">${GameDB.academy.materials[i]}: ${v > 1000 ? v.toExponential(2) : v}</div>`
+            return `<div class="field-projmat">${GameDB.academy.materials[i]}: ${formatLargeInteger(v)}</div>`
         }).join('')
     }
 

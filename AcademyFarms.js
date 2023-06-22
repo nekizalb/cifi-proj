@@ -265,7 +265,7 @@ academyFarmPortal.pages.default.initFunction = function(panel)
 
                 const row2 = createElement('tr')
                 row2.appendChild(createElement('td', '', { colSpan: 3 }))
-                const mat = createElement('td', 'data-material', {
+                const mat = createElement('td', 'data-material font-normal', {
                     id: `farm${plannet}${farm}mat`,
                     colSpan: 5,
                 })
@@ -575,7 +575,7 @@ function PopulateTiming()
             portalPanel[`farm${planet}${farm}mat`].innerText = GameDB.academy.farms[planet * 3 + farm].baseMats.map((a, i) => {
                 if (a === 0) return null
                 const mat = matBonus * a
-                return GameDB.academy.materials[i] + ': ' + (mat > 1000 ? mat.toExponential(2) : mat)
+                return GameDB.academy.materials[i] + ': ' + formatLargeInteger(mat)
             }).filter(Boolean).join(', ')
         }
     }
@@ -629,17 +629,7 @@ function populateYield()
     console.log(yieldData)
     let duration = yieldData.duration
 
-    yieldData.matYield = yieldData.matYield.map(yieldValue => {
-        if (yieldValue > 1000)
-        {
-            yieldValue = yieldValue.toExponential(2)
-        }
-        else
-        {
-            yieldValue = yieldValue;
-        }
-        return yieldValue;
-    });
+    yieldData.matYield = yieldData.matYield.map(yieldValue => formatLargeInteger(yieldValue));
 
     portalPanel.missionyield.innerText = formatInteger(yieldData.missionYield);
     portalPanel.difaryield.innerText = yieldData.matYield[0];
@@ -752,7 +742,7 @@ function genProduction(table, contrib) {
 
             const row = createElement('tr', `contrib-row contrib-row-${farm}`)
             const farmname = createElement('td', 'text-center col-farmname', null, farm.split('').join('-'))
-            const value = createElement('td', 'text-end col-contrib font-normal', null, c > 1000000 ? c.toExponential(2) : c)
+            const value = createElement('td', 'text-end col-contrib font-normal', null, formatLargeInteger(c))
             const percent = createElement('td', 'text-end col-percent font-normal', null, (c / total * 100).toFixed(2) + '%')
             // const eff = createElement('td', 'text-end')
 

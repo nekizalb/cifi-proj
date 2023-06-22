@@ -1,11 +1,3 @@
-function formatInteger(i) {
-    try {
-        return Intl.NumberFormat().format(i)
-    } catch (e) {
-        return `${i}`
-    }
-}
-
 function CalculateFarmTimes(getRawTime = false)
 {
     let farmData = [];
