@@ -224,7 +224,14 @@ let GameDB =
             80, 80, 80, // cm19
             100, 100, 100, // cm22
             120, 120, 120, // cm25
-            150, 150, 150, // cm28
+            140, 140, 140, // cm28
+            160, 160, 160, // cm31
+        ],
+        badgeRequirement: [
+            [130 * 4], // up till engi
+            [150 * 4, 'Momentum Badge'], // mom
+            [75 * 4, 'The 8th Badge'], // 8th
+            [75 * 4, 'The 9th Badge'], // 9th
         ],
         projectNextLevelCost(projectID, level, costDiv)
         {

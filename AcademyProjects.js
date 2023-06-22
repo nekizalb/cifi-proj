@@ -381,12 +381,12 @@ academyProjectPortal.pages.default.initFunction = function(panel)
         tbody.appendChild(costRow)
     })
 
-    const datarow = createElement('tr')
-    const bpcell = createElement('td', 'text-end', { colSpan: 1 })
-    portalPanel.bpRequirement = bpcell
+    const datarow = createElement('tr', '', { style: 'font-size: 0.8em;' })
 
-    const datacell = createElement('td', '', { colSpan: 32 })
+    const badgecell = createElement('td', '', { colSpan: 2 })
+    portalPanel.badgeRequirement = badgecell
 
+    const datacell = createElement('td', '', { colSpan: 13 })
     const projectnumdata = createElement('label', 'd-inline-block', { id: 'totalnew', style: 'margin-right: 20px'})
     portalPanel.totalnew = projectnumdata
     datacell.appendChild(projectnumdata)
@@ -394,9 +394,13 @@ academyProjectPortal.pages.default.initFunction = function(panel)
     portalPanel.bpnew = bpnumdata
     datacell.appendChild(bpnumdata)
 
-    datarow.appendChild(bpcell)
-    datarow.appendChild(createElement('td'))
+    const bpcell = createElement('td', '', { colSpan: 13 })
+    portalPanel.bpRequirement = bpcell
+
+    datarow.appendChild(badgecell)
+    // datarow.appendChild(createElement('td'))
     datarow.appendChild(datacell)
+    datarow.appendChild(bpcell)
     tbody.appendChild(datarow)
 
     section.appendChild(table)
@@ -459,7 +463,7 @@ academyProjectPortal.pages.default.initFunction = function(panel)
     // }
 
     generateRunYield();
-    UpdateBP();
+    UpdateRequirement();
 }
 
 academyProjectPortal.pages.default.updateFunction = function(e)
@@ -514,7 +518,7 @@ academyProjectPortal.pages.default.updateFunction = function(e)
     SavePlayerData();
 
     generateRunYield();
-    UpdateBP();
+    UpdateRequirement();
 }
 
 function generateRunYield()
@@ -664,21 +668,50 @@ function resumeLevels()
     portalPanel.bpnew.innerText = `+ ${newBp} bp`;
 }
 
-function UpdateBP() {
-    const totalBp = portalPanel.projectConfigs.map(({ startLevel }, projectId) => (startLevel || 0) * GameDB.academy.projects[projectId].bpCount)
-        .reduce((a, v) => a + v, 0)
+function UpdateRequirement() {
+    try {
+        const totalBp = portalPanel.projectConfigs.map(({ startLevel }, projectId) => (startLevel || 0) * GameDB.academy.projects[projectId].bpCount)
+            .reduce((a, v) => a + v, 0)
 
-    let currentBp = totalBp
-    let neededBp = 0
+        let currentBp = totalBp
+        let neededBp = 0
 
-    for (let i = 0; i < GameDB.academy.bpRequirements.length; i++) {
-        neededBp = GameDB.academy.bpRequirements[i]
-        if (currentBp >= neededBp) {
-            currentBp -= neededBp
-        } else {
-            break
+        for (let i = 0; i < GameDB.academy.bpRequirements.length; i++) {
+            neededBp = GameDB.academy.bpRequirements[i]
+            if (currentBp >= neededBp) {
+                currentBp -= neededBp
+            } else {
+                break
+            }
         }
+
+        portalPanel.bpRequirement.innerText = `Current BP: ${currentBp} / ${neededBp}`
+    } catch (e) {
+        console.error(e)
     }
 
-    portalPanel.bpRequirement.innerText = `Current BP: ${currentBp} / ${neededBp}`
+    try {
+        portalPanel.badgeRequirement.innerText = ''
+
+        const totalProj = portalPanel.projectConfigs.map(({ startLevel }, projectId) => (startLevel || 0))
+            .reduce((a, v) => a + v, 0)
+
+        let leftProj = totalProj
+        let badgeName
+        for (let i = 0; i < GameDB.academy.badgeRequirement.length; i++) {
+            const [req, name] = GameDB.academy.badgeRequirement[i]
+
+            leftProj -= req
+            if (leftProj < 0) {
+                badgeName = name
+                break;
+            }
+        }
+
+        if (leftProj < 0 && badgeName) {
+            portalPanel.badgeRequirement.innerText = `To ${badgeName}: ${leftProj * -1} Proj`
+        }
+    } catch (e) {
+        console.error(e)
+    }
 }
