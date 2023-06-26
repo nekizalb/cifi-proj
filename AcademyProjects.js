@@ -675,9 +675,11 @@ function UpdateRequirement() {
 
         let currentBp = totalBp
         let neededBp = 0
+        let currentCm = 0
 
         for (let i = 0; i < GameDB.academy.bpRequirements.length; i++) {
             neededBp = GameDB.academy.bpRequirements[i]
+            currentCm = i + 1
             if (currentBp >= neededBp) {
                 currentBp -= neededBp
             } else {
@@ -685,7 +687,10 @@ function UpdateRequirement() {
             }
         }
 
-        portalPanel.bpRequirement.innerText = `Current BP: ${currentBp} / ${neededBp}`
+        // can predict when cm > 12
+        if (currentCm > 12) {
+            portalPanel.bpRequirement.innerText = `Current BP: ${currentBp} / ${neededBp}`
+        }
     } catch (e) {
         console.error(e)
     }

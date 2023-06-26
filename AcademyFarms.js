@@ -398,7 +398,7 @@ academyFarmPortal.pages.default.initFunction = function(panel)
                 { value: '33', label: '3-3' },
             ]
 
-            const filter = $('<div class="btn-group" role="group" style="margin-bottom: 10px;">').append(options.map(({ value, label }) => {
+            const filter = $('<div class="btn-group" role="group" style="margin-bottom: 20px;">').append(options.map(({ value, label }) => {
                 return $(
                     `<input type="radio" class="btn-check" name="contrib-farm" value=${value} id="contrib-farm${value}" ${value === '-' ? 'checked' : ''}>
                     <label class="btn btn-outline-secondary" for="contrib-farm${value}">${label}</label>`)
