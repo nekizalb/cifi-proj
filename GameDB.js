@@ -207,7 +207,7 @@ let GameDB =
                 name: 'Robo-Douglett',
                 baseCosts:
                 [
-                    0, 0, 3e53, 0, 0, 6e52, 0, 8e51
+                    0, 0, 3e54, 0, 0, 6e54, 0, 8e53
                 ],
                 costScalar: 12,
                 costBump: 0.19,

@@ -626,7 +626,7 @@ function clearMissions()
 function populateYield()
 {
     let yieldData = CalculateFarmYields();
-    console.log(yieldData)
+    // console.log(yieldData)
     let duration = yieldData.duration
 
     yieldData.matYield = yieldData.matYield.map(yieldValue => formatLargeInteger(yieldValue));

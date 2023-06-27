@@ -118,7 +118,6 @@ const loadSettings = (e) => {
 
     const loadFile = (file) => {
         return new Promise((resolve, reject) => {
-            console.log(file.type)
             if (file.type && !file.type.startsWith('text/')) {
                 reject()
                 return
@@ -138,7 +137,7 @@ const loadSettings = (e) => {
                     SavePlayerData(data)
                     resolve()
                 } catch (e) {
-                    console.log(e)
+                    console.error(e)
                     reject()
                 }
             });
@@ -233,7 +232,6 @@ function updateColorProfile()
 
 function selectColor(e)
 {
-    console.log('hi');
     portalPanel.dataLinkage[e.target.id] = e.target.value;
     SavePlayerData();
 }

@@ -160,8 +160,8 @@ function GetMaxMissionRate()
         }
     }
 
-    console.table(personnel);
-    console.log(farmDetails);
+    // console.table(personnel);
+    // console.log(farmDetails);
 
     farmDetails.sort((a,b) => a.baseTime - b.baseTime);
 
@@ -225,7 +225,7 @@ function GetStaticMatBonus() {
     staticMatBonus *= 4 * (playerData.research.perfection[2] > 1) + 1;
     staticMatBonus *= ((playerData.research.mission[4] > 1 ? 3 : 1) * (playerData.research.mission[4] > 3 ? 4 : 1) * (playerData.research.mission[4] > 5 ? 5 : 1));
     staticMatBonus *= Math.pow(1.05, playerData.diamonds.special.materials);
-    staticMatBonus *= Math.pow(2.5, playerData.academy.projectLevels[8]);
+    staticMatBonus *= Math.pow(1.75, playerData.academy.projectLevels[8]);
     staticMatBonus *= Math.pow(0.0002 * playerData.loopMods.looping + 1, playerData.loopsFilled);
     staticMatBonus *= Math.pow(0.002 * playerData.loopMods.productivity + 1, playerData.level);
 
