@@ -935,7 +935,7 @@ const sections = [
     {
         name: 'General',
         children: [
-            { id: 'playerlevel', type: 'number', label: 'Player Level' },
+            { id: 'playerlevel', type: 'number', label: 'Player Level', style: { width: 60 } },
             { id: 'loopsfilled', type: 'number', label: 'Loops Filled', style: { width: 80 } },
             { id: 'engineering', type: 'select', label: 'Engi Badge', options: [{ value: 0, label: 'No' }, { value: 1, label: 'Yes' }] },
         ]
@@ -944,7 +944,7 @@ const sections = [
         name: 'Mod',
         children: [
             { id: 'zeusrankbenefits', type: 'number', label: 'Zeus Rank Benefits', max: 10, text: '/ 10' },
-            { id: 'mathauling', type: 'number', label: 'Material Hauling', text: '/ 999' },
+            { id: 'mathauling', type: 'number', label: 'Material Hauling', text: '/ 999', style: { width: 60 } },
             { id: 'beyonders', type: 'number', label: 'Rule of the Beyonders', style: { width: 80 } },
             { id: 'swarm', type: 'number', label: 'Rule of the Swarm', max: 30, text: '/ 30' },
             { id: 'expansion', type: 'number', label: 'Rule of Expansion', style: { width: 80 } },
@@ -958,8 +958,8 @@ const sections = [
             { id: 'rank', type: 'number', label: 'Rank' },
             { id: 'crew', type: 'number', label: 'Crew' },
             { id: 'progress', type: 'number', label: 'To Next', text: ' ', textId: 'rankrequirement', style: { width: 100 } },
-            { id: 'install3', type: 'number', label: '(3) Material Scavenger Vehicles', max: 5, textHtml: '/ 5<span style="vertical-align:super;">*</c>' },
-            { id: 'install6', type: 'number', label: '(6) Academy Auto-Scrappers', max: 75, textHtml: '/ 75<span style="vertical-align:super;">*</c>' },
+            { id: 'install3', type: 'number', label: '(3) Material Scavenger Vehicles', max: 5, textHtml: '/ 5 <span class="text-super">*</c>' },
+            { id: 'install6', type: 'number', label: '(6) Academy Auto-Scrappers', max: 75, textHtml: '/ 75 <span class="text-super">*</c>' },
         ],
     },
     {
@@ -1005,7 +1005,7 @@ const sections = [
             {
                 id: 'mission4',
                 type: 'select',
-                label: 'Mission Analysis 4',
+                label: 'Mission Analysis 4 <span class="text-super">1</c>',
                 maxLevel: 6,
                 text: 'Mission Material:  Lv2 x2, Lv4 x3, Lv6 x4',
                 textClassName: 'font-normal',
@@ -1013,7 +1013,7 @@ const sections = [
             {
                 id: 'mission5',
                 type: 'select',
-                label: 'Mission Analysis 5',
+                label: 'Mission Analysis 5 <span class="text-super">2</c>',
                 maxLevel: 6,
                 text: 'Mission Material:  Lv2 x3, Lv4 x4, Lv6 x5',
                 textClassName: 'font-normal',
@@ -1029,9 +1029,17 @@ const sections = [
             {
                 id: 'perfection3',
                 type: 'select',
-                label: 'Perfection Analysis 3',
+                label: 'Perfection Analysis 3 <span class="text-super">3</c>',
                 maxLevel: 6,
                 text: 'Lv2: Mission Material x5; Lv5: Mission Speed *2',
+                textClassName: 'font-normal',
+            },
+            {
+                id: 'perfection4',
+                type: 'select',
+                label: 'Perfection Analysis 4 <span class="text-super">4</c>',
+                maxLevel: 6,
+                text: 'Lv2: Mission Material x9; Lv5: Mission Speed *2',
                 textClassName: 'font-normal',
             },
             {
@@ -1292,6 +1300,26 @@ academyEffectorPortal.pages.default.initFunction = function(panel) {
 
         wrapper.appendChild(section)
     })
+
+    try {
+        const notes = [
+            'In game, it\'s mistakenly titled as Mission Analysis 3',
+            'In game, it\'s mistakenly titled as Mission Analysis 4',
+            'In game, it\'s mistakenly titled as Perfection Analysis 2',
+            'In game, it\'s mistakenly titled as Perfection Analysis 3',
+        ]
+
+        $('<div style="padding: 20px; background-color: #222;">')
+            .append($('<h6>Notes</h6>'))
+            .append(notes.map((note, i) => {
+                if (!note) return ''
+
+                return $(`<p style="font-size: 0.8em;"><i>${i + 1}</i>: ${note}</p>`)
+            }))
+            .appendTo(wrapper)
+    } catch (e) {
+        console.error(e)
+    }
 
     panel.appendChild(wrapper)
 

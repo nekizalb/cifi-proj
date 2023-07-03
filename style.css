@@ -117,3 +117,9 @@ table.table th {
 #apProdTable .col-contrib {
   display: none;
 }
+
+.text-super {
+  color: red;
+  font-size: 0.7em;
+  vertical-align: super;
+}

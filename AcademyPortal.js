@@ -23,7 +23,7 @@ function CalculateFarmTimes(getRawTime = false)
                 Math.pow(1.05, Math.floor((playerData.research.mission[2] + 1) / 2))
             );
             missionSpeedBonus *= (playerData.research.perfection[2] > 4) + 1;
-            // missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1;
+            missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1;
             missionSpeedBonus *= playerData.academy.badges.engineering + 1;
             missionSpeedBonus *= Math.pow(1.1, playerData.loopMods.productivity);
 
@@ -83,7 +83,7 @@ function GetMaxMissionRate()
         Math.pow(1.05, Math.floor((playerData.research.mission[2] + 1) / 2))
     );
     missionSpeedBonus *= (playerData.research.perfection[2] > 4) + 1;
-    // missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1;
+    missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1;
     missionSpeedBonus *= playerData.academy.badges.engineering + 1;
     missionSpeedBonus *= Math.pow(1.1, playerData.loopMods.productivity);
 
@@ -223,6 +223,7 @@ function GetStaticMatBonus() {
     staticMatBonus *= 4 * (playerData.research.perfection[1] > 1) + 1;
     staticMatBonus *= ((playerData.research.mission[3] > 1 ? 2 : 1) * (playerData.research.mission[3] > 3 ? 3 : 1) * (playerData.research.mission[3] > 5 ? 4 : 1));
     staticMatBonus *= 4 * (playerData.research.perfection[2] > 1) + 1;
+    staticMatBonus *= 8 * (playerData.research.perfection[3] > 1) + 1;
     staticMatBonus *= ((playerData.research.mission[4] > 1 ? 3 : 1) * (playerData.research.mission[4] > 3 ? 4 : 1) * (playerData.research.mission[4] > 5 ? 5 : 1));
     staticMatBonus *= Math.pow(1.05, playerData.diamonds.special.materials);
     staticMatBonus *= Math.pow(1.75, playerData.academy.projectLevels[8]);
