@@ -1302,6 +1302,11 @@ academyEffectorPortal.pages.default.initFunction = function(panel) {
     })
 
     try {
+        const tips = [
+            'After complete all form inputs, cross check numbers in 2nd and 3rd tabs displaying in small texts with in-game values for validation.',
+            'Some researches are named wrong in-game, try match them with research bonus instead.',
+        ]
+
         const notes = [
             'In game, it\'s mistakenly titled as Mission Analysis 3',
             'In game, it\'s mistakenly titled as Mission Analysis 4',
@@ -1309,12 +1314,12 @@ academyEffectorPortal.pages.default.initFunction = function(panel) {
             'In game, it\'s mistakenly titled as Perfection Analysis 3',
         ]
 
-        $('<div style="padding: 20px; background-color: #222;">')
+        $('<div class="font-normal" style="font-size: 0.8em; max-width: 400px; padding: 20px; background-color: #222;">')
+            .append($('<h6>Tips</h6>'))
+            .append($('<ol>').append(tips.map((tip) => $('<li>').text(tip))))
             .append($('<h6>Notes</h6>'))
             .append(notes.map((note, i) => {
-                if (!note) return ''
-
-                return $(`<p style="font-size: 0.8em;"><i>${i + 1}</i>: ${note}</p>`)
+                return $(`<p><span class="text-super">${i + 1}</span> : ${note}</p>`)
             }))
             .appendTo(wrapper)
     } catch (e) {
