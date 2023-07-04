@@ -363,6 +363,13 @@ academyFarmPortal.pages.default.initFunction = function(panel)
         const section = createElement()
         section.appendChild(createElement('h3', null, null, 'Zeus'))
 
+        const zeust = createElement('table', 'table table-borderless', { style: 'width: 100%; margin-top: 20px' })
+        const zeusBody = createElement('tbody')
+        portalPanel.zeusTable = zeusBody
+        zeust.appendChild(zeusBody)
+
+        section.appendChild(zeust)
+
         const rankt = createElement('table', 'table table-borderless', { style: 'margin-top: 20px' })
         rankt.innerHTML = `
             <thead><tr>
@@ -686,8 +693,16 @@ function formatTime(time) {
 }
 
 function genZeusRank(missionCount, duration) {
+    const zeusTable = portalPanel.zeusTable
     const container = portalPanel.rankTable
+    zeusTable.innerHTML = ''
     container.innerHTML = ''
+
+    const missionRate = createElement('tr')
+    missionRate.appendChild(createElement('td', '', null, 'Mission Rate'))
+    missionRate.appendChild(createElement('td', 'text-end font-normal', null, formatInteger(missionCount / duration * 3600) + ' / hr'))
+
+    zeusTable.appendChild(missionRate)
 
     let missionLeft = missionCount
     let rankProgress = playerData.fleet.zeus.rank.progress;
