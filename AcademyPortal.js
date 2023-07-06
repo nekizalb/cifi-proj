@@ -215,8 +215,10 @@ function GetStaticMatBonus() {
     staticMatBonus *= Math.pow(1.05, playerData.loopMods.materialHauling);
     staticMatBonus *= (0.25 * playerData.fleet.zeus.installs[2] * playerData.fleet.zeus.crew + 1);
     staticMatBonus *= (0.1 * playerData.fleet.zeus.installs[5] * playerData.fleet.zeus.crew + 1);
-    staticMatBonus *= Math.pow(1.043, Math.max(0, playerData.shardMilestones[25] - 55) * (playerData.shardMilestones[25] > 59));
-    staticMatBonus *= Math.pow(1.058, Math.max(0, playerData.shardMilestones[25] - 83) * (playerData.shardMilestones[25] > 89));
+    const wonderous60 = Math.pow(1.043, Math.max(0, playerData.shardMilestones[25] - 55) * (playerData.shardMilestones[25] > 59))
+    staticMatBonus *= wonderous60;
+    const wonderous90 = Math.pow(1.067, Math.max(0, playerData.shardMilestones[25] - 84) * (playerData.shardMilestones[25] > 89))
+    staticMatBonus *= wonderous90;
     staticMatBonus *= Math.pow(1.015, Math.max(0, playerData.shardMilestones[28] - 20) * (playerData.shardMilestones[28] > 24));
     staticMatBonus *= Math.pow(1.025, Math.max(0, playerData.shardMilestones[28] - 45) * (playerData.shardMilestones[28] > 49));
     staticMatBonus *= Math.pow(1.5, Math.floor(playerData.research.mission[0] / 2));
