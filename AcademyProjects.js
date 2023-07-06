@@ -341,6 +341,7 @@ academyProjectPortal.pages.default.initFunction = function(panel)
             id: input,
             type: 'number',
             style: 'width: 65px',
+            min: '0',
             value: portalPanel.dataLinkage[input],
         })
         i.addEventListener('change', portalPanel.updateFunction)

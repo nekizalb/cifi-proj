@@ -956,7 +956,7 @@ const sections = [
         name: 'Zeus',
         children: [
             { id: 'rank', type: 'number', label: 'Rank' },
-            { id: 'crew', type: 'number', label: 'Crew' },
+            { id: 'crew', type: 'number', label: 'Crew', style: { width: 60 } },
             { id: 'progress', type: 'number', label: 'To Next', text: ' ', textId: 'rankrequirement', style: { width: 100 } },
             { id: 'install3', type: 'number', label: '(3) Material Scavenger Vehicles', max: 5, textHtml: '/ 5 <span class="text-super">*</c>' },
             { id: 'install6', type: 'number', label: '(6) Academy Auto-Scrappers', max: 75, textHtml: '/ 75 <span class="text-super">*</c>' },
@@ -965,8 +965,8 @@ const sections = [
     {
         name: 'Shard Milestone',
         children: [
-            { id: 'wonderous', type: 'number', label: '(26) Wonderous' },
-            { id: 'earthly', type: 'number', label: '(29) Earthly' },
+            { id: 'wonderous', type: 'number', label: '(26) Wonderous', style: { width: 60 } },
+            { id: 'earthly', type: 'number', label: '(29) Earthly', style: { width: 60 } },
         ],
     },
     {
