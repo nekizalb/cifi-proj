@@ -3,7 +3,8 @@
   "name": "CIFI - Project Planner",
   "icons": [
     {
-      "src": "assets/logo.jpeg", "size": "64x64"
+      "src": "assets/logo.jpeg",
+      "size": "64x64"
     }
   ],
   "start_url": "/cifi-proj/",
