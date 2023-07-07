@@ -1,0 +1,13 @@
+{
+  "short_name": "Proj Planner",
+  "name": "CIFI - Project Planner",
+  "icons": [
+    {
+      "src": "assets/logo.jpeg", "size": "64x64"
+    }
+  ],
+  "start_url": "/cifi-proj/",
+  "background_color": "#000000",
+  "display": "standalone",
+  "theme_color": "#000000"
+}
