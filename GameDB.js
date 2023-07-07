@@ -232,6 +232,7 @@ let GameDB =
             [150 * 4, 'Momentum Badge'], // mom
             [75 * 4, 'The 8th Badge'], // 8th
             [75 * 4, 'The 9th Badge'], // 9th
+            [250 * 4, 'The 10th Badge'], // 10th
         ],
         projectNextLevelCost(projectID, level, costDiv)
         {
