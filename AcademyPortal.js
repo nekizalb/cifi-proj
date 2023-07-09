@@ -16,15 +16,11 @@ function CalculateFarmTimes(getRawTime = false)
             power += (playerData.academy.farms[planet][farm].corvettes || 0) * (playerData.academy.personnel[3].power || 0);
             population += playerData.academy.farms[planet][farm].corvettes || 0;
 
-            let missionSpeedBonus = (GameDB.bugs.swarm ? (0.03 * playerData.loopMods.swarm + 1) : Math.pow(1.0311, playerData.loopMods.swarm));
-            missionSpeedBonus *= (
-                GameDB.bugs.mission3 ?
-                Math.pow(1.05, Math.floor((playerData.research.mission[2] + 1) / 2)) / (0.05 * (playerData.research.mission[2] === 6) + 1) :
-                Math.pow(1.05, Math.floor((playerData.research.mission[2] + 1) / 2))
-            );
+            let missionSpeedBonus = Math.pow(1.0311, playerData.loopMods.swarm);
+            missionSpeedBonus *= Math.pow(1.05, Math.floor((playerData.research.mission[2] + 1) / 2));
             missionSpeedBonus *= (playerData.research.perfection[2] > 4) + 1;
             missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1;
-            missionSpeedBonus *= playerData.academy.badges.engineering + 1;
+            if (playerData.academy.badges.engineering) missionSpeedBonus *= 2;
             missionSpeedBonus *= Math.pow(1.1, playerData.loopMods.productivity);
 
             if (power === 0)
@@ -76,15 +72,11 @@ function GetMaxMissionRate()
 {
     let farms = [...GameDB.academy.farms];
 
-    let missionSpeedBonus = (GameDB.bugs.swarm ? (0.03 * playerData.loopMods.swarm + 1) : Math.pow(1.0311, playerData.loopMods.swarm));
-    missionSpeedBonus *= (
-        GameDB.bugs.mission3 ?
-        Math.pow(1.05, Math.floor((playerData.research.mission[2] + 1) / 2)) / (0.05 * (playerData.research.mission[2] === 6) + 1) :
-        Math.pow(1.05, Math.floor((playerData.research.mission[2] + 1) / 2))
-    );
+    let missionSpeedBonus = Math.pow(1.0311, playerData.loopMods.swarm);
+    missionSpeedBonus *= Math.pow(1.05, Math.floor((playerData.research.mission[2] + 1) / 2));
     missionSpeedBonus *= (playerData.research.perfection[2] > 4) + 1;
     missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1;
-    missionSpeedBonus *= playerData.academy.badges.engineering + 1;
+    if (playerData.academy.badges.engineering) missionSpeedBonus *= 2;
     missionSpeedBonus *= Math.pow(1.1, playerData.loopMods.productivity);
 
     let personnel =
@@ -228,7 +220,8 @@ function GetStaticMatBonus() {
     staticMatBonus *= 4 * (playerData.research.perfection[2] > 1) + 1;
     staticMatBonus *= 8 * (playerData.research.perfection[3] > 1) + 1;
     staticMatBonus *= ((playerData.research.mission[4] > 1 ? 3 : 1) * (playerData.research.mission[4] > 3 ? 4 : 1) * (playerData.research.mission[4] > 5 ? 5 : 1));
-    staticMatBonus *= Math.pow(1.05, playerData.diamonds.special.materials);
+    staticMatBonus *= Math.pow(1.05, playerData.diamonds.special.materials || 0);
+    if (playerData.diamonds.iapCollector) staticMatBonus *= 1.5;
     staticMatBonus *= Math.pow(1.75, playerData.academy.projectLevels[8]);
     staticMatBonus *= Math.pow(0.0002 * playerData.loopMods.looping + 1, playerData.loopsFilled);
     staticMatBonus *= Math.pow(0.002 * playerData.loopMods.productivity + 1, playerData.level);
@@ -383,16 +376,9 @@ class ProjectConfig
 
 
     let costDiv = 1;
-    if (GameDB.bugs.construction)
-    {
-        costDiv = (playerData.research.construction[0] > 1 ? 1.5 : 1) * (playerData.research.construction[0] > 5 ? 2 : 1) * (playerData.research.construction[0] > 5 ? 2.5 : 1);
-        costDiv *= (playerData.research.construction[1] > 1 ? 2 : 1) * (playerData.research.construction[1] > 2 ? 3 : 1) * (playerData.research.construction[1] > 3 ? 3 : 1) * (playerData.research.construction[1] > 4 ? 4 : 1) * (playerData.research.construction[1] > 5 ? 4 : 1);
-    }
-    else
-    {
-        costDiv = (playerData.research.construction[0] > 1 ? 1.5 : 1) * (playerData.research.construction[0] > 3 ? 2 : 1) * (playerData.research.construction[0] > 5 ? 2.5 : 1);
-        costDiv *= (playerData.research.construction[1] > 1 ? 2 : 1) * (playerData.research.construction[1] > 2 ? 3 : 1) * (playerData.research.construction[1] > 3 ? 3 : 1) * (playerData.research.construction[1] > 4 ? 4 : 1) * (playerData.research.construction[1] > 5 ? 4 : 1);
-    }
+    costDiv = (playerData.research.construction[0] > 1 ? 1.5 : 1) * (playerData.research.construction[0] > 3 ? 2 : 1) * (playerData.research.construction[0] > 5 ? 2.5 : 1);
+    costDiv *= (playerData.research.construction[1] > 1 ? 2 : 1) * (playerData.research.construction[1] > 2 ? 3 : 1) * (playerData.research.construction[1] > 3 ? 3 : 1) * (playerData.research.construction[1] > 4 ? 4 : 1) * (playerData.research.construction[1] > 5 ? 4 : 1);
+
 
     let accumCosts = [0, 0, 0, 0, 0, 0, 0, 0];
     while (true)
@@ -435,16 +421,8 @@ class ProjectConfig
   getCostDiv()
   {
     let costDiv = 1;
-    if (GameDB.bugs.construction)
-    {
-        costDiv = (playerData.research.construction[0] > 1 ? 1.5 : 1) * (playerData.research.construction[0] > 5 ? 2 : 1) * (playerData.research.construction[0] > 5 ? 2.5 : 1);
-        costDiv *= (playerData.research.construction[1] > 1 ? 2 : 1) * (playerData.research.construction[1] > 2 ? 3 : 1) * (playerData.research.construction[1] > 3 ? 3 : 1) * (playerData.research.construction[1] > 4 ? 4 : 1) * (playerData.research.construction[1] > 5 ? 4 : 1);
-    }
-    else
-    {
-        costDiv = (playerData.research.construction[0] > 1 ? 1.5 : 1) * (playerData.research.construction[0] > 3 ? 2 : 1) * (playerData.research.construction[0] > 5 ? 2.5 : 1);
-        costDiv *= (playerData.research.construction[1] > 1 ? 2 : 1) * (playerData.research.construction[1] > 2 ? 3 : 1) * (playerData.research.construction[1] > 3 ? 3 : 1) * (playerData.research.construction[1] > 4 ? 4 : 1) * (playerData.research.construction[1] > 5 ? 4 : 1);
-    }
+    costDiv = (playerData.research.construction[0] > 1 ? 1.5 : 1) * (playerData.research.construction[0] > 3 ? 2 : 1) * (playerData.research.construction[0] > 5 ? 2.5 : 1);
+    costDiv *= (playerData.research.construction[1] > 1 ? 2 : 1) * (playerData.research.construction[1] > 2 ? 3 : 1) * (playerData.research.construction[1] > 3 ? 3 : 1) * (playerData.research.construction[1] > 4 ? 4 : 1) * (playerData.research.construction[1] > 5 ? 4 : 1);
 
     return costDiv
   }

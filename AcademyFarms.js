@@ -14,28 +14,9 @@ let durationOptions = [
     ['10-d', '10 Days'],
 ]
 
-let academyFarmPortal =
-{
-    verticalCells: 58,
-    horizontalCells: 116,
-    headerText: 1.8,
-    labelText: 0.9,
-    displayText: 1.4,
-    buttonText: 1.7,
-    inputText: 1,
-    activePage: 'default',
+let academyFarmPortal = {
     pages: {
-        list: ['default'],
-        default: {
-            headers: [],
-            labels: [],
-            inputs: [],
-            checkboxes: [],
-            displays: [],
-            buttons: [],
-            toggles: [],
-            lockboxes: [],
-        }
+        default: {}
     }
 };
 
@@ -150,12 +131,13 @@ academyFarmPortal.pages.default.initFunction = function(panel)
     const flex2 = createElement('div', 'section-2')
 
     const createPersonel = () => {
-        const section = createElement()
+        const section = createElement('div', 'section-3')
         const header = createElement('h3', null, null, 'Personnel')
         section.appendChild(header)
 
         const table = createElement('table', 'table table-borderless')
-        table.innerHTML = '<thead><tr><th></th><th>Power</th><th>Owned</th></tr></thead>'
+        table.innerHTML = '<thead><tr><th></th><th class="text-center" style="font-size:0.7em">Power</th>'
+            + '<th class="text-center" style="font-size:0.7em">Owned</th></tr></thead>'
 
         const tbody = document.createElement('tbody')
         table.appendChild(tbody)
@@ -179,7 +161,8 @@ academyFarmPortal.pages.default.initFunction = function(panel)
             const power = createElement('input', 'form-control form-control-sm text-center', {
                 id: personnel.id + 'power',
                 type: 'number',
-                style: 'width: 70px',
+                style: 'width: 50px',
+                min: '0',
                 value: portalPanel.dataLinkage[personnel.id + 'power']
             })
             power.addEventListener('change', portalPanel.updateFunction);
@@ -191,7 +174,8 @@ academyFarmPortal.pages.default.initFunction = function(panel)
             const owned = createElement('input', 'form-control form-control-sm text-center', {
                 id: personnel.id + 'owned',
                 type: 'number',
-                style: 'width: 90px',
+                style: 'width: 70px',
+                min: '0',
                 value: portalPanel.dataLinkage[personnel.id + 'owned']
             })
             owned.addEventListener('change', portalPanel.updateFunction);
@@ -204,7 +188,7 @@ academyFarmPortal.pages.default.initFunction = function(panel)
     }
 
     const createFarms = () => {
-        const section = createElement()
+        const section = createElement('div', 'section-3')
         const header = createElement('h3', null, null, 'Farms')
         section.appendChild(header)
 
@@ -242,11 +226,12 @@ academyFarmPortal.pages.default.initFunction = function(panel)
 
                 GameDB.academy.personnel.forEach((p) => {
                     const cell = createElement('td')
-                    const e = createElement('input', 'form-control text-center', {
+                    const e = createElement('input', 'form-control form-control-sm text-center', {
                         id: `farm${plannet}${farm}${p}`,
                         type: 'number',
                         style: 'width: 80px',
                         placeholder: '0',
+                        min: '0',
                         value: portalPanel.dataLinkage[`farm${plannet}${farm}${p}`]
                     })
                     portalPanel[`farm${plannet}${farm}${p}`] = e
@@ -290,7 +275,7 @@ academyFarmPortal.pages.default.initFunction = function(panel)
     }
 
     const createResult = () => {
-        const section = createElement()
+        const section = createElement('div', 'section-3')
         section.appendChild(createElement('h3', null, null, 'Result'))
 
         const unit = createElement('div', 'row g-3')
@@ -360,7 +345,7 @@ academyFarmPortal.pages.default.initFunction = function(panel)
     }
 
     const createZeusRank = () => {
-        const section = createElement()
+        const section = createElement('div', 'section-3')
         section.appendChild(createElement('h3', null, null, 'Zeus'))
 
         const zeust = createElement('table', 'table table-borderless', { style: 'width: 100%; margin-top: 20px' })
@@ -388,7 +373,7 @@ academyFarmPortal.pages.default.initFunction = function(panel)
     }
 
     const createContribution = () => {
-        const section = createElement('div', '', { id: 'section-contrib'})
+        const section = createElement('div', 'section-3', { id: 'section-contrib'})
         section.appendChild(createElement('h3', null, null, 'Contribution'))
 
         try {
@@ -508,49 +493,10 @@ academyFarmPortal.pages.default.updateFunction = function(e)
         return;
     }
 
-    if (e.target.classList.contains('toggle'))
-    {
-        let currentSetting = parseInt(e.target.dataset.setting);
-        let wrap = parseInt(e.target.dataset.wrap);
-        currentSetting++;
-        currentSetting = currentSetting % wrap;
-        e.target.dataset.setting = currentSetting;
-
-        portalPanel.dataLinkage[e.target.id] = currentSetting;
-        portalPanel.yieldtime.innerText = academyFarmPortal.pages.default.toggles[0].settings[currentSetting].text;
-        portalPanel.yieldtimeco.innerText = academyFarmPortal.pages.default.toggles[0].settings[currentSetting].text + 's';
-
-        let duration = playerData.academy.farmYieldSetting.duration;
-        if (currentSetting === 0)
-        {
-            duration *= (60 * 24);
-        }
-        else if (currentSetting === 1)
-        {
-            duration /= 60;
-        }
-        else
-        {
-            duration /= 24;
-        }
-        duration = Math.round(duration * 1000) / 1000;
-
-        playerData.academy.farmYieldSetting.duration = duration;
-        portalPanel.duration.value = duration;
-
-        SavePlayerData();
-
-        populateYield();
-
-        return;
-    }
-
     if (e.target.type === 'number')
     {
         portalPanel.dataLinkage[e.target.id] = parseInt(e.target.value);
         SavePlayerData();
-
-        if (e.target.id === 'rankcurrent') { portalPanel['rankrequirement'].innerText = GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage[e.target.id]]; }
 
         PopulateTiming();
         populateYield();
@@ -670,6 +616,11 @@ function populateYield()
     }
 }
 
+function padZero(v) {
+    if (v < 10) return '0' + v
+    return v
+}
+
 function formatTime(time) {
     if (time > 3600 * 24) {
         return `${(time / 3600 / 24).toFixed(2)} days`
@@ -678,18 +629,17 @@ function formatTime(time) {
     if (time > 3600) {
         const hour = Math.floor(time / 3600)
         const min = Math.floor((time % 3600) / 60)
-        return `${hour} hr${hour > 1 ? 's' : ''} ${min} min${min > 1 ? 's' : ''}`
+        return `${hour} h ${padZero(min)} m`
     }
 
     if (time > 60) {
         const min = Math.floor(time / 60)
-        const sec = Math.floor((time % 60))
-        return `${min} min${min > 1 ? 's' : ''} ${sec} sec${sec > 1 ? 's' : ''}`
+        return `${min} m`
     }
 
     const sec = Math.floor(time)
 
-    return `${sec} sec${sec > 1 ? 's' : ''}`
+    return `${sec} s`
 }
 
 function genZeusRank(missionCount, duration) {
