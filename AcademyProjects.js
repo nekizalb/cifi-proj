@@ -213,7 +213,12 @@ academyProjectPortal.pages.default.initFunction = function (panel) {
 
   section.appendChild(table)
 
-  const legends = ['Unaffordable', 'Material used by other projects', 'Affordable', 'Selected']
+  const legends = [
+    'Unaffordable',
+    'Material used by other projects',
+    'Affordable',
+    'Selected',
+  ]
   $('<div class="d-flex flex-column" style="gap: 8px">')
     .append(
       legends.map((l, i) => {
@@ -483,11 +488,17 @@ function UpdateRequirement() {
     let neededBp = 0
     let currentCm = 0
 
-    for (let i = 0; i < GameDB.academy.bpRequirements.length; i++) {
-      neededBp = GameDB.academy.bpRequirements[i]
+    const bpRequirements = GameDB.academy.bpRequirements
+
+    for (let i = 0; i < bpRequirements.length; i++) {
+      neededBp = bpRequirements[i]
       currentCm = i + 1
       if (currentBp >= neededBp) {
         currentBp -= neededBp
+
+        if (i === bpRequirements.length - 1) {
+          neededBp = 0
+        }
       } else {
         break
       }
@@ -495,7 +506,9 @@ function UpdateRequirement() {
 
     // can predict when cm > 12
     if (currentCm > 12) {
-      portalPanel.bpRequirement.innerText = `Current BP: ${currentBp} / ${neededBp}`
+      portalPanel.bpRequirement.innerText = `Current BP: ${currentBp} ${
+        neededBp ? `/ ${neededBp}` : ''
+      }`
     }
   } catch (e) {
     console.error(e)
