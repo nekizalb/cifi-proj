@@ -148,7 +148,7 @@ let GameDB = {
       {
         name: 'Robo-Douglett',
         baseCosts: [0, 0, 3e54, 0, 0, 6e54, 0, 8e53],
-        costScalar: 12,
+        costScalar: 18,
         costBump: 0.19,
         bpCount: 3,
       },
