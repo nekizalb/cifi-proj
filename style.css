@@ -17,9 +17,9 @@ input[type='number'] {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  max-width: 1600px;
   margin: 0 auto;
-  padding: 24px;
+  padding-top: 24px;
+  padding-bottom: 24px;
   align-items: flex-start;
   justify-content: center;
 }

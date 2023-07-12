@@ -128,7 +128,6 @@ const createElement = (tag = 'div', className = '', attr = {}, innerText = '') =
 academyFarmPortal.pages.default.initFunction = function(panel)
 {
     const flex = createElement('div', 'section-2')
-    const flex2 = createElement('div', 'section-2')
 
     const createPersonel = () => {
         const section = createElement('div', 'section-3')
@@ -452,11 +451,10 @@ academyFarmPortal.pages.default.initFunction = function(panel)
 
     flex.appendChild(createPersonel())
     flex.appendChild(createFarms())
-    flex2.appendChild(createResult())
-    flex2.appendChild(createZeusRank())
-    flex2.appendChild(createContribution())
+    flex.appendChild(createResult())
+    flex.appendChild(createZeusRank())
+    flex.appendChild(createContribution())
     panel.appendChild(flex)
-    panel.appendChild(flex2)
 
     PopulateTiming();
     populateYield();
