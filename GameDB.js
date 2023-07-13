@@ -193,7 +193,8 @@ let GameDB = {
       [150 * 4, 'Momentum Badge'], // mom
       [75 * 4, 'The 8th Badge'], // 8th
       [75 * 4, 'The 9th Badge'], // 9th
-      [250 * 4, 'The 10th Badge'], // 10th
+      [300 * 4, 'The 10th Badge'], // 10th
+      [300 * 4, 'The 11th Badge'], // 11th
     ],
     projectNextLevelCost(projectID, level, costDiv) {
       let project = this.projects[projectID]
