@@ -46,6 +46,7 @@ const sections = [
                 textHtml: '/ 75 <span class="text-super">*</c>',
             },
         ],
+        style: 'min-width: 260px',
     },
     {
         name: 'Shard Milestone',
@@ -221,66 +222,11 @@ academyEffectorPortal.pages.default.dataLinkage = {
     get iapCollector() { return playerData.diamonds.iapCollector; },
 };
 
-// academyEffectorPortal.pages.mods.updateFunction = function(e) {
-//     portalPanel.dataLinkage[e.target.id] = parseInt(e.target.value);
-//     SavePlayerData();
-// };
-
-// academyEffectorPortal.pages.zeus.initFunction = function() {
-//     portalPanel['rankrequirement'].innerText = GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage.rank];
-// };
-
-// academyEffectorPortal.pages.zeus.updateFunction = function(e) {
-//     if (e.target.type === 'checkbox')
-//     {
-//         portalPanel.dataLinkage[e.target.id] = e.target.checked;
-//         SavePlayerData();
-//         return;
-//     }
-
-//     if (e.target.id === 'cm')
-//     {
-//         portalPanel.dataLinkage[e.target.id] = parseFloat(e.target.value);
-//         SavePlayerData();
-
-//         return;
-//     }
-
-//     if (e.target.type === 'number')
-//     {
-//         portalPanel.dataLinkage[e.target.id] = parseInt(e.target.value);
-//         SavePlayerData();
-
-//         if (e.target.id === 'rank') { portalPanel['rankrequirement'].innerText = GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage[e.target.id]]; }
-
-//         return;
-//     }
-
-//     let value = parseBigNum(e.target.value);
-//     if (isNaN(value)) {e.target.value = 0}
-//     else {portalPanel.dataLinkage[e.target.id] = value}
-//     SavePlayerData();
-// };
-
-// // academyEffectorPortal.pages.sr
-
-// academyEffectorPortal.pages.sr.updateFunction = function(e) {
-//     if (e.target.type === 'checkbox')
-//     {
-//         portalPanel.dataLinkage[e.target.id] = e.target.checked;
-//         SavePlayerData();
-//         return;
-//     }
-
-//     portalPanel.dataLinkage[e.target.id] = parseInt(e.target.value);
-//     SavePlayerData();
-// };
-
 academyEffectorPortal.pages.default.initFunction = function(panel) {
     const wrapper = createElement('div', 'section-2', { style : 'gap: 20px' })
 
-    sections.forEach(({ name, children }) => {
-        const section = createElement('div', 'section-3')
+    sections.forEach(({ name, children, style }) => {
+        const section = createElement('div', 'section-3', { style })
         const header = createElement('h5', '', null, name)
         section.appendChild(header)
 
