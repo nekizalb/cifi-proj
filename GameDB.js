@@ -149,7 +149,8 @@ let GameDB = {
         name: 'Robo-Douglett',
         baseCosts: [0, 0, 3e55, 0, 0, 6e55, 0, 8e54],
         costScalar: 18,
-        costBump: 0.19,
+        costBump: 1,
+        costBumpLvInterval: 20,
         bpCount: 3,
       },
     ],
@@ -198,16 +199,16 @@ let GameDB = {
     ],
     projectNextLevelCost(projectID, level, costDiv) {
       let project = this.projects[projectID]
-      return project.baseCosts.map((mat) => {
-        return (
-          (mat *
-            Math.pow(
-              project.costScalar + project.costBump * Math.floor(level / 100),
-              level,
-            )) /
-          costDiv
-        )
-      })
+
+      const costMultiplier =
+        Math.pow(
+          project.costScalar +
+            project.costBump *
+              Math.floor(level / (project.costBumpLvInterval || 100)),
+          level,
+        ) / costDiv
+
+      return project.baseCosts.map((mat) => mat * costMultiplier)
     }, // END .projects
   },
   fleet: {
