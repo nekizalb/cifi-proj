@@ -135,7 +135,7 @@ let GameDB = {
         name: 'Fuel Compression',
         baseCosts: [1e38, 0, 0, 4e37, 0, 0, 7e36, 0],
         costScalar: 3,
-        costBump: 0.13,
+        costBump: 0.2,
         bpCount: 2,
       },
       {
