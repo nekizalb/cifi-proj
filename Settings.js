@@ -162,7 +162,12 @@ function initSettings(panel) {
         ),
       ),
     )
-    .append($('<button>').addClass('btn btn-secondary').text('Reset').click(resetColors))
+    .append(
+      $('<button>')
+        .addClass('btn btn-secondary')
+        .text('Reset')
+        .click(resetColors),
+    )
     .appendTo(wrapper)
 
   const section = createElement('div', 'section-3')

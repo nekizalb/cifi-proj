@@ -7,13 +7,17 @@ let portals = {
 
 const validPortals = Object.keys(portals)
 
-playerData.activePortal = validPortals.includes(playerData.activePortal) ? playerData.activePortal : validPortals[0]
+playerData.activePortal = validPortals.includes(playerData.activePortal)
+  ? playerData.activePortal
+  : validPortals[0]
 let activePortal = portals[playerData.activePortal]
 
 function reDim() {
   destroyPortal()
   ConstructPortal(activePortal)
-  $(`.navbar-nav .nav-link[data-tab=${playerData.activePortal}]`).addClass('active')
+  $(`.navbar-nav .nav-link[data-tab=${playerData.activePortal}]`).addClass(
+    'active',
+  )
 
   $('.navbar-nav')
     .find('.nav-link')
