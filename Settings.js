@@ -203,9 +203,22 @@ function initSettings(panel) {
     .append($('<h3>Credits</h3>').addClass('mb-4'))
     .append(
       $('<div class="font-normal">')
-        .append($('<p>Created by @sirrebrl</p>'))
+        .append(
+          $(
+            '<p><a href="https://sirrebrl.github.io/CIFIsuper/" target="_blank">Created</a> by @sirrebrl</p>',
+          ),
+        )
         .append($('<p>Modified by @1pete</p>'))
-        .append($('<p>Found a bug or have a suggestion,<br/>tell @1pete</p>')),
+        .append(
+          $(
+            '<p>Found a bug or have a suggestion,<br/><a href="https://discord.com/channels/933641963058655312/1073015884836261908" target="_blank">tell @1pete</a></p>',
+          ),
+        )
+        .append(
+          $(
+            '<p>Want to contribute, submit <a href="https://github.com/1pete/cifi-proj/pulls" target="_blank">a pull request</a></p>',
+          ),
+        ),
     )
     .appendTo(wrapper)
 
