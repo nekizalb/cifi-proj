@@ -101,3 +101,8 @@ table.table th {
 .setter[data-setting='3'] {
   cursor: pointer;
 }
+
+.has-tip {
+  text-decoration: underline dotted;
+  cursor: help;
+}

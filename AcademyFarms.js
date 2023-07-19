@@ -229,7 +229,7 @@ academyFarmPortal.pages.default.initFunction = function (panel) {
 
     const table = createElement('table', 'table table-borderless')
     table.innerHTML =
-      '<thead><tr><th></th><th class="text-center" style="font-size:0.7em">Power</th>' +
+      '<thead><tr><th></th><th class="text-center" style="font-size:0.7em"><label class="has-tip" data-bs-toggle="tooltip" data-bs-title="Individual">Power</label></th>' +
       '<th class="text-center" style="font-size:0.7em">Owned</th></tr></thead>'
 
     const tbody = document.createElement('tbody')
@@ -606,6 +606,8 @@ academyFarmPortal.pages.default.initFunction = function (panel) {
 
   PopulateTiming()
   populateYield()
+
+  initTooltips()
 }
 
 academyFarmPortal.pages.default.updateFunction = function (e) {
