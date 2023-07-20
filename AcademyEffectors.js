@@ -32,6 +32,13 @@ const sections = [
         label: 'Zeus Rank Benefits',
         max: 10,
         text: '/ 10',
+        info: {
+          type: 'mod',
+          icon: 'zeus-rank-benefit.jpg',
+          position: 'Left, Fleet zone',
+          effect: '+1% mat per Zeus rank',
+          cost: 'e98 mp',
+        },
       },
       {
         id: 'mathauling',
@@ -39,12 +46,26 @@ const sections = [
         label: 'Material Hauling',
         text: '/ 999',
         style: { width: 60 },
+        info: {
+          type: 'mod',
+          icon: 'material-hauling.jpg',
+          position: 'Right, Academy zone',
+          effect: '+5% mat',
+          cost: 'e169 mp',
+        },
       },
       {
         id: 'beyonders',
         type: 'number',
         label: 'Rule of the Beyonders',
         style: { width: 80 },
+        info: {
+          type: 'mod',
+          icon: 'rule-of-the-beyonders.jpg',
+          position: 'Top',
+          effect: '+1% mat',
+          cost: 'e300 mp',
+        },
       },
       {
         id: 'swarm',
@@ -52,12 +73,26 @@ const sections = [
         label: 'Rule of the Swarm',
         max: 30,
         text: '/ 30',
+        info: {
+          type: 'mod',
+          icon: 'rule-of-the-swarm.jpg',
+          position: 'Top',
+          effect: '+51.11% mat, +3.11% speed',
+          cost: 'e350 mp',
+        },
       },
       {
         id: 'expansion',
         type: 'number',
         label: 'Rule of Expansion',
         style: { width: 80 },
+        info: {
+          type: 'mod',
+          icon: 'rule-of-expansion.jpg',
+          position: 'Right',
+          effect: '+1% mat',
+          cost: 'e300 mp',
+        },
       },
       {
         id: 'productivity',
@@ -65,6 +100,13 @@ const sections = [
         label: 'Rule of Productivity',
         max: 10,
         text: '/ 10',
+        info: {
+          type: 'mod',
+          icon: 'rule-of-productivity.jpg',
+          position: 'Top-Right',
+          effect: '+0.2% mat / PL, +10% speed',
+          cost: 'e1020 mp',
+        },
       },
       {
         id: 'looping',
@@ -72,6 +114,13 @@ const sections = [
         label: 'Rule of Looping',
         max: 10,
         text: '/ 10',
+        info: {
+          type: 'mod',
+          icon: 'rule-of-looping.jpg',
+          position: 'Top-Right',
+          effect: '+0.02% mat / loop filled',
+          cost: 'e1030 mp',
+        },
       },
     ],
   },
@@ -430,15 +479,54 @@ academyEffectorPortal.pages.default.initFunction = function (panel) {
     section.appendChild(header)
 
     children
-      .map(({ id, label, type, text, style = {}, ...props }) => {
+      .map(({ id, label, type, text, style = {}, info, ...props }) => {
         if (['select', 'number', 'checkbox'].includes(type)) {
           const group = createElement(
             'div',
             'd-flex align-items-center column-gap-2 mb-2',
           )
-          group.innerHTML = `<div class="${
-            props.labelClassName ? props.labelClassName : 'flex-fill'
-          }"><label class="col-form-label col-form-label-sm">${label}</label></div>`
+
+          // label
+          const labelWrapper = $('<div>').addClass(
+            props.labelClassName ? props.labelClassName : 'flex-fill',
+          )
+          const labelEl = $('<label>')
+            .addClass('col-form-label col-form-label-sm')
+            .html(label)
+          if (info) {
+            if (info.type === 'mod') {
+              labelEl
+                .addClass('has-tip')
+                .attr('data-bs-container', 'body')
+                .attr('data-bs-toggle', 'popover')
+                .attr('data-bs-trigger', 'hover focus')
+                .attr('data-bs-placement', 'top')
+                .attr('data-bs-html', 'true')
+                .attr(
+                  'data-bs-title',
+                  [
+                    '<div>',
+                    `<img src="assets/loopmod/${info.icon}" class="loopmod-tip-icon" />`,
+                    label,
+                    '</div>',
+                  ].join(''),
+                )
+                .attr(
+                  'data-bs-content',
+                  [
+                    '<div>',
+                    `<div><strong>Position:</strong> ${info.position}</div>`,
+                    `<div><strong>Effect:</strong> ${info.effect}</div>`,
+                    `<div><strong>Starting Cost:</strong> ${info.cost}</div>`,
+                    '</div>',
+                  ].join(''),
+                )
+            }
+          }
+
+          labelWrapper.append(labelEl).appendTo($(group))
+
+          // input
           const inputWrapper = createElement('div', '')
           group.appendChild(inputWrapper)
 
@@ -555,6 +643,7 @@ academyEffectorPortal.pages.default.initFunction = function (panel) {
     '/ ' + GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage.rank]
 
   initTooltips()
+  initPopovers()
 }
 
 academyEffectorPortal.pages.default.updateFunction = function (e) {
