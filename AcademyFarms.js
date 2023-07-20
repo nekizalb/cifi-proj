@@ -816,11 +816,11 @@ function genZeusRank(missionCount, duration) {
   let rankProgress = playerData.fleet.zeus.rank.progress
   let yieldRank = playerData.fleet.zeus.rank.current
 
-  let breaker = 20
+  let maxRows = 30
 
   let totalTime = 0
 
-  while (rankProgress + missionLeft > 0 && breaker-- > 0) {
+  while (rankProgress + missionLeft > 0 && maxRows-- > 0) {
     if (
       rankProgress + missionLeft >=
       GameDB.fleet.zeus.rankRequirements[yieldRank]
