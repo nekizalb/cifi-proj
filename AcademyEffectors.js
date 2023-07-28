@@ -266,7 +266,7 @@ const sections = [
         type: 'select',
         label: 'Construction Analysis 2',
         maxLevel: 6,
-        text: 'Proj Cost: Lv2 /2, Lv3 /3, Lv4 /3, Lv5 /4, Lv5 /4',
+        text: 'Proj Cost: Lv2 /2, Lv3 /3, Lv4 /3, Lv5 /4, Lv6 /4',
         textClassName: 'font-normal',
       },
     ].map((i) => {
