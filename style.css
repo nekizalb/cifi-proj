@@ -105,7 +105,8 @@ table.table th {
 }
 
 .has-tip {
-  text-decoration: underline dotted;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
   cursor: help;
 }
 
