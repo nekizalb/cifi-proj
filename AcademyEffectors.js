@@ -610,7 +610,7 @@ academyEffectorPortal.pages.default.initFunction = function (panel) {
 
   try {
     const tips = [
-      'After complete all form inputs, cross check numbers in 2nd and 3rd tabs displaying in small texts with in-game values for validation.',
+      'After complete all form inputs, cross check numbers in 2nd and 3rd tabs displaying in small texts with in-game values for validation. Don\'t forget to update Proj #9 if you\'ve unlocked it before validating.',
       'Some researches are named wrong in-game, try match them with research bonus instead.',
     ]
 
