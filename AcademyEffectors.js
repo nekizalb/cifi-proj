@@ -194,7 +194,7 @@ const sections = [
         type: 'select',
         label: 'Mission Analysis 1',
         maxLevel: 6,
-        text: 'Mission Material:  Lv2 x1.5, Lv4 x1.5, Lv6 x1.5',
+        text: 'Material:  Lv2 x1.5, Lv4 x1.5, Lv6 x1.5',
         textClassName: 'font-normal',
       },
       {
@@ -202,7 +202,7 @@ const sections = [
         type: 'select',
         label: 'Mission Analysis 2',
         maxLevel: 6,
-        text: 'Mission Material:  Lv2 x1.75, Lv4 x1.75, Lv6 x1.75',
+        text: 'Material:  Lv2 x1.75, Lv4 x1.75, Lv6 x1.75',
         textClassName: 'font-normal',
       },
       {
@@ -210,23 +210,23 @@ const sections = [
         type: 'select',
         label: 'Mission Analysis 3',
         maxLevel: 6,
-        text: 'Mission Speed: Lv1 x1.05, Lv3: x1.05, Lv5: x1.05',
+        text: 'Speed: Lv1 x1.05, Lv3: x1.05, Lv5: x1.05',
         textClassName: 'font-normal',
       },
       {
         id: 'mission4',
         type: 'select',
-        label: 'Mission Analysis 4 <span class="text-super">1</c>',
+        label: 'Mission Analysis <s>4</s>3 <span class="text-super">1</c>',
         maxLevel: 6,
-        text: 'Mission Material:  Lv2 x2, Lv4 x3, Lv6 x4',
+        text: 'Material:  Lv2 x2, Lv4 x3, Lv6 x4',
         textClassName: 'font-normal',
       },
       {
         id: 'mission5',
         type: 'select',
-        label: 'Mission Analysis 5 <span class="text-super">2</c>',
+        label: 'Mission Analysis <s>5</s>4 <span class="text-super">2</c>',
         maxLevel: 6,
-        text: 'Mission Material:  Lv2 x3, Lv4 x4, Lv6 x5',
+        text: 'Material:  Lv2 x3, Lv4 x4, Lv6 x5',
         textClassName: 'font-normal',
       },
       {
@@ -234,23 +234,23 @@ const sections = [
         type: 'select',
         label: 'Perfection Analysis 2',
         maxLevel: 6,
-        text: 'Mission Material:  Lv2 x5',
+        text: 'Material:  Lv2 x5',
         textClassName: 'font-normal',
       },
       {
         id: 'perfection3',
         type: 'select',
-        label: 'Perfection Analysis 3 <span class="text-super">3</c>',
+        label: 'Perfection Analysis <s>3</s>2 <span class="text-super">3</c>',
         maxLevel: 6,
-        text: 'Lv2: Mission Material x5; Lv5: Mission Speed *2',
+        text: 'Lv2: Material x5; Lv5: Speed *2',
         textClassName: 'font-normal',
       },
       {
         id: 'perfection4',
         type: 'select',
-        label: 'Perfection Analysis 4 <span class="text-super">4</c>',
+        label: 'Perfection Analysis <s>4</s>3 <span class="text-super">4</c>',
         maxLevel: 6,
-        text: 'Lv2: Mission Material x9; Lv5: Mission Speed *2',
+        text: 'Lv2: Material x9; Lv5: Speed *2',
         textClassName: 'font-normal',
       },
       {
@@ -258,7 +258,7 @@ const sections = [
         type: 'select',
         label: 'Construction Analysis 1',
         maxLevel: 6,
-        text: 'Proj Cost: Lv2 /1.5, Lv4 /2, Lv6 /2.5',
+        text: 'Proj Cost: - , /1.5 , - , /2, - , /2.5',
         textClassName: 'font-normal',
       },
       {
@@ -266,11 +266,11 @@ const sections = [
         type: 'select',
         label: 'Construction Analysis 2',
         maxLevel: 6,
-        text: 'Proj Cost: Lv2 /2, Lv3 /3, Lv4 /3, Lv5 /4, Lv6 /4',
+        text: 'Proj Cost: - , /2 , /3 , /3 , /4 , /4',
         textClassName: 'font-normal',
       },
     ].map((i) => {
-      i.labelClassName = ' '
+      i.labelClassName = 'font-normal'
       return i
     }),
   },
@@ -615,10 +615,10 @@ academyEffectorPortal.pages.default.initFunction = function (panel) {
     ]
 
     const notes = [
-      "In game, it's mistakenly titled as Mission Analysis 3",
-      "In game, it's mistakenly titled as Mission Analysis 4",
-      "In game, it's mistakenly titled as Perfection Analysis 2",
-      "In game, it's mistakenly titled as Perfection Analysis 3",
+      "It's in-game mislabeled as Mission Analysis 3",
+      "It's in-game mislabeled as Mission Analysis 4",
+      "It's in-game mislabeled as Perfection Analysis 2",
+      "It's in-game mislabeled as Perfection Analysis 3",
     ]
 
     $(
