@@ -142,7 +142,7 @@ let GameDB = {
         name: 'Quantum Weaponry',
         baseCosts: [0, 2e45, 0, 0, 5e44, 0, 0, 0],
         costScalar: 3.2,
-        costBump: 0.16,
+        costBump: 0.25,
         bpCount: 2,
       },
       {
