@@ -794,6 +794,7 @@ function formatTime(time) {
 }
 
 function genZeusRank(missionCount, duration) {
+  const zeusReqs = GameDB.fleet.zeus.rankRequirements
   const zeusTable = portalPanel.zeusTable
   const container = portalPanel.rankTable
   zeusTable.innerHTML = ''
@@ -821,11 +822,11 @@ function genZeusRank(missionCount, duration) {
   let totalTime = 0
 
   while (rankProgress + missionLeft > 0 && maxRows-- > 0) {
-    if (
-      rankProgress + missionLeft >=
-      GameDB.fleet.zeus.rankRequirements[yieldRank]
-    ) {
-      let requirement = GameDB.fleet.zeus.rankRequirements[yieldRank]
+    let requirement = zeusReqs[yieldRank]
+
+    if (!requirement) break
+
+    if (rankProgress + missionLeft >= requirement) {
       if (rankProgress > 0) {
         requirement -= rankProgress
         rankProgress = 0

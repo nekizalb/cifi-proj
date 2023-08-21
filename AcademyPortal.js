@@ -389,8 +389,9 @@ function CalculateFarmYields(giveTotal = false) {
       }
     }
 
-    if (rankProgress >= GameDB.fleet.zeus.rankRequirements[yieldRank]) {
-      rankProgress -= GameDB.fleet.zeus.rankRequirements[yieldRank]
+    const rankReq = GameDB.fleet.zeus.rankRequirements[yieldRank]
+    if (rankReq && rankProgress >= rankReq) {
+      rankProgress -= rankReq
       yieldRank++
       dynamicMatBonus = Math.pow(
         0.01 * playerData.loopMods.zeusRankBenefits + 1,

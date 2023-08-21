@@ -610,7 +610,7 @@ academyEffectorPortal.pages.default.initFunction = function (panel) {
 
   try {
     const tips = [
-      'After complete all form inputs, cross check numbers in 2nd and 3rd tabs displaying in small texts with in-game values for validation. Don\'t forget to update Proj #9 if you\'ve unlocked it before validating.',
+      "After complete all form inputs, cross check numbers in 2nd and 3rd tabs displaying in small texts with in-game values for validation. Don't forget to update Proj #9 if you've unlocked it before validating.",
       'Some researches are named wrong in-game, try match them with research bonus instead.',
     ]
 
@@ -640,7 +640,7 @@ academyEffectorPortal.pages.default.initFunction = function (panel) {
   panel.appendChild(wrapper)
 
   portalPanel['rankrequirement'].innerText =
-    '/ ' + GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage.rank]
+    '/ ' + (GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage.rank] || 'no data')
 
   initTooltips()
   initPopovers()
@@ -666,7 +666,7 @@ academyEffectorPortal.pages.default.updateFunction = function (e) {
     if (e.target.id === 'rank') {
       portalPanel['rankrequirement'].innerText =
         '/ ' +
-        GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage[e.target.id]]
+        (GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage[e.target.id]] || 'no data')
     }
 
     return
