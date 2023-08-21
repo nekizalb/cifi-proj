@@ -143,7 +143,7 @@ const sections = [
         label:
           '<label class="has-tip" data-bs-toggle="tooltip" data-bs-title="Material Scavenger Vehicles">Install 3</label>',
         max: 5,
-        textHtml: '/ 5 <span class="text-super">*</c>',
+        textHtml: '/ <label class="has-tip" data-bs-toggle="tooltip" data-bs-title="Starts at 1, changes over time">5</label> <span class="text-super">*</c>',
       },
       {
         id: 'install6',
@@ -151,7 +151,7 @@ const sections = [
         label:
           '<label class="has-tip" data-bs-toggle="tooltip" data-bs-title="Academy Auto-Scrappers">Install 6</label>',
         max: 75,
-        textHtml: '/ 75 <span class="text-super">*</c>',
+        textHtml: '/ <label class="has-tip" data-bs-toggle="tooltip" data-bs-title="Starts at 15, changes over time">75</label> <span class="text-super">*</c>',
       },
     ],
     style: 'min-width: 260px',
