@@ -817,7 +817,7 @@ function genZeusRank(missionCount, duration) {
   let rankProgress = playerData.fleet.zeus.rank.progress
   let yieldRank = playerData.fleet.zeus.rank.current
 
-  let maxRows = 30
+  let maxRows = 60
 
   let totalTime = 0
 
