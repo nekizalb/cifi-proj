@@ -216,8 +216,8 @@ academyProjectPortal.pages.default.initFunction = function (panel) {
   const legends = [
     'Unaffordable',
     'Material used by other projects',
-    'Affordable',
-    'Selected',
+    'Affordable (click to select)',
+    'Selected (click to deselect)',
   ]
   $('<div class="d-flex flex-column" style="gap: 8px">')
     .append(
