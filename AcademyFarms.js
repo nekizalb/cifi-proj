@@ -307,11 +307,15 @@ academyFarmPortal.pages.default.initFunction = function (panel) {
         row.appendChild(
           createElement('td', 'text-end', null, `${plannet + 1}-${farm + 1}`),
         )
-        const total = createElement('td', 'text-end', {
+        const total = createElement('span', 'has-tip', {
           id: `farm${plannet}${farm}total`,
         })
+        total.setAttribute('data-bs-toggle', 'tooltip')
+        total.setAttribute('data-bs-title', '')
         portalPanel[`farm${plannet}${farm}total`] = total
-        row.appendChild(total)
+        const totalTd = createElement('td', 'text-end')
+        totalTd.appendChild(total)
+        row.appendChild(totalTd)
 
         const lockId = `farm${plannet}${farm}lock`
         const lockCell = createElement('td')
@@ -664,16 +668,21 @@ function PopulateTiming() {
 
   for (let planet = 0; planet < GameDB.academy.planets; planet++) {
     for (let farm = 0; farm < 3; farm++) {
+      const farmInfo = GameDB.academy.farms[planet * 3 + farm]
+      const maxPersonnel = farmInfo.maxPop
       let datum = farmData[planet * 3 + farm]
-      portalPanel[`farm${planet}${farm}total`].innerText = datum.personnel
+
+      const totalEl = portalPanel[`farm${planet}${farm}total`]
+      totalEl.innerText = datum.personnel
+      totalEl.setAttribute('data-bs-title', `Max: ${maxPersonnel}`)
+      totalEl.style.color =
+        datum.personnel > maxPersonnel ? 'var(--bs-danger-text-emphasis)' : ''
       portalPanel[`farm${planet}${farm}time`].innerText = datum.time
       portalPanel[`farm${planet}${farm}time`].classList.toggle(
         'is-capped',
         datum.isCapped,
       )
-      portalPanel[`farm${planet}${farm}mat`].innerText = GameDB.academy.farms[
-        planet * 3 + farm
-      ].baseMats
+      portalPanel[`farm${planet}${farm}mat`].innerText = farmInfo.baseMats
         .map((a, i) => {
           if (a === 0) return null
           const mat = matBonus * a
