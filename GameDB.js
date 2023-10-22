@@ -22,6 +22,7 @@ let GameDB = {
         baseAP: 2,
         // Difar
         baseMats: [38, 0, 0, 0, 0, 0, 0, 0],
+        isTimeRounded: false,
       },
       {
         id: 12,
@@ -30,6 +31,7 @@ let GameDB = {
         baseAP: 64,
         // Kento
         baseMats: [0, 320, 0, 0, 0, 0, 0, 0],
+        isTimeRounded: false,
       },
       {
         id: 13,
@@ -38,6 +40,7 @@ let GameDB = {
         baseAP: 500,
         // Difar, Kento, Chromium
         baseMats: [1350, 280, 760, 0, 0, 0, 0, 0],
+        isTimeRounded: false,
       },
       {
         id: 21,
@@ -46,6 +49,7 @@ let GameDB = {
         baseAP: 14,
         // Exon
         baseMats: [0, 0, 0, 20, 0, 0, 0, 0],
+        isTimeRounded: true,
       },
       {
         id: 22,
@@ -54,6 +58,7 @@ let GameDB = {
         baseAP: 75,
         // Chromium, Organium
         baseMats: [0, 0, 560, 0, 80, 0, 0, 0],
+        isTimeRounded: true,
       },
       {
         id: 23,
@@ -62,6 +67,7 @@ let GameDB = {
         baseAP: 4864,
         // Exon, Organium, Adamorphium
         baseMats: [0, 0, 0, 2200, 320, 260, 0, 0],
+        isTimeRounded: true,
       },
       {
         id: 31,
@@ -70,6 +76,7 @@ let GameDB = {
         baseAP: 840,
         // Moskom
         baseMats: [0, 0, 0, 0, 0, 0, 19, 0],
+        isTimeRounded: true,
       },
       {
         id: 32,
@@ -78,6 +85,7 @@ let GameDB = {
         baseAP: 422000,
         // Darkseid
         baseMats: [0, 0, 0, 0, 0, 0, 0, 80],
+        isTimeRounded: true,
       },
       {
         id: 33,
@@ -86,6 +94,7 @@ let GameDB = {
         baseAP: 845000,
         // Organium, Adamorphium, Moskom, Darkseid
         baseMats: [0, 0, 0, 0, 5200, 2440, 3980, 160],
+        isTimeRounded: true,
       },
     ], // END .farms
     projects: [

@@ -296,7 +296,7 @@ academyFarmPortal.pages.default.initFunction = function (panel) {
     const table = document.createElement('table')
     table.className = 'table table-borderless'
     table.innerHTML =
-      '<thead><tr><th>Farm</th><th>Total</th><th></th><th class="text-center">Pod</th><th class="text-center">Fire</th><th class="text-center">Titan</th><th class="text-center">Corv</th><th>Run time</th></tr></thead>'
+      '<thead><tr><th>Farm</th><th>Total</th><th></th><th class="text-center">Pod</th><th class="text-center">Fire</th><th class="text-center">Titan</th><th class="text-center">Corv</th><th>Time</th></tr></thead>'
 
     const tbody = document.createElement('tbody')
     table.appendChild(tbody)
@@ -307,11 +307,11 @@ academyFarmPortal.pages.default.initFunction = function (panel) {
         row.appendChild(
           createElement('td', 'text-end', null, `${plannet + 1}-${farm + 1}`),
         )
-        const total = createElement('span', 'has-tip', {
+        const total = createElement('span', '', {
           id: `farm${plannet}${farm}total`,
         })
         total.setAttribute('data-bs-toggle', 'tooltip')
-        total.setAttribute('data-bs-title', '')
+        total.setAttribute('data-bs-title', ' ')
         portalPanel[`farm${plannet}${farm}total`] = total
         const totalTd = createElement('td', 'text-end')
         totalTd.appendChild(total)
@@ -352,11 +352,15 @@ academyFarmPortal.pages.default.initFunction = function (panel) {
           cell.append(e)
           row.appendChild(cell)
         })
-        const time = createElement('td', 'font-normal', {
+        const time = createElement('span', '', {
           id: `farm${plannet}${farm}time`,
         })
+        time.setAttribute('data-bs-toggle', 'tooltip')
+        time.setAttribute('data-bs-title', ' ')
         portalPanel[`farm${plannet}${farm}time`] = time
-        row.appendChild(time)
+        const timeTd = createElement('td', 'font-normal')
+        timeTd.appendChild(time)
+        row.appendChild(timeTd)
 
         tbody.appendChild(row)
 
@@ -677,11 +681,11 @@ function PopulateTiming() {
       totalEl.setAttribute('data-bs-title', `Max: ${maxPersonnel}`)
       totalEl.style.color =
         datum.personnel > maxPersonnel ? 'var(--bs-danger-text-emphasis)' : ''
-      portalPanel[`farm${planet}${farm}time`].innerText = datum.time
-      portalPanel[`farm${planet}${farm}time`].classList.toggle(
-        'is-capped',
-        datum.isCapped,
-      )
+      totalEl.classList.toggle('has-tip', datum.personnel > maxPersonnel)
+      const timeEl = portalPanel[`farm${planet}${farm}time`]
+      timeEl.innerText = datum.time
+      timeEl.classList.toggle('is-capped', datum.isCapped)
+      timeEl.setAttribute('data-bs-title', datum.rawTime || '-')
       portalPanel[`farm${planet}${farm}mat`].innerText = farmInfo.baseMats
         .map((a, i) => {
           if (a === 0) return null
@@ -776,32 +780,6 @@ function populateYield() {
   }
 }
 
-function padZero(v) {
-  if (v < 10) return '0' + v
-  return v
-}
-
-function formatTime(time) {
-  if (time > 3600 * 24) {
-    return `${(time / 3600 / 24).toFixed(2)} days`
-  }
-
-  if (time > 3600) {
-    const hour = Math.floor(time / 3600)
-    const min = Math.floor((time % 3600) / 60)
-    return `${hour} h ${padZero(min)} m`
-  }
-
-  if (time > 60) {
-    const min = Math.floor(time / 60)
-    return `${min} m`
-  }
-
-  const sec = Math.floor(time)
-
-  return `${sec} s`
-}
-
 function genZeusRank(missionCount, duration) {
   const zeusReqs = GameDB.fleet.zeus.rankRequirements
   const zeusTable = portalPanel.zeusTable
@@ -858,7 +836,7 @@ function genZeusRank(missionCount, duration) {
         ),
       )
       row.appendChild(
-        createElement('td', 'text-end font-normal', null, formatTime(time)),
+        createElement('td', 'text-end font-normal', null, formatDuration(time)),
       )
       totalTime += time
       row.appendChild(
@@ -866,7 +844,7 @@ function genZeusRank(missionCount, duration) {
           'td',
           'text-end font-normal',
           null,
-          formatTime(totalTime),
+          formatDuration(totalTime),
         ),
       )
 
