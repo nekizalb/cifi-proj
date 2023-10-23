@@ -366,7 +366,7 @@ function setProjectLevel(project, level, setting) {
   }
   for (let i = 0; i < projects.length; i++) {
     let projectCosts = portalPanel.projectConfigs[i].currentCost
-    console.log(`Project: ${projects[i]}`)
+    // console.log(`Project: ${projects[i]}`)
     for (let mat = 0; mat < 8; mat++) {
       // console.log(portalPanel.storehouse.spent[mat].toExponential(2) + ' + ' + projectCosts[mat].toExponential(2));
       portalPanel.storehouse.spent[mat] += projectCosts[mat]
