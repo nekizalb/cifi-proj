@@ -307,27 +307,33 @@ function CalculateFarmYields(giveTotal = false) {
 
   let staticMatBonus = GetStaticMatBonus()
   let dynamicMatBonus = GetDynamicMatBonus()
+  const matBonusPerRank = 0.01 * playerData.loopMods.zeusRankBenefits + 1
 
   let farmTimes = CalculateFarmTimes(true)
 
   let farms = []
 
   for (let i = 0; i < farmTimes.length; i++) {
-    if (farmTimes[i].time <= duration) {
+    const farmDuration = farmTimes[i].time
+    if (farmDuration <= duration) {
       let newFarm = {
         id: GameDB.academy.farms[i].id,
         staticMats: GameDB.academy.farms[i].baseMats.map(
           (mat) => mat * staticMatBonus,
         ),
-        runTime: farmTimes[i].time,
-        activeTime: farmTimes[i].time,
+        runTime: farmDuration,
+        activeTime: farmDuration,
+        farmCount: Math.floor(duration / farmDuration),
       }
       farms.push(newFarm)
     }
   }
 
-  let missionYield = 0
-  let missionContrib = {}
+  let missionYield = farms.reduce((acc, farm) => acc + farm.farmCount, 0)
+  let missionContrib = farms.reduce((acc, farm) => {
+    acc[farm.id] = farm.farmCount
+    return acc
+  }, {})
   let matYield = [0, 0, 0, 0, 0, 0, 0, 0]
   let matContrib = [{}, {}, {}, {}, {}, {}, {}, {}]
   if (giveTotal) {
@@ -340,50 +346,80 @@ function CalculateFarmYields(giveTotal = false) {
     return { missionYield, missionContrib, matYield, matContrib }
   }
 
-  while (duration > 0) {
-    farms.sort((a, b) => {
-      return a.activeTime - b.activeTime
-    })
-    let subTime = farms[0].activeTime
+  // use precise calculation if duration is less than 3 days
+  if (totalDuration < 3 * 24 * 3600) {
+    while (duration > 0) {
+      farms.sort((a, b) => {
+        return a.activeTime - b.activeTime
+      })
+      let subTime = farms[0].activeTime
 
-    if (subTime > duration) break
+      if (subTime > duration) break
 
-    for (let i = 0; i < farms.length; i++) {
-      farms[i].activeTime -= subTime
+      for (let i = 0; i < farms.length; i++) {
+        farms[i].activeTime -= subTime
 
-      if (farms[i].activeTime <= 0) {
-        farms[i].activeTime = farms[i].runTime
-        missionYield++
-        if (missionContrib[farms[i].id]) {
-          missionContrib[farms[i].id]++
-        } else {
-          missionContrib[farms[i].id] = 1
-        }
-        for (let mat = 0; mat < farms[i].staticMats.length; mat++) {
-          const product = farms[i].staticMats[mat] * dynamicMatBonus
-          matYield[mat] += product
-          if (matContrib[mat][farms[i].id]) {
-            matContrib[mat][farms[i].id] += product
-          } else {
-            matContrib[mat][farms[i].id] = product
+        if (farms[i].activeTime <= 0) {
+          farms[i].activeTime = farms[i].runTime
+          for (let mat = 0; mat < farms[i].staticMats.length; mat++) {
+            const product = farms[i].staticMats[mat] * dynamicMatBonus
+            matYield[mat] += product
+            if (matContrib[mat][farms[i].id]) {
+              matContrib[mat][farms[i].id] += product
+            } else {
+              matContrib[mat][farms[i].id] = product
+            }
           }
+
+          rankProgress++
         }
-
-        rankProgress++
       }
+
+      const rankReq = GameDB.fleet.zeus.rankRequirements[yieldRank]
+      if (rankReq && rankProgress >= rankReq) {
+        rankProgress -= rankReq
+        yieldRank++
+        dynamicMatBonus = Math.pow(matBonusPerRank, yieldRank)
+      }
+
+      duration -= subTime
+    }
+  } else {
+    // use estimated calculation if duration is 3 days or longer
+
+    const currentZeusRankBonus = Math.pow(matBonusPerRank, yieldRank)
+    let incRank = 0
+    let zeusRankBonusOverTime = 0
+
+    let missionCount = missionYield
+    while (missionCount > 0) {
+      let toNextRank =
+        GameDB.fleet.zeus.rankRequirements[yieldRank + incRank] || 1e30
+      if (rankProgress > 0) {
+        toNextRank -= rankProgress
+        rankProgress = 0
+      }
+
+      zeusRankBonusOverTime +=
+        (Math.pow(matBonusPerRank, incRank) *
+          Math.min(toNextRank, missionCount)) /
+        missionYield
+
+      missionCount -= toNextRank
+      incRank++
     }
 
-    const rankReq = GameDB.fleet.zeus.rankRequirements[yieldRank]
-    if (rankReq && rankProgress >= rankReq) {
-      rankProgress -= rankReq
-      yieldRank++
-      dynamicMatBonus = Math.pow(
-        0.01 * playerData.loopMods.zeusRankBenefits + 1,
-        yieldRank,
-      )
-    }
-
-    duration -= subTime
+    farms.forEach((farm) => {
+      farm.staticMats.forEach((staticMat, mat) => {
+        const totalMat =
+          staticMat *
+          currentZeusRankBonus *
+          zeusRankBonusOverTime *
+          farm.farmCount
+        matYield[mat] += totalMat
+        matContrib[mat][farm.id] = totalMat
+      })
+    })
   }
 
   return {

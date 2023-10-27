@@ -12,6 +12,12 @@ let durationOptions = [
   ['5-d', '5 Days'],
   ['7-d', '7 Days'],
   ['10-d', '10 Days'],
+  ['15-d', '15 Days'],
+  ['30-d', '30 Days'],
+  ['45-d', '45 Days'],
+  ['60-d', '60 Days'],
+  ['90-d', '90 Days'],
+  ['120-d', '120 Days'],
 ]
 
 let academyFarmPortal = {
