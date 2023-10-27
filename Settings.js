@@ -101,8 +101,10 @@ const loadSettings = (e) => {
 }
 
 const resetSettings = () => {
-  ResetPlayerData()
-  location.reload()
+  if (confirm('Sure?')) {
+    ResetPlayerData()
+    location.reload()
+  }
 }
 
 function initSettings(panel) {
@@ -185,9 +187,9 @@ function initSettings(panel) {
   })
   section.appendChild(fileinput)
   // const load = createElement('label', 'form-label', null, 'Load Data and Reload app')
-  const load = createButton('Load Data and Reload app')
-  const save = createButton('Save Data')
-  const reset = createButton('Reset Data and Reload app')
+  const load = createButton('Import Settings')
+  const save = createButton('Export Settings')
+  const reset = createButton('Reset Settings')
 
   load.addEventListener('click', () => fileinput.click())
   fileinput.addEventListener('change', loadSettings)
