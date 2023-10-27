@@ -482,7 +482,14 @@ academyFarmPortal.pages.default.initFunction = function (panel) {
 
   const createZeusRank = () => {
     const section = createElement('div', 'section-3')
-    section.appendChild(createElement('h3', null, null, 'Zeus'))
+    const zeusRankToggle = $('<input type="checkbox" name="showallranks">')
+    $(section).append(
+      $('<div>')
+        .addClass('d-flex flex-row align-items-center justify-content-between')
+        .append($('<h3>').text('Zeus'))
+        .append($('<label>').text(' Show All').prepend(zeusRankToggle)),
+    )
+    zeusRankToggle.on('change', populateYield)
 
     const zeust = createElement('table', 'table table-borderless', {
       style: 'width: 100%; margin-top: 20px',
@@ -782,74 +789,69 @@ function populateYield() {
 
 function genZeusRank(missionCount, duration) {
   const zeusReqs = GameDB.fleet.zeus.rankRequirements
-  const zeusTable = portalPanel.zeusTable
-  const container = portalPanel.rankTable
-  zeusTable.innerHTML = ''
-  container.innerHTML = ''
+  const zeusTable = $(portalPanel.zeusTable)
+  const container = $(portalPanel.rankTable)
+  zeusTable.html('')
+  container.html('')
 
-  const missionRate = createElement('tr')
-  missionRate.appendChild(createElement('td', '', null, 'Mission Rate'))
-  missionRate.appendChild(
-    createElement(
-      'td',
-      'text-end font-normal',
-      null,
-      formatInteger((missionCount / duration) * 3600) + ' / hr',
-    ),
-  )
-
-  zeusTable.appendChild(missionRate)
+  const missionRate = $('<tr>')
+    .append($('<td>').text('Mission Rate'))
+    .append(
+      $('<td>')
+        .addClass('text-end font-normal')
+        .text(formatInteger((missionCount / duration) * 3600) + ' / hr'),
+    )
+  zeusTable.append(missionRate)
 
   let missionLeft = missionCount
   let rankProgress = playerData.fleet.zeus.rank.progress
   let yieldRank = playerData.fleet.zeus.rank.current
 
-  let maxRows = 60
+  let maxRows = 10
+  let showAllRanks = $('[name=showallranks]').prop('checked')
 
   let totalTime = 0
 
-  while (rankProgress + missionLeft > 0 && maxRows-- > 0) {
+  while (maxRows-- > 0 || showAllRanks) {
     let requirement = zeusReqs[yieldRank]
 
     if (!requirement) break
 
-    if (rankProgress + missionLeft >= requirement) {
-      if (rankProgress > 0) {
-        requirement -= rankProgress
-        rankProgress = 0
-      }
-
-      missionLeft -= requirement
-      yieldRank++
-      // console.log('missionLeft', missionLeft)
-      // console.log('requirement', requirement)
-
-      const row = createElement('tr')
-      row.appendChild(createElement('td', '', null, yieldRank))
-      const time = (requirement / missionCount) * duration
-      row.appendChild(
-        createElement(
-          'td',
-          'text-end font-normal',
-          null,
-          formatInteger(requirement),
-        ),
-      )
-      row.appendChild(
-        createElement('td', 'text-end font-normal', null, formatDuration(time)),
-      )
-      totalTime += time
-      row.appendChild(
-        createElement(
-          'td',
-          'text-end font-normal',
-          null,
-          formatDuration(totalTime),
-        ),
-      )
-
-      container.appendChild(row)
+    if (rankProgress > 0) {
+      requirement -= rankProgress
+      rankProgress = 0
     }
+
+    missionLeft -= requirement
+    yieldRank++
+    // console.log('missionLeft', missionLeft)
+    // console.log('requirement', requirement)
+
+    const row = createElement('tr')
+    row.appendChild(createElement('td', '', null, yieldRank))
+    const time = (requirement / missionCount) * duration
+    row.appendChild(
+      createElement(
+        'td',
+        'text-end font-normal',
+        null,
+        formatInteger(requirement),
+      ),
+    )
+    row.appendChild(
+      createElement('td', 'text-end font-normal', null, formatDuration(time)),
+    )
+    totalTime += time
+    row.appendChild(
+      createElement(
+        'td',
+        'text-end font-normal',
+        null,
+        formatDuration(totalTime),
+      ),
+    )
+
+    container.append($(row))
   }
 }
 
