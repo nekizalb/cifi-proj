@@ -18,14 +18,18 @@ function formatLargeInteger(i) {
 }
 
 /*
-  1.5 days
+  1 d 02 h
   10 h 04 m
   40 m
   40 s
 */
 function formatDuration(time) {
   if (time > 3600 * 24) {
-    return `${(time / 3600 / 24).toFixed(2)} days`
+    let hours = Math.round(time / 3600)
+    const days = Math.floor(hours / 24)
+    hours -= days * 24
+
+    return `${days} d ${padZero(hours)} h`
   }
 
   if (time > 3600) {
