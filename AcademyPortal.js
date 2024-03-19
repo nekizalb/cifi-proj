@@ -26,7 +26,7 @@ function CalculateFarmTimes(getRawTime = false) {
       missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1
       if (playerData.academy.badges.engineering) missionSpeedBonus *= 2
       missionSpeedBonus *= Math.pow(1.1, playerData.loopMods.productivity)
-      missionSpeedBonus *= 1 + 0.03 * playerData.relics.glider
+      missionSpeedBonus *= 1 + 0.03 * (playerData.relics ? (playerData.relics.glider || 0) : 0)
 
       if (power === 0) {
         if (getRawTime) {
