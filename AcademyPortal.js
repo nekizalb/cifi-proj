@@ -26,6 +26,7 @@ function CalculateFarmTimes(getRawTime = false) {
       missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1
       if (playerData.academy.badges.engineering) missionSpeedBonus *= 2
       missionSpeedBonus *= Math.pow(1.1, playerData.loopMods.productivity)
+      missionSpeedBonus *= 1 + 0.03 * playerData.relics.glider
 
       if (power === 0) {
         if (getRawTime) {
@@ -275,6 +276,10 @@ function GetStaticMatBonus() {
     0.002 * playerData.loopMods.productivity + 1,
     playerData.level,
   )
+  if (playerData.meltdown !== 0){
+    staticMatBonus *= playerData.meltdown
+    staticMatBonus /= 14.5 //this is almost certainly wrong, but it fits my data pretty well
+  }
 
   return staticMatBonus
 }

@@ -21,6 +21,12 @@ const sections = [
         style: { width: 80 },
       },
       { id: 'engineering', type: 'checkbox', label: 'Engineering Badge' },
+      {
+        id: 'meltdown',
+        type: 'number',
+        label: '<label class="has-tip" data-bs-toggle="tooltip" data-bs-title="No Ouro = this should be 0">Meltdown Effect</label>',
+        style: {width: 80}
+      }
     ],
   },
   {
@@ -274,6 +280,16 @@ const sections = [
       return i
     }),
   },
+  {
+    name: 'Relics', 
+    children: [
+      {
+        id: 'glider',
+        type: 'number',
+        label: '(3) The Time-Glider Engine'
+      },
+    ]
+  }
 ]
 
 academyEffectorPortal.pages.default.dataLinkage = {
@@ -354,6 +370,9 @@ academyEffectorPortal.pages.default.dataLinkage = {
   set engineering(value) {
     playerData.academy.badges.engineering = value
   },
+  set meltdown(value) {
+    playerData.meltdown = value
+  },
 
   get crew() {
     return playerData.fleet.zeus.crew
@@ -375,6 +394,9 @@ academyEffectorPortal.pages.default.dataLinkage = {
   },
   get engineering() {
     return playerData.academy.badges.engineering
+  },
+  get meltdown() {
+    return playerData.meltdown
   },
 
   set wonderous(value) {
@@ -468,6 +490,16 @@ academyEffectorPortal.pages.default.dataLinkage = {
   get iapCollector() {
     return playerData.diamonds.iapCollector
   },
+
+  set glider(value) {
+    playerData.relics.glider = value
+  },
+
+  get glider() {
+    return playerData.relics.glider
+  },
+
+
 }
 
 academyEffectorPortal.pages.default.initFunction = function (panel) {
@@ -660,7 +692,12 @@ academyEffectorPortal.pages.default.updateFunction = function (e) {
   }
 
   if (e.target.type === 'number') {
-    portalPanel.dataLinkage[e.target.id] = parseInt(e.target.value)
+    if (e.target.id === 'meltdown') {
+      portalPanel.dataLinkage[e.target.id] = parseFloat(e.target.value)
+    }
+    else {
+      portalPanel.dataLinkage[e.target.id] = parseInt(e.target.value)
+    }
     SavePlayerData()
 
     if (e.target.id === 'rank') {

@@ -5,7 +5,7 @@ PLAYER DATA CHANGE LOG
 */
 
 const blankPlayer = {
-  version: 12,
+  version: 13,
   activePortal: 'academyEffector',
   colorProfile: {
     academyProjects: ['#444444', '#CCCC44', '#44CC44', '#4444CC'],
@@ -233,6 +233,10 @@ const blankPlayer = {
     },
     iapCollector: false,
   },
+  relics: {
+    glider: 0,
+  },
+  meltdown: 0.0
 }
 
 const LSKey = 'CifiProjSave'
