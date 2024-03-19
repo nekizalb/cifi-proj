@@ -492,11 +492,12 @@ academyEffectorPortal.pages.default.dataLinkage = {
   },
 
   set glider(value) {
+    if (!playerData.relics) playerData.relics = {};
     playerData.relics.glider = value
   },
 
   get glider() {
-    return playerData.relics.glider
+    return playerData.relics ? playerData.relics.glider : 0
   },
 
 
