@@ -26,7 +26,7 @@ function CalculateFarmTimes(getRawTime = false) {
       missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1
       if (playerData.academy.badges.engineering) missionSpeedBonus *= 2
       missionSpeedBonus *= Math.pow(1.1, playerData.loopMods.productivity)
-      missionSpeedBonus *= 1 + 0.03 * (playerData.relics ? (playerData.relics.glider || 0) : 0)
+      missionSpeedBonus *= 1 + 0.03 * (playerData.relics.relic3 || 0)
 
       if (power === 0) {
         if (getRawTime) {
@@ -215,70 +215,118 @@ function GetMaxMissionRate() {
   SavePlayerData()
 }
 
-function GetStaticMatBonus() {
-  let staticMatBonus = Math.pow(1.01, playerData.loopMods.beyonders)
-  staticMatBonus *= Math.pow(1.5111, playerData.loopMods.swarm)
-  staticMatBonus *= Math.pow(1.01, playerData.loopMods.expansion)
-  staticMatBonus *= Math.pow(1.05, playerData.loopMods.materialHauling)
-  staticMatBonus *=
-    0.25 * playerData.fleet.zeus.installs[2] * playerData.fleet.zeus.crew + 1
-  staticMatBonus *=
-    0.1 * playerData.fleet.zeus.installs[5] * playerData.fleet.zeus.crew + 1
+const getMatBonusFromLoopMod = () => {
+  return (
+    Math.pow(1.01, playerData.loopMods.beyonders) *
+    Math.pow(1.5111, playerData.loopMods.swarm) *
+    Math.pow(1.01, playerData.loopMods.expansion) *
+    Math.pow(1.05, playerData.loopMods.materialHauling) *
+    Math.pow(1 + 0.0002 * playerData.loopMods.looping, playerData.loopsFilled) *
+    Math.pow(1 + 0.002 * playerData.loopMods.productivity, playerData.level) *
+    (playerData.ouro.enabled && playerData.loopMods.sekhur5 ? 1.25 : 1)
+  )
+}
+
+const getMatBonusFromShardMilestone = () => {
+  let bonus = 1
+
   const wonderous60 = Math.pow(
     1.044,
     Math.max(0, playerData.shardMilestones[25] - 55) *
       (playerData.shardMilestones[25] > 59),
   )
-  staticMatBonus *= wonderous60
+  bonus *= wonderous60
   const wonderous90 = Math.pow(
     1.068,
     Math.max(0, playerData.shardMilestones[25] - 84) *
       (playerData.shardMilestones[25] > 89),
   )
-  staticMatBonus *= wonderous90
-  staticMatBonus *= Math.pow(
+  bonus *= wonderous90
+  bonus *= Math.pow(
     1.018,
     Math.max(0, playerData.shardMilestones[28] - 20) *
       (playerData.shardMilestones[28] > 24),
   )
-  staticMatBonus *= Math.pow(
+  bonus *= Math.pow(
     1.028,
     Math.max(0, playerData.shardMilestones[28] - 45) *
       (playerData.shardMilestones[28] > 49),
   )
-  staticMatBonus *= Math.pow(
-    1.5,
-    Math.floor(playerData.research.mission[0] / 2),
-  )
-  staticMatBonus *= Math.pow(
-    1.75,
-    Math.floor(playerData.research.mission[1] / 2),
-  )
-  staticMatBonus *= 4 * (playerData.research.perfection[1] > 1) + 1
-  staticMatBonus *=
+
+  return bonus
+}
+
+const getMatBonusFromResearch = () => {
+  const bonus =
+    Math.pow(1.5, Math.floor(playerData.research.mission[0] / 2)) *
+    Math.pow(1.75, Math.floor(playerData.research.mission[1] / 2)) *
+    (1 + 4 * (playerData.research.perfection[1] > 1)) *
     (playerData.research.mission[3] > 1 ? 2 : 1) *
     (playerData.research.mission[3] > 3 ? 3 : 1) *
-    (playerData.research.mission[3] > 5 ? 4 : 1)
-  staticMatBonus *= 4 * (playerData.research.perfection[2] > 1) + 1
-  staticMatBonus *= 8 * (playerData.research.perfection[3] > 1) + 1
-  staticMatBonus *=
+    (playerData.research.mission[3] > 5 ? 4 : 1) *
+    (1 + 4 * (playerData.research.perfection[2] > 1)) *
+    (1 + 8 * (playerData.research.perfection[3] > 1)) *
     (playerData.research.mission[4] > 1 ? 3 : 1) *
     (playerData.research.mission[4] > 3 ? 4 : 1) *
     (playerData.research.mission[4] > 5 ? 5 : 1)
+
+  return bonus
+}
+
+function GetStaticMatBonus() {
+  const isOuroEnabled = playerData.ouro.enabled
+  const zeus = playerData.fleet.zeus
+  const ouro = playerData.fleet.ouro
+
+  let staticMatBonus = 1
+
+  // loop mods
+  const matBonusFromLoopMod = getMatBonusFromLoopMod()
+  console.log(
+    'mat bonus from loop mods exclude zeus rank benefit',
+    matBonusFromLoopMod.toExponential(2),
+  )
+  staticMatBonus *= matBonusFromLoopMod
+
+  // zeus install
+  const shipBonus =
+    isOuroEnabled && playerData.academy.badges.darkInnovation ? 3 : 1
+  staticMatBonus *= 1 + 0.25 * zeus.installs[2] * (zeus.crew || 0) * shipBonus
+  staticMatBonus *= 1 + 0.1 * zeus.installs[5] * (zeus.crew || 0) * shipBonus
+
+  // ouro install
+  if (isOuroEnabled) {
+    staticMatBonus *= Math.pow(
+      1 + 0.005 * (ouro.installs[4] || 0),
+      ouro.crew || 0,
+    )
+  }
+
+  // shard milestone
+  const matBonusFromShardMilestone = getMatBonusFromShardMilestone()
+  console.log('mat bonus from shard milestone', matBonusFromShardMilestone)
+  staticMatBonus *= matBonusFromShardMilestone
+
+  // research
+  const bonusFromResearch = getMatBonusFromResearch()
+  console.log('mat bonus from research', bonusFromResearch)
+  staticMatBonus *= bonusFromResearch
+
+  // diamond
   staticMatBonus *= Math.pow(1.05, playerData.diamonds.special.materials || 0)
+  if (playerData.diamonds.ultima.materialBonus > 1)
+    staticMatBonus *= playerData.diamonds.ultima.materialBonus
   if (playerData.diamonds.iapCollector) staticMatBonus *= 1.5
+
+  // proj
   staticMatBonus *= Math.pow(1.75, playerData.academy.projectLevels[8])
-  staticMatBonus *= Math.pow(
-    0.0002 * playerData.loopMods.looping + 1,
-    playerData.loopsFilled,
-  )
-  staticMatBonus *= Math.pow(
-    0.002 * playerData.loopMods.productivity + 1,
-    playerData.level,
-  )
-  if (playerData.meltdown){
-    staticMatBonus *= playerData.meltdown
-    staticMatBonus /= 14.5 //this is almost certainly wrong, but it fits my data pretty well
+
+  if (isOuroEnabled) {
+    if (playerData.ouro.gemCreationNode3Bonus > 0)
+      staticMatBonus *= playerData.ouro.gemCreationNode3Bonus
+
+    // TODO: confirm formula
+    if (playerData.ouro.meltdown) staticMatBonus *= playerData.ouro.meltdown
   }
 
   return staticMatBonus

@@ -32,6 +32,10 @@ const blankPlayer = {
         0, // Shards Gained *= (0.01 * [level] * [Missions Completed] * [Zeus Crew] + 1)
       ],
     },
+    ouro: {
+      crew: 0,
+      installs: [0, 0, 0, 0, 0, 0],
+    },
   },
   loopMods: {
     zeusRankBenefits: 0, // Mission Materials *= pow(0.01 * [Zeus Rank Benefits] + 1, [Zeus Rank])
@@ -41,6 +45,7 @@ const blankPlayer = {
     expansion: 0, // Mission Materials *= pow(1.01, [Expansion])
     looping: 0, // Mission Materials *= pow(0.0002 * [Looping] + 1, [Loops Filled])
     productivity: 0, // Mission Speed *= pow(1.1, [Productivity]), Mission Materials *= pow(0.002 * [Productivity] + 1, [Player Level])
+    sekhur5: 0, // Mission Materials *= 1.25
   },
   shardMilestones: [
     0, // (01) Alpha
@@ -225,18 +230,28 @@ const blankPlayer = {
       loopers: false,
       efficiency: false,
       engineering: false,
+
+      darkInnovation: false,
     },
   },
   diamonds: {
     special: {
       materials: 0,
     },
+    ultima: {
+      materialBonus: 1,
+    },
     iapCollector: false,
   },
   relics: {
-    glider: 0,
+    relic3: 0,
+    relic5: 0,
   },
-  meltdown: 0.0
+  ouro: {
+    enabled: false,
+    meltdown: 0.0001,
+    gemCreationNode3Bonus: 1,
+  },
 }
 
 const LSKey = 'CifiProjSave'
@@ -261,37 +276,37 @@ function UpdatePlayerData() {
   SavePlayerData()
 }
 
-// This part is just saved for future reference from my console-based project
+function fixPlayerData() {
+  if (!playerData.ouro) {
+    playerData.ouro = blankPlayer.ouro
+  }
 
-// const shardMS =
-// {
-//     num(id) { return this[gameDB.milestones[id - 1].name]; }
-// };
+  if (playerData.meltdown) {
+    playerData.ouro.meltdown = playerData.meltdown
+    delete playerData.meltdown
+  }
 
-// function GenerateMilestoneAccess()
-// {
-//     for (let i = 0; i < gameDB.milestones.length; i++)
-//     {
-//         let milestoneName = gameDB.milestones[i].name;
-//         shardMS[milestoneName] =
-//         {
-//             id: i,
-//             name: milestoneName,
-//             get lv() { return playerData.demeter.milestones[this.id]; },
-//             set lv(val) { playerData.demeter.milestones[this.id] = val; SavePlayerData(); },
-//             get nextTickCost()
-//             {
-//                 return CalculateMilestoneTickCost(shardActiveState, this.id, this.lv);
-//             },
-//             get stageTickCost()
-//             {
-//                 return CalculateMilestoneTickCost(shardActiveState, this.id, this.lv, GetMilestoneNextStage(this.id, this.lv));
-//             }
-//         };
-//     }
-// }
+  if (!playerData.diamonds.ultima) {
+    playerData.diamonds.ultima = blankPlayer.diamonds.ultima
+  }
 
-// GenerateMilestoneAccess();
+  if (!playerData.relics) {
+    playerData.relics = blankPlayer.relics
+  }
 
-// Run automatic update of player data when the Super Assistant it was saved from is outdated
-if (playerData.version < blankPlayer.version) UpdatePlayerData()
+  if (playerData.relics.glider) {
+    playerData.relics.relic3 = playerData.relics.glider
+    delete playerData.relics.glider
+  }
+
+  if (!playerData.fleet.ouro) {
+    playerData.fleet.ouro = blankPlayer.fleet.ouro
+  }
+
+  if (playerData.version < blankPlayer.version) {
+    playerData.version = blankPlayer.version
+    UpdatePlayerData()
+  }
+}
+
+fixPlayerData()

@@ -3,6 +3,14 @@ function padZero(v) {
   return v
 }
 
+function formatFloat(i) {
+  try {
+    return Intl.NumberFormat().format(i)
+  } catch (e) {
+    return `${i}`
+  }
+}
+
 function formatInteger(i) {
   try {
     return Intl.NumberFormat().format(Math.floor(i))

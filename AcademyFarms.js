@@ -800,14 +800,37 @@ function genZeusRank(missionCount, duration) {
   zeusTable.html('')
   container.html('')
 
+  const numMissionPerHr = (missionCount / duration) * 3600
   const missionRate = $('<tr>')
     .append($('<td>').text('Mission Rate'))
     .append(
       $('<td>')
         .addClass('text-end font-normal')
-        .text(formatInteger((missionCount / duration) * 3600) + ' / hr'),
+        .text(formatInteger(numMissionPerHr) + ' / hr'),
     )
   zeusTable.append(missionRate)
+  if (playerData.ouro.enabled) {
+    const relicFragPerHr =
+      numMissionPerHr * (0.001 + 0.001 * (playerData.relics.relic5 || 0))
+    zeusTable.append(
+      $('<tr>')
+        .append($('<td>').text('Relic Fragment'))
+        .append(
+          $('<td>')
+            .addClass('text-end font-normal')
+            .text(formatFloat(relicFragPerHr) + ' / hr'),
+        ),
+    )
+    zeusTable.append(
+      $('<tr>')
+        .append('<td>')
+        .append(
+          $('<td>')
+            .addClass('text-end font-normal')
+            .text(formatFloat(relicFragPerHr * 24) + ' / d'),
+        ),
+    )
+  }
 
   let missionLeft = missionCount
   let rankProgress = playerData.fleet.zeus.rank.progress

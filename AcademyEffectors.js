@@ -21,12 +21,7 @@ const sections = [
         style: { width: 80 },
       },
       { id: 'engineering', type: 'checkbox', label: 'Engineering Badge' },
-      {
-        id: 'meltdown',
-        type: 'number',
-        label: '<label class="has-tip" data-bs-toggle="tooltip" data-bs-title="No Ouro = this should be 0">Meltdown Effect</label>',
-        style: {width: 80}
-      }
+      { id: 'ouroboros', type: 'checkbox', label: 'Ouroboros Unlocked' },
     ],
   },
   {
@@ -128,36 +123,61 @@ const sections = [
           cost: 'e1030 mp',
         },
       },
+      {
+        id: 'sekhur5',
+        type: 'number',
+        label: 'Planet Sekhur-5',
+        max: 1,
+        text: '/ 1',
+        isOuro: true,
+      },
     ],
   },
   {
     name: 'Zeus',
     children: [
-      { id: 'rank', type: 'number', label: 'Rank' },
-      { id: 'crew', type: 'number', label: 'Crew', style: { width: 60 } },
+      { id: 'zeusrank', type: 'number', label: 'Rank' },
+      { id: 'zeuscrew', type: 'number', label: 'Crew', style: { width: 60 } },
       {
-        id: 'progress',
+        id: 'zeusprogress',
         type: 'number',
         label: 'To Next',
         text: ' ',
-        textId: 'rankrequirement',
+        textId: 'zeusrankrequirement',
         style: { width: 70 },
       },
       {
-        id: 'install3',
+        id: 'zeusinstall3',
         type: 'number',
         label:
           '<label class="has-tip" data-bs-toggle="tooltip" data-bs-title="Material Scavenger Vehicles">Install 3</label>',
         max: 5,
-        textHtml: '/ <label class="has-tip" data-bs-toggle="tooltip" data-bs-title="Starts at 1, changes over time">5</label> <span class="text-super">*</c>',
+        textHtml:
+          '/ <label class="has-tip" data-bs-toggle="tooltip" data-bs-title="Starts at 1, changes over time">5</label> <span class="text-super">*</c>',
       },
       {
-        id: 'install6',
+        id: 'zeusinstall6',
         type: 'number',
         label:
           '<label class="has-tip" data-bs-toggle="tooltip" data-bs-title="Academy Auto-Scrappers">Install 6</label>',
         max: 75,
-        textHtml: '/ <label class="has-tip" data-bs-toggle="tooltip" data-bs-title="Starts at 15, changes over time">75</label> <span class="text-super">*</c>',
+        textHtml:
+          '/ <label class="has-tip" data-bs-toggle="tooltip" data-bs-title="Starts at 15, changes over time">75</label> <span class="text-super">*</c>',
+      },
+    ],
+    style: 'min-width: 260px',
+  },
+  {
+    name: 'Ouroboros',
+    isOuro: true,
+    children: [
+      { id: 'ourocrew', type: 'number', label: 'Crew', style: { width: 60 } },
+      {
+        id: 'ouroinstall5',
+        type: 'number',
+        label:
+          '<label class="has-tip" data-bs-toggle="tooltip" data-bs-title="Bio-Meterial Duplicatio Tech">Install 5</label>',
+        max: 20,
       },
     ],
     style: 'min-width: 260px',
@@ -188,6 +208,14 @@ const sections = [
         label: 'Special: Mats',
         max: 30,
         text: '/ 30',
+      },
+      {
+        id: 'ultimamatbonus',
+        type: 'number',
+        label:
+          '<label class="has-tip" data-bs-toggle="tooltip" data-bs-title="Insert Bonus value, not level! e.g. 1.1">Ultima: Mats Bonus</label>',
+        max: 30,
+        isOuro: true,
       },
       { id: 'iapCollector', type: 'checkbox', label: 'IAP: Collectors Pack' },
     ],
@@ -281,15 +309,39 @@ const sections = [
     }),
   },
   {
-    name: 'Relics', 
+    name: 'Ouro Content (WIP)',
+    isOuro: true,
     children: [
       {
-        id: 'glider',
+        id: 'meltdown',
         type: 'number',
-        label: '(3) The Time-Glider Engine'
+        label: 'Meltdown Effect',
+        style: { width: 80 },
       },
-    ]
-  }
+      {
+        id: 'relic3',
+        type: 'number',
+        label:
+          '<label class="has-tip" data-bs-toggle="tooltip" data-bs-title="The Time-Glider Engine">Relic 3</label>',
+        max: 100,
+        text: '/ 100',
+      },
+      {
+        id: 'relic5',
+        type: 'number',
+        label:
+          '<label class="has-tip" data-bs-toggle="tooltip" data-bs-title="The Portable Pocket Dimension Storage Unit">Relic 5</label>',
+        max: 8,
+        text: '/ 8',
+      },
+      { id: 'darkinno', type: 'checkbox', label: 'Dark Innovation Badge' },
+      {
+        id: 'creationgemnode3bonus',
+        type: 'number',
+        label: 'Creation Gem Node #3 Bonus',
+      },
+    ],
+  },
 ]
 
 academyEffectorPortal.pages.default.dataLinkage = {
@@ -320,6 +372,9 @@ academyEffectorPortal.pages.default.dataLinkage = {
   set looping(value) {
     playerData.loopMods.looping = value
   },
+  set sekhur5(value) {
+    playerData.loopMods.sekhur5 = value
+  },
 
   get playerlevel() {
     return playerData.level
@@ -348,21 +403,30 @@ academyEffectorPortal.pages.default.dataLinkage = {
   get looping() {
     return playerData.loopMods.looping
   },
+  get sekhur5() {
+    return playerData.loopMods.sekhur5
+  },
 
-  set crew(value) {
+  set zeuscrew(value) {
     playerData.fleet.zeus.crew = value
   },
-  set rank(value) {
+  set zeusrank(value) {
     playerData.fleet.zeus.rank.current = value
   },
-  set progress(value) {
+  set zeusprogress(value) {
     playerData.fleet.zeus.rank.progress = value
   },
-  set install3(value) {
+  set zeusinstall3(value) {
     playerData.fleet.zeus.installs[2] = value
   },
-  set install6(value) {
+  set zeusinstall6(value) {
     playerData.fleet.zeus.installs[5] = value
+  },
+  set ourocrew(value) {
+    playerData.fleet.ouro.crew = value
+  },
+  set ouroinstall5(value) {
+    playerData.fleet.ouro.installs[4] = value
   },
   set warpdrive(value) {
     playerData.academy.projectLevels[5] = value
@@ -370,33 +434,33 @@ academyEffectorPortal.pages.default.dataLinkage = {
   set engineering(value) {
     playerData.academy.badges.engineering = value
   },
-  set meltdown(value) {
-    playerData.meltdown = value
-  },
 
-  get crew() {
+  get zeuscrew() {
     return playerData.fleet.zeus.crew
   },
-  get rank() {
+  get zeusrank() {
     return playerData.fleet.zeus.rank.current
   },
-  get progress() {
+  get zeusprogress() {
     return playerData.fleet.zeus.rank.progress
   },
-  get install3() {
+  get zeusinstall3() {
     return playerData.fleet.zeus.installs[2]
   },
-  get install6() {
+  get zeusinstall6() {
     return playerData.fleet.zeus.installs[5]
+  },
+  get ourocrew() {
+    return playerData.fleet.ouro.crew
+  },
+  get ouroinstall5() {
+    return playerData.fleet.ouro.installs[4]
   },
   get warpdrive() {
     return playerData.academy.projectLevels[5]
   },
   get engineering() {
     return playerData.academy.badges.engineering
-  },
-  get meltdown() {
-    return playerData.meltdown
   },
 
   set wonderous(value) {
@@ -440,6 +504,9 @@ academyEffectorPortal.pages.default.dataLinkage = {
   },
   set specialmats(value) {
     playerData.diamonds.special.materials = value
+  },
+  set ultimamatbonus(value) {
+    playerData.diamonds.ultima.materialBonus = value
   },
   set iapCollector(value) {
     playerData.diamonds.iapCollector = value
@@ -487,32 +554,68 @@ academyEffectorPortal.pages.default.dataLinkage = {
   get specialmats() {
     return playerData.diamonds.special.materials
   },
+  get ultimamatbonus() {
+    return playerData.diamonds.ultima.materialBonus
+  },
   get iapCollector() {
     return playerData.diamonds.iapCollector
   },
 
-  set glider(value) {
-    if (!playerData.relics) playerData.relics = {};
-    playerData.relics.glider = value
+  set ouroboros(value) {
+    playerData.ouro.enabled = value
+  },
+  set meltdown(value) {
+    playerData.ouro.meltdown = value
+  },
+  set relic3(value) {
+    playerData.relics.relic3 = value
+  },
+  set relic5(value) {
+    playerData.relics.relic5 = value
+  },
+  set darkinno(value) {
+    playerData.academy.badges.darkInnovation = value
+  },
+  set creationgemnode3bonus(value) {
+    playerData.ouro.gemCreationNode3Bonus = value
   },
 
-  get glider() {
-    return playerData.relics ? playerData.relics.glider : 0
+  get ouroboros() {
+    return playerData.ouro.enabled
   },
-
-
+  get meltdown() {
+    return playerData.ouro.meltdown
+  },
+  get relic3() {
+    return playerData.relics.relic3
+  },
+  get relic5() {
+    return playerData.relics.relic5
+  },
+  get darkinno() {
+    return playerData.academy.badges.darkInnovation
+  },
+  get creationgemnode3bonus() {
+    return playerData.ouro.gemCreationNode3Bonus
+  },
 }
 
 academyEffectorPortal.pages.default.initFunction = function (panel) {
   const wrapper = createElement('div', 'section-2', { style: 'gap: 20px' })
 
-  sections.forEach(({ name, children, style }) => {
+  const ouroEnabled = !!portalPanel.dataLinkage.ouroboros
+
+  sections.forEach(({ name, children, style, isOuro }) => {
+    if (isOuro && !ouroEnabled) return
+
     const section = createElement('div', 'section-3', { style })
     const header = createElement('h5', '', null, name)
     section.appendChild(header)
 
     children
       .map(({ id, label, type, text, style = {}, info, ...props }) => {
+        if (props.isOuro && !ouroEnabled) return
+
         if (['select', 'number', 'checkbox'].includes(type)) {
           const group = createElement(
             'div',
@@ -672,8 +775,10 @@ academyEffectorPortal.pages.default.initFunction = function (panel) {
 
   panel.appendChild(wrapper)
 
-  portalPanel['rankrequirement'].innerText =
-    '/ ' + (GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage.rank] || 'no data')
+  portalPanel['zeusrankrequirement'].innerText =
+    '/ ' +
+    (GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage.zeusrank] ||
+      'no data')
 
   initTooltips()
   initPopovers()
@@ -689,22 +794,32 @@ academyEffectorPortal.pages.default.updateFunction = function (e) {
   if (e.target.type === 'checkbox') {
     portalPanel.dataLinkage[e.target.id] = e.target.checked
     SavePlayerData()
+
+    if (e.target.id === 'ouroboros') {
+      location.reload()
+    }
+
     return
   }
 
   if (e.target.type === 'number') {
-    if (e.target.id === 'meltdown') {
+    if (
+      ['meltdown', 'ultimamatbonus', 'creationgemnode3bonus'].indexOf(
+        e.target.id,
+      ) > -1
+    ) {
       portalPanel.dataLinkage[e.target.id] = parseFloat(e.target.value)
-    }
-    else {
+    } else {
       portalPanel.dataLinkage[e.target.id] = parseInt(e.target.value)
     }
     SavePlayerData()
 
-    if (e.target.id === 'rank') {
-      portalPanel['rankrequirement'].innerText =
+    if (e.target.id === 'zeusrank') {
+      portalPanel['zeusrankrequirement'].innerText =
         '/ ' +
-        (GameDB.fleet.zeus.rankRequirements[portalPanel.dataLinkage[e.target.id]] || 'no data')
+        (GameDB.fleet.zeus.rankRequirements[
+          portalPanel.dataLinkage[e.target.id]
+        ] || 'no data')
     }
 
     return
