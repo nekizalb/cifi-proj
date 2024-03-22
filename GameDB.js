@@ -103,6 +103,7 @@ let GameDB = {
         baseCosts: [600, 200, 0, 0, 0, 0, 0, 0],
         costScalar: 1.25,
         costBump: 0.016,
+        costBumpOuro: 0.136,
         bpCount: 1,
       },
       {
@@ -110,6 +111,7 @@ let GameDB = {
         baseCosts: [2750, 1500, 500, 0, 0, 0, 0, 0],
         costScalar: 1.4,
         costBump: 0.05,
+        costBumpOuro: 0.12437, // TODO: to determine
         bpCount: 1,
       },
       {
@@ -117,6 +119,7 @@ let GameDB = {
         baseCosts: [0, 0, 2400, 1000, 500, 0, 0, 0],
         costScalar: 1.7,
         costBump: 0.09,
+        costBumpOuro: 0.1521, // TODO: to confirm
         bpCount: 1,
       },
       {
@@ -124,6 +127,7 @@ let GameDB = {
         baseCosts: [0, 7000, 5000, 1500, 1500, 0, 0, 0],
         costScalar: 1.4,
         costBump: 0.07,
+        costBumpOuro: 0.2675, // TODO: to confirm
         bpCount: 1,
       },
       {
@@ -131,6 +135,7 @@ let GameDB = {
         baseCosts: [0, 0, 0, 0, 0, 1000, 200, 0],
         costScalar: 1.6,
         costBump: 0.08,
+        costBumpOuro: 0.309, // TODO: to confirm
         bpCount: 1,
       },
       {
@@ -190,14 +195,15 @@ let GameDB = {
       [300 * 4, 'The 10th Badge'], // 10th
       [300 * 4, 'The 11th Badge'], // 11th
     ],
-    projectNextLevelCost(projectID, level, costDiv) {
+    projectNextLevelCost(projectID, level, costDiv, ouroEnabled) {
       let project = this.projects[projectID]
+
+      const costBump = (ouroEnabled && project.costBumpOuro) || project.costBump
 
       const costMultiplier =
         Math.pow(
           project.costScalar +
-            project.costBump *
-              Math.floor(level / (project.costBumpLvInterval || 100)),
+            costBump * Math.floor(level / (project.costBumpLvInterval || 100)),
           level,
         ) / costDiv
 

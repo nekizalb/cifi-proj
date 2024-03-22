@@ -533,6 +533,7 @@ class ProjectConfig {
         this.projectID,
         this.testLevel,
         costDiv,
+        playerData.ouro.enabled,
       )
       //   if (this.testLevel === this.startLevel)
       //   {
@@ -600,6 +601,7 @@ class ProjectConfig {
         this.projectID,
         spanLevel,
         costDiv,
+        playerData.ouro.enabled,
       )
       for (let i = 0; i < 8; i++) {
         accumCosts[i] += nextCosts[i]
@@ -615,6 +617,7 @@ class ProjectConfig {
       this.projectID,
       this.startLevel,
       costDiv,
+      playerData.ouro.enabled,
     )
   }
 }
