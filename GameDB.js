@@ -111,7 +111,8 @@ let GameDB = {
         baseCosts: [2750, 1500, 500, 0, 0, 0, 0, 0],
         costScalar: 1.4,
         costBump: 0.05,
-        costBumpOuro: 0.12437, // TODO: to determine
+        costBumpOuro: 0.1873, // TODO: to confirm
+        costBumpOuroDivider: 184.5,
         bpCount: 1,
       },
       {
@@ -198,16 +199,21 @@ let GameDB = {
     projectNextLevelCost(projectID, level, costDiv, ouroEnabled) {
       let project = this.projects[projectID]
 
+      const baseCosts = project.baseCosts
+      const costScalar = project.costScalar
       const costBump = (ouroEnabled && project.costBumpOuro) || project.costBump
+      const bumpTimes = Math.floor(level / (project.costBumpLvInterval || 100))
+      const ouroDivider =
+        ouroEnabled && project.costBumpOuroDivider && bumpTimes > 0
+          ? project.costBumpOuroDivider
+          : 1
 
       const costMultiplier =
-        Math.pow(
-          project.costScalar +
-            costBump * Math.floor(level / (project.costBumpLvInterval || 100)),
-          level,
-        ) / costDiv
+        Math.pow(costScalar + costBump * bumpTimes, level) /
+        costDiv /
+        ouroDivider
 
-      return project.baseCosts.map((mat) => mat * costMultiplier)
+      return baseCosts.map((mat) => mat * costMultiplier)
     }, // END .projects
   },
   fleet: {
