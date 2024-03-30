@@ -325,7 +325,7 @@ function GetStaticMatBonus() {
       staticMatBonus *= playerData.ouro.gemCreationNode3Bonus
 
     // TODO: confirm formula
-    // if (playerData.ouro.meltdown) staticMatBonus *= playerData.ouro.meltdown
+    if (playerData.ouro.meltdown) staticMatBonus *= playerData.ouro.meltdown
   }
 
   return staticMatBonus
