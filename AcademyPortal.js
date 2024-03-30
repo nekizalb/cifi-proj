@@ -1,4 +1,21 @@
+function GetMissionSpeedBonus() {
+  let missionSpeedBonus = Math.pow(1.0311, playerData.loopMods.swarm)
+  missionSpeedBonus *= Math.pow(
+    1.05,
+    Math.floor((playerData.research.mission[2] + 1) / 2),
+  )
+  missionSpeedBonus *= (playerData.research.perfection[2] > 4) + 1
+  missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1
+  if (playerData.academy.badges.engineering) missionSpeedBonus *= 2
+  missionSpeedBonus *= Math.pow(1.1, playerData.loopMods.productivity)
+  missionSpeedBonus *= 1 + 0.03 * (playerData.relics.relic3 || 0)
+
+  return missionSpeedBonus || 1
+}
+
 function CalculateFarmTimes(getRawTime = false) {
+  let missionSpeedBonus = GetMissionSpeedBonus()
+
   let farmData = []
   for (let planet = 0; planet < GameDB.academy.planets; planet++) {
     for (let farm = 0; farm < 3; farm++) {
@@ -16,17 +33,6 @@ function CalculateFarmTimes(getRawTime = false) {
       population += farmSetting.titans || 0
       power += (farmSetting.corvettes || 0) * (personnelSetting[3].power || 0)
       population += farmSetting.corvettes || 0
-
-      let missionSpeedBonus = Math.pow(1.0311, playerData.loopMods.swarm)
-      missionSpeedBonus *= Math.pow(
-        1.05,
-        Math.floor((playerData.research.mission[2] + 1) / 2),
-      )
-      missionSpeedBonus *= (playerData.research.perfection[2] > 4) + 1
-      missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1
-      if (playerData.academy.badges.engineering) missionSpeedBonus *= 2
-      missionSpeedBonus *= Math.pow(1.1, playerData.loopMods.productivity)
-      missionSpeedBonus *= 1 + 0.03 * (playerData.relics.relic3 || 0)
 
       if (power === 0) {
         if (getRawTime) {
@@ -67,15 +73,7 @@ function CalculateFarmTimes(getRawTime = false) {
 function GetMaxMissionRate() {
   let farms = [...GameDB.academy.farms]
 
-  let missionSpeedBonus = Math.pow(1.0311, playerData.loopMods.swarm)
-  missionSpeedBonus *= Math.pow(
-    1.05,
-    Math.floor((playerData.research.mission[2] + 1) / 2),
-  )
-  missionSpeedBonus *= (playerData.research.perfection[2] > 4) + 1
-  missionSpeedBonus *= (playerData.research.perfection[3] > 4) + 1
-  if (playerData.academy.badges.engineering) missionSpeedBonus *= 2
-  missionSpeedBonus *= Math.pow(1.1, playerData.loopMods.productivity)
+  let missionSpeedBonus = GetMissionSpeedBonus()
 
   let personnel = [
     {
