@@ -296,6 +296,7 @@ function GetStaticMatBonus() {
 
   // ouro install
   if (isOuroEnabled) {
+    staticMatBonus *= Math.pow(8, playerData.relics.relic20 || 0)
     staticMatBonus *= Math.pow(
       1 + 0.005 * (ouro.installs[4] || 0),
       ouro.crew || 0,
@@ -326,7 +327,7 @@ function GetStaticMatBonus() {
       staticMatBonus *= playerData.ouro.gemCreationNode3Bonus
 
     // TODO: confirm formula
-    if (playerData.ouro.meltdown) staticMatBonus *= playerData.ouro.meltdown
+    // if (playerData.ouro.meltdown) staticMatBonus *= playerData.ouro.meltdown
   }
 
   return staticMatBonus

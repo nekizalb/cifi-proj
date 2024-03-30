@@ -246,6 +246,7 @@ const blankPlayer = {
   relics: {
     relic3: 0,
     relic5: 0,
+    relic20: 0,
   },
   ouro: {
     enabled: false,

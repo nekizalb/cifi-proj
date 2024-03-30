@@ -315,7 +315,7 @@ const sections = [
       {
         id: 'meltdown',
         type: 'number',
-        label: 'Meltdown Effect',
+        label: 'Meltdown Effect (WIP)',
         style: { width: 80 },
       },
       {
@@ -333,6 +333,14 @@ const sections = [
           '<label class="has-tip" data-bs-toggle="tooltip" data-bs-title="The Portable Pocket Dimension Storage Unit">Relic 5</label>',
         max: 8,
         text: '/ 8',
+      },
+      {
+        id: 'relic20',
+        type: 'number',
+        label:
+          '<label class="has-tip" data-bs-toggle="tooltip" data-bs-title="The Chrystonian Prism">Relic 20</label>',
+        max: 100,
+        text: '/ 100',
       },
       { id: 'darkinno', type: 'checkbox', label: 'Dark Innovation Badge' },
       {
@@ -573,6 +581,9 @@ academyEffectorPortal.pages.default.dataLinkage = {
   set relic5(value) {
     playerData.relics.relic5 = value
   },
+  set relic20(value) {
+    playerData.relics.relic20 = value
+  },
   set darkinno(value) {
     playerData.academy.badges.darkInnovation = value
   },
@@ -591,6 +602,9 @@ academyEffectorPortal.pages.default.dataLinkage = {
   },
   get relic5() {
     return playerData.relics.relic5
+  },
+  get relic20() {
+    return playerData.relics.relic20
   },
   get darkinno() {
     return playerData.academy.badges.darkInnovation
