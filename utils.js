@@ -19,8 +19,19 @@ function formatInteger(i) {
   }
 }
 
+function formatNotation(i) {
+  const n = ['k', 'm', 'b', 't', 'qa', 'qu', 'sx', 'sp', 'o', 'n', 'd']
+
+  const level = Math.min(Math.floor(Math.log10(i) / 3), n.length)
+  if (level < 1) return formatInteger(i)
+
+  return (i / Math.pow(10, 3 * level)).toFixed(2) + n[level - 1]
+}
+
 function formatLargeInteger(i) {
   if (i < 1e6) return formatInteger(i)
+
+  if (i < 1e36) return formatNotation(i)
 
   return i.toExponential(2).replace('+', '')
 }
