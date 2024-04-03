@@ -111,7 +111,7 @@ let GameDB = {
         baseCosts: [2750, 1500, 500, 0, 0, 0, 0, 0],
         costScalar: 1.4,
         costBump: 0.05,
-        costBumpOuro: 0.1873, // TODO: to confirm
+        costBumpOuro: 0.1873,
         costBumpOuroDivider: 184.57,
         bpCount: 1,
       },
@@ -120,7 +120,8 @@ let GameDB = {
         baseCosts: [0, 0, 2400, 1000, 500, 0, 0, 0],
         costScalar: 1.7,
         costBump: 0.09,
-        costBumpOuro: 0.152085, // TODO: to confirm
+        costBumpOuro: 0.2712,
+        costBumpOuroDivider: 509.32,
         bpCount: 1,
       },
       {
