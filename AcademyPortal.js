@@ -289,16 +289,21 @@ function GetStaticMatBonus() {
   // zeus install
   const shipBonus =
     isOuroEnabled && playerData.academy.badges.darkInnovation ? 3 : 1
-  staticMatBonus *= 1 + 0.25 * zeus.installs[2] * (zeus.crew || 0) * shipBonus
-  staticMatBonus *= 1 + 0.1 * zeus.installs[5] * (zeus.crew || 0) * shipBonus
+  const zeus3Bonus = 1 + 0.25 * zeus.installs[2] * (zeus.crew || 0) * shipBonus
+  staticMatBonus *= zeus3Bonus
+  console.log('zeus3Bonus', zeus3Bonus)
+  const zeus6Bonus = 1 + 0.1 * zeus.installs[5] * (zeus.crew || 0) * shipBonus
+  staticMatBonus *= zeus6Bonus
+  console.log('zeus6Bonus', zeus6Bonus)
 
   // ouro install
   if (isOuroEnabled) {
     staticMatBonus *= Math.pow(8, playerData.relics.relic20 || 0)
-    staticMatBonus *= Math.pow(
-      1 + 0.005 * (ouro.installs[4] || 0),
-      ouro.crew || 0,
-    )
+    const ouro5Bonus =
+      Math.pow(1 + 0.005 * (ouro.installs[4] || 0), ouro.crew || 0) *
+      (ouro.installs[4] ? shipBonus : 1)
+    staticMatBonus *= ouro5Bonus
+    console.log('ouro5Bonus', ouro5Bonus)
   }
 
   // shard milestone
@@ -324,8 +329,8 @@ function GetStaticMatBonus() {
     if (playerData.ouro.gemCreationNode3Bonus > 0)
       staticMatBonus *= playerData.ouro.gemCreationNode3Bonus
 
-    // TODO: confirm formula
-    if (playerData.ouro.meltdown) staticMatBonus *= playerData.ouro.meltdown
+    staticMatBonus *= playerData.ouro.meltdown || 0
+    staticMatBonus /= 14.5 // ouro mat nerf
   }
 
   return staticMatBonus

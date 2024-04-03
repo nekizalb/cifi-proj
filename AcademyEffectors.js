@@ -309,13 +309,13 @@ const sections = [
     }),
   },
   {
-    name: 'Ouro Content (WIP)',
+    name: 'Ouro Content',
     isOuro: true,
     children: [
       {
         id: 'meltdown',
         type: 'number',
-        label: 'Meltdown Effect (WIP)',
+        label: 'Meltdown Effect',
         style: { width: 80 },
       },
       {
