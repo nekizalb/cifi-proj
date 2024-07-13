@@ -5,7 +5,7 @@ PLAYER DATA CHANGE LOG
 */
 
 const blankPlayer = {
-  version: 13,
+  version: 14,
   activePortal: 'academyEffector',
   colorProfile: {
     academyProjects: ['#444444', '#CCCC44', '#44CC44', '#4444CC'],
@@ -202,6 +202,33 @@ const blankPlayer = {
           locked: false,
         },
       ],
+      [
+        // Planet 4
+        {
+          // Farm 4-1
+          pods: 0,
+          fireteams: 0,
+          titans: 0,
+          corvettes: 0,
+          locked: false,
+        },
+        {
+          // Farm 4-2
+          pods: 0,
+          fireteams: 0,
+          titans: 0,
+          corvettes: 0,
+          locked: false,
+        },
+        {
+          // Farm 4-3
+          pods: 0,
+          fireteams: 0,
+          titans: 0,
+          corvettes: 0,
+          locked: false,
+        },
+      ],
     ],
     farmYieldSetting: { type: 0, duration: 60 },
     farmYieldSelected: '1-h',
@@ -302,6 +329,11 @@ function fixPlayerData() {
 
   if (!playerData.fleet.ouro) {
     playerData.fleet.ouro = blankPlayer.fleet.ouro
+  }
+
+  if (playerData.academy.farms.length < 4)
+  {
+    playerData.academy.farms.push(blankPlayer.academy.farms[3])
   }
 
   if (playerData.version < blankPlayer.version) {

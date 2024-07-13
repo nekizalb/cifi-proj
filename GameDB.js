@@ -2,7 +2,7 @@ let GameDB = {
   version: 3,
   academy: {
     personnel: ['pods', 'fireteams', 'titans', 'corvettes'],
-    planets: 3,
+    planets: 4,
     materials: [
       'Difar',
       'Kento',
@@ -19,7 +19,7 @@ let GameDB = {
         id: 11,
         baseTime: 30,
         maxPop: 20,
-        baseAP: 2,
+        baseAP: 5,
         // Difar
         baseMats: [38, 0, 0, 0, 0, 0, 0, 0],
         isTimeRounded: false,
@@ -28,7 +28,7 @@ let GameDB = {
         id: 12,
         baseTime: 360,
         maxPop: 60,
-        baseAP: 64,
+        baseAP: 150,
         // Kento
         baseMats: [0, 320, 0, 0, 0, 0, 0, 0],
         isTimeRounded: false,
@@ -37,7 +37,7 @@ let GameDB = {
         id: 13,
         baseTime: 2400,
         maxPop: 100,
-        baseAP: 500,
+        baseAP: 1200,
         // Difar, Kento, Chromium
         baseMats: [1350, 280, 760, 0, 0, 0, 0, 0],
         isTimeRounded: false,
@@ -46,16 +46,16 @@ let GameDB = {
         id: 21,
         baseTime: 150,
         maxPop: 80,
-        baseAP: 14,
+        baseAP: 35,
         // Exon
-        baseMats: [0, 0, 0, 20, 0, 0, 0, 0],
+        baseMats: [0, 0, 0, 35, 0, 0, 0, 0],
         isTimeRounded: true,
       },
       {
         id: 22,
         baseTime: 2400,
         maxPop: 160,
-        baseAP: 75,
+        baseAP: 170,
         // Chromium, Organium
         baseMats: [0, 0, 560, 0, 80, 0, 0, 0],
         isTimeRounded: true,
@@ -64,7 +64,7 @@ let GameDB = {
         id: 23,
         baseTime: 72000,
         maxPop: 500,
-        baseAP: 4864,
+        baseAP: 11500,
         // Exon, Organium, Adamorphium
         baseMats: [0, 0, 0, 2200, 320, 260, 0, 0],
         isTimeRounded: true,
@@ -73,7 +73,7 @@ let GameDB = {
         id: 31,
         baseTime: 3000,
         maxPop: 150,
-        baseAP: 840,
+        baseAP: 2000,
         // Moskom
         baseMats: [0, 0, 0, 0, 0, 0, 19, 0],
         isTimeRounded: true,
@@ -82,7 +82,7 @@ let GameDB = {
         id: 32,
         baseTime: 975000,
         maxPop: 2000,
-        baseAP: 422000,
+        baseAP: 1000000,
         // Darkseid
         baseMats: [0, 0, 0, 0, 0, 0, 0, 80],
         isTimeRounded: true,
@@ -91,9 +91,36 @@ let GameDB = {
         id: 33,
         baseTime: 1875000,
         maxPop: 4000,
-        baseAP: 845000,
+        baseAP: 2000000,
         // Organium, Adamorphium, Moskom, Darkseid
         baseMats: [0, 0, 0, 0, 5200, 2440, 3980, 160],
+        isTimeRounded: true,
+      },
+      {
+        id: 41,
+        baseTime: 21000,
+        maxPop: 1000,
+        baseAP: 17000,
+        // Difar, Kento, Organium
+        baseMats: [40, 60, 0, 0, 50, 0, 0, 0],
+        isTimeRounded: true,
+      },
+      {
+        id: 42,
+        baseTime: 4875000,
+        maxPop: 10000,
+        baseAP: 3300000,
+        // Chromium, Adamorphium, Darkseid
+        baseMats: [0, 0, 8000, 0, 0, 7000, 0, 2000],
+        isTimeRounded: true,
+      },
+      {
+        id: 43,
+        baseTime: 9750000,
+        maxPop: 20000,
+        baseAP: 6700000,
+        // Exon, Moskom, Darkseid
+        baseMats: [0, 0, 0, 30000, 0, 0, 20000, 5000],
         isTimeRounded: true,
       },
     ], // END .farms

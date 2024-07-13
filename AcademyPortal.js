@@ -330,7 +330,7 @@ function GetStaticMatBonus() {
       staticMatBonus *= playerData.ouro.gemCreationNode3Bonus
 
     staticMatBonus *= playerData.ouro.meltdown || 0
-    staticMatBonus /= 14.5 // ouro mat nerf
+    staticMatBonus *= 0.0689 // ouro mat nerf
   }
 
   return staticMatBonus
