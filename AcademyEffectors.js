@@ -250,7 +250,7 @@ const sections = [
       {
         id: 'mission4',
         type: 'select',
-        label: 'Research 60',
+        label: 'Research 67',
         maxLevel: 6,
         text: 'Material:  Lv2 x2, Lv4 x3, Lv6 x4',
         textClassName: 'font-normal',
@@ -258,7 +258,7 @@ const sections = [
       {
         id: 'mission5',
         type: 'select',
-        label: 'Research 62',
+        label: 'Research 77',
         maxLevel: 6,
         text: 'Material:  Lv2 x3, Lv4 x4, Lv6 x5',
         textClassName: 'font-normal',
@@ -266,7 +266,7 @@ const sections = [
       {
         id: 'perfection2',
         type: 'select',
-        label: 'Research 67',
+        label: 'Research 60',
         maxLevel: 6,
         text: 'Material:  Lv2 x5',
         textClassName: 'font-normal',
@@ -282,7 +282,7 @@ const sections = [
       {
         id: 'perfection4',
         type: 'select',
-        label: 'Research 72',
+        label: 'Research 80',
         maxLevel: 6,
         text: 'Lv2: Material x9; Lv5: Speed *2',
         textClassName: 'font-normal',
@@ -290,7 +290,7 @@ const sections = [
       {
         id: 'construction1',
         type: 'select',
-        label: 'Research 77',
+        label: 'Research 62',
         maxLevel: 6,
         text: 'Proj Cost: - , /1.5 , - , /2, - , /2.5',
         textClassName: 'font-normal',
@@ -298,7 +298,7 @@ const sections = [
       {
         id: 'construction2',
         type: 'select',
-        label: 'Research 80',
+        label: 'Research 72',
         maxLevel: 6,
         text: 'Proj Cost: - , /2 , /3 , /3 , /4 , /4',
         textClassName: 'font-normal',
