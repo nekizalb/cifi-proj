@@ -276,7 +276,7 @@ function GetStaticMatBonus() {
   const zeus = playerData.fleet.zeus
   const ouro = playerData.fleet.ouro
 
-  let staticMatBonus = 1
+  let staticMatBonus = 1.08
 
   // loop mods
   const matBonusFromLoopMod = getMatBonusFromLoopMod()
