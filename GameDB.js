@@ -167,7 +167,7 @@ let GameDB = {
         baseCosts: [600, 200, 0, 0, 0, 0, 0, 0, 0],
         costScalar: 1.25,
         costBump: 0.016,
-        costBumpOuro: 30525,
+        costBumpOuro: 0.136,
         bpCount: 1,
       },
       {
